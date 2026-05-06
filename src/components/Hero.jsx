@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import MagneticButton from './MagneticButton'
-import ScaleReveal from './ScaleReveal'
-import Parallax from './Parallax'
 
 const Hero = () => {
   const marqueeRef = useRef(null);
