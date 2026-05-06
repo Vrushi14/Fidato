@@ -1293,7 +1293,7 @@ header {
     font-weight: 500;
     line-height: 1.1;
     margin-bottom: 20px;
-    color: #111;
+    color: #000000;
     letter-spacing: -0.03em;
 }
 
@@ -1306,7 +1306,7 @@ header {
 
 .cta-content p {
     font-size: 20px !important;
-    color: #666;
+    color: #000000;
     margin-bottom: 40px;
     max-width: 480px;
     line-height: 1.5;
