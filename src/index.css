@@ -1268,13 +1268,18 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1268px;
+    width: 1268px;
+    height: 477px;
+    max-width: 95%;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 90px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 80px;
     border: 1px solid #E2E2E2;
-    padding: 100px 120px;
+    padding: 0 100px;
     backdrop-filter: blur(20px);
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
 }
 
 .cta-content {
@@ -1283,24 +1288,28 @@ header {
 }
 
 .cta-content h2 {
+    font-family: 'Rebond Grotesque', sans-serif;
     font-size: 56px;
     font-weight: 500;
     line-height: 1.1;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     color: #111;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
 }
 
 .cta-content h2 em {
+    font-family: 'Archivo', sans-serif;
     font-style: italic;
-    font-weight: 400;
-    font-family: 'Times New Roman', Times, serif;
+    font-weight: inherit;
+    font-size: 56px;
 }
 
 .cta-content p {
-    font-size: 18px !important;
+    font-size: 20px !important;
     color: #666;
     margin-bottom: 40px;
+    max-width: 480px;
+    line-height: 1.5;
 }
 
 .btn-cta {
