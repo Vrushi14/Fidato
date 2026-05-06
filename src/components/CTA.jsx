@@ -8,7 +8,7 @@ const CTA = () => {
       <div className="container">
         <div className="cta-card glass-card">
           <div className="cta-content">
-            <h2>Let's hop on a call and <br /> see if <em>we're a good fit</em></h2>
+            <h2>Let's hop on a call and see if <em>we're a good fit</em></h2>
             <p>We bet we're the missing puzzle piece you've been searching for.</p>
             <MagneticButton>
               <Link to="/contact" className="btn btn-primary btn-cta" style={{ textDecoration: 'none', display: 'inline-block' }}>Book a Call with Ritesh</Link>
