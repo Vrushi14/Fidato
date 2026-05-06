@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import './SignupPage.css'
-import signupMockup from '../../images/Ai powered.png'
+import signupMockup from '../../images/image.png'
 
 const SignupPage = () => {
   useEffect(() => {

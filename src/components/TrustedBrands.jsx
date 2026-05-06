@@ -84,9 +84,6 @@ const TrustedBrands = () => {
         </div>
       </div>
 
-
-      </div>
-
       <style dangerouslySetInnerHTML={{ __html: `
         .tb-section {
           position: relative;
@@ -106,7 +103,6 @@ const TrustedBrands = () => {
           max-width: 1100px;
         }
 
-        /* Pill badge */
         .tb-badge {
           display: inline-block;
           padding: 6px 18px;
@@ -121,7 +117,6 @@ const TrustedBrands = () => {
           box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
-        /* Heading */
         .tb-heading {
           font-family: 'Rebond Grotesque', 'Inter', sans-serif;
           font-size: 48px;
@@ -142,7 +137,6 @@ const TrustedBrands = () => {
           color: #000;
         }
 
-        /* Grid Layout */
         .tb-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -151,7 +145,6 @@ const TrustedBrands = () => {
           margin-bottom: 60px;
         }
 
-        /* Base Card Styling */
         .tb-card {
           background: #FFFFFF;
           border: 1px solid rgba(0, 0, 0, 0.05);
@@ -161,25 +154,10 @@ const TrustedBrands = () => {
           display: flex;
           flex-direction: column;
           height: 100%;
-        }
           transition: none;
           backdrop-filter: blur(10px);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
         }
 
-        .tb-card-stacked {
-          padding: 16px 40px; /* slimmer padding for stacked cards */
-          justify-content: flex-end;
-          align-items: center;
-        }
-        
-        .tb-card-stacked .tb-card-footer {
-          margin-top: 0;
-        }
-
-        /* Content inside card */
         .tb-card-main-content {
           opacity: 1;
         }
@@ -210,6 +188,7 @@ const TrustedBrands = () => {
           justify-content: center;
           align-items: center;
           width: 100%;
+          margin-top: auto;
         }
 
         .tb-author {
@@ -228,8 +207,6 @@ const TrustedBrands = () => {
           color: #666;
         }
 
-
-
         @media (max-width: 600px) {
           .tb-card {
             padding: 32px 24px;
@@ -237,8 +214,8 @@ const TrustedBrands = () => {
           .tb-quote {
             font-size: 16px;
           }
-          .tb-cards-container {
-            min-height: 380px;
+          .tb-grid {
+            grid-template-columns: 1fr;
           }
         }
       `}} />
