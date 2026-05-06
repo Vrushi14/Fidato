@@ -32,48 +32,50 @@ const TrustedBrands = () => {
           </defs>
         </svg>
       </div>
-      <div className="tb-inner" style={{ position: 'relative', zIndex: 1 }}>
-        {/* Pill badge */}
-        <div className="tb-badge">What our clients say</div>
+      <div className="tb-container">
+        <div className="tb-inner" style={{ position: 'relative', zIndex: 1 }}>
+          {/* Pill badge */}
+          <div className="tb-badge">What our clients say</div>
 
-        {/* Heading */}
-        <h2 className="tb-heading">
-          Trusted by global&nbsp;<em>brands</em>
-        </h2>
+          {/* Heading */}
+          <h2 className="tb-heading">
+            Trusted by global&nbsp;<em>brands</em>
+          </h2>
 
-        {/* Testimonial Card */}
-        <div className="tb-card-wrapper">
-          <div className="tb-card">
-            {/* Left Navigation */}
-            <button className="tb-nav-btn tb-nav-left" aria-label="Previous">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-              </svg>
-            </button>
+          {/* Testimonial Card */}
+          <div className="tb-card-wrapper">
+            <div className="tb-card">
+              {/* Left Navigation */}
+              <button className="tb-nav-btn tb-nav-left" aria-label="Previous">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+              </button>
 
-            <div className="tb-card-content">
-              <div className="tb-stars">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="tb-star">★</span>
-                ))}
+              <div className="tb-card-content">
+                <div className="tb-stars">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="tb-star">★</span>
+                  ))}
+                </div>
+                
+                <p className="tb-quote">
+                  "Fidato AI handles customer questions about our menu, hours, and delivery areas 24/7. Our phone lines are finally free to take actual orders!"
+                </p>
+
+                <div className="tb-author-section">
+                  <span className="tb-author-name">Sebastian</span>
+                  <span className="tb-author-role">Founder @ Revocalize AI</span>
+                </div>
               </div>
-              
-              <p className="tb-quote">
-                "Fidato AI handles customer questions about our menu, hours, and delivery areas 24/7. Our phone lines are finally free to take actual orders!"
-              </p>
 
-              <div className="tb-author-section">
-                <span className="tb-author-name">Sebastian</span>
-                <span className="tb-author-role">Founder @ Revocalize AI</span>
-              </div>
+              {/* Right Navigation */}
+              <button className="tb-nav-btn tb-nav-right" aria-label="Next">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
             </div>
-
-            {/* Right Navigation */}
-            <button className="tb-nav-btn tb-nav-right" aria-label="Next">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </button>
           </div>
         </div>
       </div>
@@ -85,6 +87,20 @@ const TrustedBrands = () => {
           overflow: hidden;
           display: flex;
           justify-content: center;
+          align-items: center;
+        }
+
+        .tb-container {
+          width: 1200px;
+          height: 819px;
+          background: #FFFFFF;
+          border-radius: 36px;
+          border: 1px solid #E2E2E2;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          z-index: 1;
         }
 
         .tb-inner {
