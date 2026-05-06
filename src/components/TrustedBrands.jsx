@@ -174,6 +174,7 @@ const TrustedBrands = () => {
           font-size: 48px;
           line-height: 76.8px;
           letter-spacing: -0.64px;
+          color: #000;
         }
 
         /* Cards Container */
