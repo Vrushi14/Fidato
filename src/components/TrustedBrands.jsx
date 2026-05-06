@@ -23,12 +23,6 @@ const testimonials = [
 ];
 
 const TrustedBrands = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
   return (
     <section className="tb-section" style={{ position: 'relative' }}>
       <div style={{
@@ -66,60 +60,31 @@ const TrustedBrands = () => {
           Trusted by global&nbsp;<em>brands</em>
         </h2>
 
-        {/* Stacked Cards Container */}
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-          <div className="tb-cards-container">
-            {testimonials.map((t, index) => {
-              // Calculate the relative position of the card based on currentIndex
-              let offset = (index - currentIndex + testimonials.length) % testimonials.length;
-              
-              // Limit the number of visible stacked cards
-              if (offset > 2) offset = 2; // Only show up to 3 cards in the stack
-
-              const isTop = offset === 0;
-
-              return (
-                <div 
-                  key={index} 
-                  className={`tb-card ${isTop ? 'tb-card-active' : 'tb-card-stacked'}`}
-                  style={{
-                    transform: `translateY(${offset * 20}px) scale(${1 - offset * 0.05})`,
-                    opacity: offset === 0 ? 1 : 0.8 - offset * 0.2,
-                    zIndex: 10 - offset,
-                    visibility: offset > 2 ? 'hidden' : 'visible'
-                  }}
-                >
-                  {/* Full content only visible on the top card */}
-                  {isTop && (
-                    <div className="tb-card-main-content">
-                      <div className="tb-stars">
-                        {Array.from({ length: t.stars }).map((_, i) => (
-                          <span key={i} className="tb-star">★</span>
-                        ))}
-                      </div>
-                      <p className="tb-quote">{t.quote}</p>
-                    </div>
-                  )}
-                  
-                  {/* Author info visible on all stacked cards */}
-                  <div className="tb-card-footer">
-                    <div className="tb-author">
-                      <span className="tb-author-name">{t.name}</span>
-                      <span className="tb-author-role">{t.role}</span>
-                    </div>
-                  </div>
+        {/* Testimonials Grid */}
+        <div className="tb-grid">
+          {testimonials.map((t, index) => (
+            <div key={index} className="tb-card">
+              <div className="tb-card-main-content">
+                <div className="tb-stars">
+                  {Array.from({ length: t.stars }).map((_, i) => (
+                    <span key={i} className="tb-star">★</span>
+                  ))}
                 </div>
-              );
-            })}
-          </div>
+                <p className="tb-quote">{t.quote}</p>
+              </div>
+              
+              <div className="tb-card-footer">
+                <div className="tb-author">
+                  <span className="tb-author-name">{t.name}</span>
+                  <span className="tb-author-role">{t.role}</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
 
-        {/* Next Button */}
-        <button className="tb-next-btn" onClick={nextTestimonial} aria-label="Next testimonial">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 5v14M19 12l-7 7-7-7"/>
-          </svg>
-        </button>
+
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
@@ -138,7 +103,7 @@ const TrustedBrands = () => {
           flex-direction: column;
           align-items: center;
           width: 100%;
-          max-width: 720px;
+          max-width: 1100px;
         }
 
         /* Pill badge */
@@ -177,27 +142,26 @@ const TrustedBrands = () => {
           color: #000;
         }
 
-        /* Cards Container */
-        .tb-cards-container {
-          position: relative;
+        /* Grid Layout */
+        .tb-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 24px;
           width: 100%;
-          min-height: 320px; /* adjust based on content */
           margin-bottom: 60px;
-          display: flex;
-          justify-content: center;
         }
 
         /* Base Card Styling */
         .tb-card {
-          position: absolute;
-          top: 0;
-          background: rgba(255, 255, 255, 0.95);
+          background: #FFFFFF;
           border: 1px solid rgba(0, 0, 0, 0.05);
-          border-radius: 24px;
-          width: 100%;
-          max-width: 600px;
+          border-radius: 32px;
           padding: 40px;
-          box-shadow: 0 8px 40px rgba(0,0,0,0.04);
+          box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
           transition: none;
           backdrop-filter: blur(10px);
           display: flex;
@@ -264,25 +228,7 @@ const TrustedBrands = () => {
           color: #666;
         }
 
-        /* Next Button */
-        .tb-next-btn {
-          width: 56px;
-          height: 56px;
-          border-radius: 50%;
-          background: #111;
-          color: #fff;
-          border: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: none;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        .tb-next-btn:hover {
-          background: #000;
-          transform: translateY(2px);
-        }
+
 
         @media (max-width: 600px) {
           .tb-card {
