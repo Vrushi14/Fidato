@@ -6,33 +6,34 @@ import ScaleReveal from './ScaleReveal';
 const TrustedBrands = () => {
   return (
     <section className="tb-section" style={{ position: 'relative' }}>
-      <div style={{
-        position: 'absolute', inset: 0,
-        overflow: 'hidden', zIndex: -1,
-        pointerEvents: 'none'
-      }}>
-        <svg width="100%" height="100%" viewBox="0 0 1440 1578" fill="none" xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid slice"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-          <g filter="url(#filter0_f_133_862)">
-            <path d="M534.152 383.611C304.696 483.299 201.583 745.443 303.842 969.128C406.102 1192.81 675.011 1293.33 904.468 1193.64C1133.92 1093.96 1237.04 831.813 1134.78 608.128C1032.52 384.443 763.609 283.924 534.152 383.611Z" fill="url(#paint0_linear_133_862)" fillOpacity="0.6"/>
-          </g>
-          <defs>
-            <filter id="filter0_f_133_862" x="-80.7621" y="9.15527e-05" width="1600.14" height="1577.26" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-              <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-              <feGaussianBlur stdDeviation="172.55" result="effect1_foregroundBlur_133_862"/>
-            </filter>
-            <linearGradient id="paint0_linear_133_862" x1="303.842" y1="969.128" x2="847.173" y2="354.064" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#D7F0FF"/>
-              <stop offset="0.333333" stopColor="#D9CFFF"/>
-              <stop offset="0.666667" stopColor="#FFD1EA"/>
-              <stop offset="1" stopColor="#FFE3D2"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
       <div className="tb-container">
+        <div style={{
+          position: 'absolute', inset: 0,
+          overflow: 'hidden', zIndex: -1,
+          pointerEvents: 'none',
+          borderRadius: '36px'
+        }}>
+          <svg width="100%" height="100%" viewBox="0 0 1440 1578" fill="none" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+            <g filter="url(#filter0_f_133_862)">
+              <path d="M534.152 383.611C304.696 483.299 201.583 745.443 303.842 969.128C406.102 1192.81 675.011 1293.33 904.468 1193.64C1133.92 1093.96 1237.04 831.813 1134.78 608.128C1032.52 384.443 763.609 283.924 534.152 383.611Z" fill="url(#paint0_linear_133_862)" fillOpacity="0.6"/>
+            </g>
+            <defs>
+              <filter id="filter0_f_133_862" x="-80.7621" y="9.15527e-05" width="1600.14" height="1577.26" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="172.55" result="effect1_foregroundBlur_133_862"/>
+              </filter>
+              <linearGradient id="paint0_linear_133_862" x1="303.842" y1="969.128" x2="847.173" y2="354.064" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#D7F0FF"/>
+                <stop offset="0.333333" stopColor="#D9CFFF"/>
+                <stop offset="0.666667" stopColor="#FFD1EA"/>
+                <stop offset="1" stopColor="#FFE3D2"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
         <div className="tb-inner" style={{ position: 'relative', zIndex: 1 }}>
           {/* Pill badge */}
           <div className="tb-badge">What our clients say</div>
