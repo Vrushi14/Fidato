@@ -16,10 +16,7 @@ const Hero = () => {
   return (
     <section className="hero" id="home">
       <div className="container">
-        <div className="hero-badge">
-          <span className="dot"></span>
-          Trusted by Top Enterprises globally
-        </div>
+
 
         <h1 className="hero-title">
           Your Website Can Now <br />
