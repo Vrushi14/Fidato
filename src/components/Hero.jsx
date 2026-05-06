@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import MagneticButton from './MagneticButton'
+import heroImage from '../../images/image.png'
 
 const Hero = () => {
   const marqueeRef = useRef(null);
@@ -20,7 +21,7 @@ const Hero = () => {
 
         <h1 className="hero-title">
           Your Website Can Now <br />
-          Talk, Sell & Support — <em>Automatically</em>
+          Talk, Sell & Support — Automatically
         </h1>
 
         <p className="hero-subtitle">
@@ -40,6 +41,10 @@ const Hero = () => {
           <MagneticButton>
             <button className="btn btn-hero-primary hero-test-btn">Test on your Website</button>
           </MagneticButton>
+        </div>
+
+        <div className="hero-image-container" style={{ marginTop: '60px', width: '100%', maxWidth: '1000px', margin: '60px auto 0' }}>
+          <img src={heroImage} alt="Fidato AI Interface" style={{ width: '100%', height: 'auto', borderRadius: '24px', boxShadow: '0 40px 100px rgba(0,0,0,0.1)' }} />
         </div>
 
         <div className="hero-trusted">
