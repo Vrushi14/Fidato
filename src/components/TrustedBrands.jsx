@@ -67,7 +67,7 @@ const TrustedBrands = () => {
         </h2>
 
         {/* Stacked Cards Container */}
-        <ScaleReveal delay={0.2} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
           <div className="tb-cards-container">
             {testimonials.map((t, index) => {
               // Calculate the relative position of the card based on currentIndex
@@ -112,7 +112,7 @@ const TrustedBrands = () => {
               );
             })}
           </div>
-        </ScaleReveal>
+        </div>
 
         {/* Next Button */}
         <button className="tb-next-btn" onClick={nextTestimonial} aria-label="Next testimonial">
@@ -198,9 +198,7 @@ const TrustedBrands = () => {
           max-width: 600px;
           padding: 40px;
           box-shadow: 0 8px 40px rgba(0,0,0,0.04);
-          transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-                      opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-                      z-index 0s 0.1s;
+          transition: none;
           backdrop-filter: blur(10px);
           display: flex;
           flex-direction: column;
@@ -219,12 +217,7 @@ const TrustedBrands = () => {
 
         /* Content inside card */
         .tb-card-main-content {
-          animation: fadeIn 0.4s ease forwards;
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          opacity: 1;
         }
 
         .tb-stars {
@@ -283,7 +276,7 @@ const TrustedBrands = () => {
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          transition: transform 0.2s ease, background 0.2s ease;
+          transition: none;
           box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
         .tb-next-btn:hover {
