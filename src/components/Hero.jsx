@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import MagneticButton from './MagneticButton'
 import ScaleReveal from './ScaleReveal'
 import Parallax from './Parallax'
-import heroPreview from '../assets/hero-preview.png'
 
 const Hero = () => {
   const marqueeRef = useRef(null);
@@ -47,27 +46,6 @@ const Hero = () => {
             <button className="btn btn-hero-primary hero-test-btn">Test on your Website</button>
           </MagneticButton>
         </div>
-
-        <ScaleReveal delay={0.3}>
-          <Parallax offset={30}>
-            <div className="hero-preview">
-              <div className="hero-image-wrapper">
-                <img 
-                  src={heroPreview} 
-                  alt="Fidato AI Dashboard Preview" 
-                  className="hero-preview-img"
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: '24px',
-                    boxShadow: '0 40px 100px rgba(0, 0, 0, 0.2)',
-                    display: 'block'
-                  }}
-                />
-              </div>
-            </div>
-          </Parallax>
-        </ScaleReveal>
 
         <div className="hero-trusted">
           <p className="trusted-text">More than 200+ companies trusted us worldwide</p>
