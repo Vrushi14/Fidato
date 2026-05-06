@@ -158,18 +158,22 @@ const TrustedBrands = () => {
 
         /* Heading */
         .tb-heading {
-          font-size: clamp(32px, 5vw, 52px);
-          font-weight: 700;
+          font-family: 'Rebond Grotesque', 'Inter', sans-serif;
+          font-size: 48px;
+          font-weight: 500;
           color: #111;
           text-align: center;
           margin: 0 0 64px;
-          letter-spacing: -0.02em;
-          line-height: 1.15;
+          letter-spacing: 0;
+          line-height: 55px;
         }
         .tb-heading em {
+          font-family: 'Archivo', sans-serif;
           font-style: italic;
-          font-family: Georgia, 'Times New Roman', serif;
-          font-weight: 400;
+          font-weight: inherit;
+          font-size: 48px;
+          line-height: 76.8px;
+          letter-spacing: -0.64px;
         }
 
         /* Cards Container */

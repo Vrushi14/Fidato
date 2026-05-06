@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400..900;1,400..900&family=Inter:wght@400;500;600;700;800&display=swap');
+
 :root {
     --primary-color: #FF6B3D;
     --primary-gradient: linear-gradient(90deg, #FF7E53 0%, #FF5226 100%);
@@ -75,12 +77,13 @@ body::before {
 }
 
 .section-title {
-    font-size: 56px;
-    font-weight: 800;
+    font-family: 'Rebond Grotesque', 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
     margin-bottom: 24px;
-    line-height: 1.1;
+    line-height: 55px;
     text-align: center;
-    letter-spacing: -0.03em;
+    letter-spacing: 0px;
 }
 
 .section-subtitle {
@@ -1539,6 +1542,7 @@ header {
 
     .section-title {
         font-size: 28px !important;
+        line-height: 34px;
     }
 
     .hero-badge {
