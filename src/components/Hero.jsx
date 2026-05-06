@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import MagneticButton from './MagneticButton'
 import ScaleReveal from './ScaleReveal'
 import Parallax from './Parallax'
+import heroPreview from '../assets/hero-preview.png'
 
 const Hero = () => {
   const marqueeRef = useRef(null);
@@ -50,72 +51,19 @@ const Hero = () => {
         <ScaleReveal delay={0.3}>
           <Parallax offset={30}>
             <div className="hero-preview">
-              <div className="browser-mockup">
-                <div className="browser-header">
-                  <div className="dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div className="url-bar">Your website URL (https://example.com)</div>
-                  <div className="logo-small">
-                    <svg width="20" height="20" viewBox="0 0 51 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.98568 5.03741L1.76995 17.0277C0.617924 18.615 -0.0016823 20.5263 4.10173e-05 22.4876V40.2525C-0.00578909 42.2077 0.610029 44.1139 1.75854 45.6961C2.90706 47.2784 4.52881 48.4548 6.38953 49.0551L14.5677 51.6512C15.8241 52.0516 17.1529 52.1726 18.461 52.0056C19.7691 51.8385 21.0248 51.3874 22.1403 50.684L42.8439 41.351L9.98568 5.03741Z" fill="#F26419" />
-                      <path d="M19.6662 46.4072C13.4269 46.4072 8.15479 41.2853 8.15479 35.2291V11.1781C8.15727 8.21508 9.33511 5.37413 11.4299 3.2785C13.5246 1.18287 16.3651 0.00372918 19.3282 0H39.0131C41.9765 0.00372686 44.8176 1.18255 46.9131 3.27804C49.0086 5.37353 50.1875 8.21465 50.1912 11.1781V30.8631C50.1875 33.8261 49.0084 36.6666 46.9128 38.7613C44.8172 40.8561 41.9761 42.0339 39.0131 42.0364H19.6662V46.4072Z" fill="#F26419" />
-                      <path d="M19.136 5C17.509 5.00372 15.9497 5.65199 14.7996 6.80292C13.6496 7.95385 13.0025 9.51368 13 11.1407V35.1917C13 38.3982 15.9107 41.2197 19.2768 41.323V36.9616H38.8209C40.4475 36.9591 42.0068 36.3118 43.1569 35.1616C44.3071 34.0115 44.9544 32.4523 44.9569 30.8257V11.1407C44.9556 9.5133 44.3089 7.95274 43.1586 6.80155C42.0083 5.65035 40.4483 5.00249 38.8209 5H19.136Z" fill="white" />
-                      <path d="M25.9713 12.8823H21.624V22.5206H25.9713V12.8823Z" fill="black" />
-                      <path d="M37.8253 12.8823H33.478V22.5206H37.8253V12.8823Z" fill="black" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="browser-content">
-                  <div className="dashboard-ui">
-                    <div className="dashboard-sidebar">
-                      <div className="sidebar-bar-large"></div>
-                      <div className="sidebar-bar-thin"></div>
-                      <div className="sidebar-bar-thin"></div>
-                      <div className="sidebar-bar-medium"></div>
-                      <div className="sidebar-box-bottom"></div>
-                    </div>
-                    <div className="dashboard-main">
-                      <div className="chat-window">
-                        <div className="chat-header">
-                          <div className="chat-header-left">
-                            <div className="chat-avatar-small"></div>
-                            <span>AI Assistant</span>
-                            <span className="online-dot"></span>
-                          </div>
-                          <div className="chat-header-actions">
-                            <span className="icon-minimize"></span>
-                            <span className="icon-close"></span>
-                          </div>
-                        </div>
-                        <div className="chat-body">
-                          <div className="chat-ai-profile">
-                            <div className="ai-avatar-large"></div>
-                            <h3>Hi! I'm Fidato AI.</h3>
-                            <p>What can I help you with today?</p>
-                          </div>
-                          <div className="chat-bubble user">
-                            Can you explain the team collaboration features?
-                          </div>
-                          <div className="chat-bubble ai">
-                            <div className="ai-mini-avatar"></div>
-                            Absolutely! Our platform allows real-time collaboration with shared workspaces, live editing and instant notification.
-                          </div>
-                        </div>
-                        <div className="chat-input">
-                          <div className="input-field">
-                            <span className="icon-plus">+</span>
-                            <span>Ask AI anything...</span>
-                            <span className="icon-sparkle">✨</span>
-                          </div>
-                          <div className="chat-footer-text">This chat is recorded. By chatting, you agree to the AI Terms.</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="hero-image-wrapper">
+                <img 
+                  src={heroPreview} 
+                  alt="Fidato AI Dashboard Preview" 
+                  className="hero-preview-img"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '24px',
+                    boxShadow: '0 40px 100px rgba(0, 0, 0, 0.2)',
+                    display: 'block'
+                  }}
+                />
               </div>
             </div>
           </Parallax>
