@@ -1289,7 +1289,7 @@ header {
 
 .cta-content h2 {
     font-family: 'Rebond Grotesque', sans-serif;
-    font-size: 56px;
+    font-size: 54px;
     font-weight: 500;
     line-height: 1.1;
     margin-bottom: 20px;
@@ -1300,8 +1300,8 @@ header {
 .cta-content h2 em {
     font-family: 'Archivo', sans-serif;
     font-style: italic;
-    font-weight: inherit;
-    font-size: 56px;
+    font-weight: 300;
+    font-size: 53.89px;
 }
 
 .cta-content p {
