@@ -44,7 +44,7 @@ const Hero = () => {
         </div>
 
         <div className="hero-image-container" style={{ marginTop: '20px', width: '100%', maxWidth: '1000px', margin: '20px auto 0' }}>
-          <img src={heroImage} alt="Fidato AI Interface" style={{ width: '100%', height: 'auto', borderRadius: '24px', boxShadow: '0 40px 100px rgba(0,0,0,0.1)' }} />
+          <img src={heroImage} alt="Fidato AI Interface" style={{ width: '100%', height: 'auto' }} />
         </div>
 
         <div className="hero-trusted">
