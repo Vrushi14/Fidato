@@ -221,12 +221,14 @@ header {
 }
 
 .hero-title {
-    font-size: 58px;
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-family: 'Rebond Grotesque', 'Inter', sans-serif;
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 75px;
+    letter-spacing: 0px;
     margin-bottom: 28px;
     color: #1a1a1a;
+    text-align: center;
 }
 
 .hero-subtitle {
@@ -1433,7 +1435,8 @@ header {
     }
 
     .hero-title {
-        font-size: 42px;
+        font-size: 48px;
+        line-height: 56px;
     }
 
     .hero-subtitle {
@@ -1529,7 +1532,8 @@ header {
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 32px;
+        font-size: 36px;
+        line-height: 44px;
     }
 
     .section-title {
