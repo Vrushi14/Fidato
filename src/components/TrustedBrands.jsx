@@ -188,12 +188,15 @@ const TrustedBrands = () => {
         }
 
         .tb-quote {
-          font-size: 18px;
-          line-height: 1.6;
-          color: #333;
-          margin-bottom: 35px;
-          max-width: 580px;
+          font-family: 'Archivo', sans-serif;
+          font-size: 24px;
+          line-height: 33.6px;
+          color: #111111;
+          text-align: center;
+          max-width: 679px;
+          margin: 0 auto 35px;
           font-weight: 400;
+          letter-spacing: -0.28px;
         }
 
         .tb-author-section {
