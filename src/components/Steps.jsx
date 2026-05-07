@@ -35,7 +35,7 @@ const Steps = () => {
     <section className="steps-section" id="steps">
       <div className="container">
         <h2 className="section-title">From Zero to Hero AI<br /> Support in 3 Simple Steps</h2>
-        <p className="section-subtitle">Quickly implement AI that works for you in minutes</p>
+        <p className="section-subtitle steps-subtitle">Fidato learns from your website and answers customer questions in real-time.<br />Our AI understands context, tone, and your unique business needs.</p>
         
         <div className="steps-grid">
           {steps.map((step, index) => (
