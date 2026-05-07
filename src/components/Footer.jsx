@@ -115,9 +115,9 @@ const Footer = () => {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          padding: 60px 24px 40px;
+          padding: 60px 60px 40px;
           gap: 40px;
-          max-width: 1200px;
+          max-width: 1280px;
           margin: 0 auto;
         }
 
@@ -195,8 +195,8 @@ const Footer = () => {
         }
         
         .footer-wordmark {
-          padding: 0 24px;
-          max-width: 1200px;
+          padding: 0 60px;
+          max-width: 1280px;
           margin: 0 auto;
         }
 
@@ -205,9 +205,9 @@ const Footer = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 16px 24px;
+          padding: 16px 60px;
           border-top: 1px solid rgba(0,0,0,0.08);
-          max-width: 1200px;
+          max-width: 1280px;
           margin: 0 auto;
         }
 

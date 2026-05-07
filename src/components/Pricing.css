@@ -8,6 +8,7 @@
 }
 
 .pricing-header .section-title {
+    font-family: 'Rebond Grotesque', sans-serif;
     font-size: 48px;
     font-weight: 500;
     line-height: 55px;
@@ -72,15 +73,15 @@
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 24px;
     margin-bottom: 40px;
 }
 
 .pricing-card {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
-    padding: 50px 40px;
-    border-radius: 40px;
+    padding: 40px 30px;
+    border-radius: 32px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.03);
     position: relative;
     display: flex;
@@ -96,7 +97,8 @@
 }
 
 .plan-header {
-    min-height: 240px; /* Ensures buttons align horizontally */
+    min-height: 200px;
+    /* Ensures buttons align horizontally */
     display: flex;
     flex-direction: column;
 }
@@ -148,22 +150,31 @@
 }
 
 .plan-name {
-    font-size: 28px;
-    font-weight: 800;
+    font-family: 'Rebond Grotesque', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
     margin-bottom: 15px;
     letter-spacing: -0.01em;
+    color: #1A1A1A;
+}
+
+.dark .plan-name {
+    color: #FFFFFF;
 }
 
 .plan-desc {
+    font-family: 'Archivo', sans-serif;
     font-size: 16px;
+    font-weight: 400;
     color: #444;
-    line-height: 1.6;
+    line-height: 22px;
     margin-bottom: 30px;
     min-height: 50px;
+    max-width: 286px;
 }
 
 .dark .plan-desc {
-    color: #AAA;
+    color: #FFFFFF;
 }
 
 .plan-price {
@@ -174,10 +185,11 @@
 }
 
 .plan-price .amount {
-    font-size: 52px;
-    font-weight: 800;
+    font-family: 'Rebond Grotesque', sans-serif;
+    font-size: 40px;
+    font-weight: 400;
     color: #1A1A1A;
-    line-height: 1;
+    line-height: 32px;
 }
 
 .dark .plan-price .amount {
@@ -185,21 +197,34 @@
 }
 
 .plan-price .period {
-    font-size: 18px;
+    font-family: 'Rebond Grotesque', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
     color: #888;
-    margin-left: 5px;
+    margin-left: 2px;
+}
+
+.dark .plan-price .period {
+    color: #FFFFFF;
 }
 
 /* Buttons */
 .plan-btn {
-    width: 100%;
-    padding: 16px;
-    border-radius: 50px;
-    font-weight: 700;
+    width: 260px;
+    height: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 111px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
     font-size: 16px;
     cursor: pointer;
     border: none;
-    margin-bottom: 30px; /* Space between button and features */
+    margin: 0 auto 30px;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
 }
 
 .plan-btn.filled {
@@ -239,12 +264,12 @@
 }
 
 .card-features h4 {
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 24px;
+    font-family: 'Archivo', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
     color: #1A1A1A;
+    line-height: 32px;
 }
 
 .dark .card-features h4 {
@@ -261,14 +286,16 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 15px;
+    font-family: 'Archivo', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
     color: #444;
-    margin-bottom: 16px;
-    line-height: 1.4;
+    margin-bottom: 0;
+    line-height: 32px;
 }
 
 .dark .card-features li {
-    color: #AAA;
+    color: #FFFFFF;
 }
 
 .check-icon {
@@ -359,28 +386,28 @@
         max-width: 450px;
         margin: 0 auto 40px;
     }
-    
+
     .pricing-card.popular {
         transform: none;
     }
-    
+
     .pricing-card.popular:hover {
         transform: translateY(-10px);
     }
-    
+
     .basic-plan-horizontal {
         grid-template-columns: 1fr;
         padding: 40px;
         text-align: center;
     }
-    
+
     .basic-features-grid {
         border-left: none;
         padding-left: 0;
         border-top: 1px solid #EEE;
         padding-top: 30px;
     }
-    
+
     .features-columns {
         justify-content: center;
     }

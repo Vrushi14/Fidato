@@ -122,7 +122,7 @@ const Pricing = () => {
                       <span className="period">{plan.period}</span>
                     </div>
                   </div>
-                  <Link to="/contact" className={`plan-btn ${plan.buttonStyle}`} style={{ textDecoration: 'none', textAlign: 'center', display: 'block' }}>
+                  <Link to="/contact" className={`plan-btn ${plan.buttonStyle}`}>
                     {plan.buttonText}
                   </Link>
                 </div>
@@ -177,7 +177,7 @@ const Pricing = () => {
             </div>
           </div>
 
-          <Link to="/contact" className="plan-btn filled" style={{ textDecoration: 'none', textAlign: 'center', display: 'block' }}>
+          <Link to="/contact" className="plan-btn filled">
             {basicPlan.buttonText}
           </Link>
         </div>

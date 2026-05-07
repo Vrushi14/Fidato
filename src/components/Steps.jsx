@@ -3,10 +3,10 @@ import React from 'react'
 const Steps = () => {
   const steps = [
     {
-      tag: "Lets us Read your site",
+      tag: "Let us Read your site",
       title: "Enter your website URL",
       desc: "Experience how our AI chatbot works on your website. No setup required — just enter your URL and see instant results.",
-      bg: "#F8C04C",
+      bg: "#FDE68A",
       accent: "#FFD43B",
       isCustom: true,
       customType: "browserMockup"
@@ -50,16 +50,16 @@ const Steps = () => {
                   {step.customType === 'browserMockup' ? (
                     <div className="custom-browser-mockup">
                       <div className="c-browser-header">
-                        <span className="c-dot" style={{background: '#FF7445'}}></span>
-                        <span className="c-dot" style={{background: '#F6AE2D'}}></span>
+                        <span className="c-dot" style={{background: '#FF5F56'}}></span>
+                        <span className="c-dot" style={{background: '#FFBD2E'}}></span>
                         <span className="c-dot" style={{background: '#E4E5E6'}}></span>
                       </div>
                       <div className="c-browser-url-bar">
-                        <div className="c-url-icon" style={{background: '#F6AE2D'}}>
+                        <div className="c-url-icon" style={{background: '#FFBD2E'}}>
                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V14C18 15.1046 17.1046 16 16 16H11.5L8.5 19V16H8C6.89543 16 6 15.1046 6 14V8Z" fill="#1E1E1E"/>
-                            <rect x="9.5" y="9.5" width="2" height="2" rx="1" fill="#F6AE2D"/>
-                            <rect x="12.5" y="9.5" width="2" height="2" rx="1" fill="#F6AE2D"/>
+                            <path d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V14C18 15.1046 17.1046 16 16 16H11.5L8.5 19V16H8C6.89543 16 6 15.1046 6 14V8Z" fill="black"/>
+                            <circle cx="10" cy="11" r="1.5" fill="#FFBD2E"/>
+                            <circle cx="14" cy="11" r="1.5" fill="#FFBD2E"/>
                           </svg>
                         </div>
                         <span>https://www.example.com</span>
@@ -68,12 +68,6 @@ const Steps = () => {
                         <div className="c-left-col">
                           <div className="c-block-left" style={{background: '#BEA9F7'}}></div>
                           <div className="c-block-left-bottom" style={{background: '#FF7445'}}></div>
-                        </div>
-                        <div className="c-block-center">
-                          <div className="c-line" style={{background: '#E4E5E6'}}></div>
-                          <div className="c-line" style={{background: '#E4E5E6', width: '80%'}}></div>
-                          <div className="c-line" style={{background: '#E4E5E6', width: '90%'}}></div>
-                          <div className="c-line" style={{background: '#E4E5E6', width: '70%'}}></div>
                         </div>
                         <div className="c-block-right" style={{background: '#75749C'}}></div>
                       </div>
@@ -200,12 +194,12 @@ const Steps = () => {
                       </div>
                       
                       <div className="c-center-block">
-                        <svg width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M14.9166 2L2.64394 18.0581C0.923051 20.1838 -0.002513 22.7436 6.12714e-05 25.3703V49.1621C-0.00864771 51.7805 0.911258 54.3334 2.6269 56.4525C4.34254 58.5715 6.7651 60.147 9.54465 60.951L21.7612 64.4278C23.638 64.9641 25.6229 65.1261 27.5769 64.9024C29.5309 64.6787 31.4068 64.0745 33.073 63.1325L64 50.6332L14.9166 2Z" fill="#724FBC"/>
-                          <path d="M24.7601 58.4271C16.9048 58.4271 10.2671 51.9785 10.2671 44.3538V14.0734C10.2702 10.3429 11.7531 6.76608 14.3904 4.12766C17.0277 1.48925 20.604 0.00469508 24.3345 0H49.118C52.849 0.00469215 56.4259 1.48884 59.0641 4.12709C61.7024 6.76533 63.1866 10.3423 63.1913 14.0734V38.8569C63.1866 42.5874 61.7022 46.1636 59.0638 48.8009C56.4254 51.4382 52.8485 52.9211 49.118 52.9242H24.7601V58.4271Z" fill="#724FBC"/>
+                        <svg width="64" height="66" viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12.5721 6L2.22838 21.0959C0.777972 23.0943 -0.00211803 25.5007 5.16412e-05 27.9699V50.3362C-0.00728852 52.7977 0.768032 55.1976 2.21402 57.1897C3.66001 59.1818 5.70181 60.6629 8.04449 61.4187L18.3409 64.6872C19.9228 65.1913 21.5957 65.3437 23.2426 65.1333C24.8895 64.923 26.4705 64.3551 27.8748 63.4695L53.9409 51.7192L12.5721 6Z" fill="#724FBC"/>
+                          <path d="M24.7599 58.4271C16.9047 58.4271 10.267 51.9785 10.267 44.3538V14.0734C10.2701 10.3429 11.753 6.76608 14.3903 4.12766C17.0276 1.48925 20.6039 0.00469508 24.3344 0H49.1179C52.8489 0.00469215 56.4258 1.48884 59.064 4.12709C61.7023 6.76533 63.1865 10.3423 63.1912 14.0734V38.8569C63.1865 42.5874 61.7021 46.1636 59.0637 48.8009C56.4252 51.4382 52.8483 52.9211 49.1179 52.9242H24.7599V58.4271Z" fill="#724FBC"/>
                           <path d="M24.0924 6.29517C22.044 6.29985 20.0809 7.11603 18.633 8.56506C17.185 10.0141 16.3703 11.9779 16.3672 14.0264V44.3068C16.3672 48.3438 20.0318 51.8961 24.2698 52.0262V46.5351H48.8759C50.9238 46.532 52.887 45.7171 54.3351 44.269C55.7831 42.8209 56.5981 40.8579 56.6012 38.81V14.0264C56.5996 11.9775 55.7854 10.0127 54.3372 8.56333C52.8889 7.11396 50.9249 6.2983 48.8759 6.29517H24.0924Z" fill="white"/>
-                          <path d="M32.6984 16.219H27.2251V28.3538H32.6984V16.219Z" fill="black"/>
-                          <path d="M47.6222 16.219H42.1489V28.3538H47.6222V16.219Z" fill="black"/>
+                          <path d="M32.6981 16.219H27.2249V28.3538H32.6981V16.219Z" fill="black"/>
+                          <path d="M47.6225 16.219H42.1492V28.3538H47.6225V16.219Z" fill="black"/>
                         </svg>
                       </div>
                     </div>

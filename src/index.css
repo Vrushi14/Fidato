@@ -71,9 +71,9 @@ body::before {
 
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 60px;
 }
 
 .section-title {
@@ -119,13 +119,13 @@ header {
     backdrop-filter: blur(20px);
     border-radius: 1000px;
     height: 72px;
-    padding: 0 28px;
+    padding: 0 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    max-width: 1240px;
-    width: 100%;
+    max-width: 1400px;
+    width: calc(100% - 120px);
     margin: 0 auto;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -377,7 +377,7 @@ header {
 }
 
 .hero-trusted {
-    margin-top: 40px;
+    margin-top: -60px;
     text-align: center;
     overflow: hidden;
 }
@@ -674,6 +674,7 @@ header {
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     margin-top: 60px;
+    justify-items: center;
 }
 
 .step-card {
@@ -705,7 +706,7 @@ header {
     font-family: 'Inter', sans-serif;
     font-size: 14px !important;
     font-weight: 500;
-    line-height: 18px;
+    line-height: 1.6;
     letter-spacing: 0px;
     margin-bottom: 30px;
 }
@@ -748,7 +749,7 @@ header {
     font-family: 'Inter', sans-serif;
     font-size: 14px !important;
     font-weight: 500;
-    line-height: 18px;
+    line-height: 1.6;
     letter-spacing: 0px;
     margin-bottom: 4px;
 }
@@ -760,21 +761,24 @@ header {
 }
 
 .step-card.custom-card .step-visual {
-    margin-top: 40px;
-    margin-bottom: -32px;
+    margin-top: 10px;
+    margin-bottom: -45px;
     width: calc(100% + 48px);
     margin-left: -24px;
 }
 
 .custom-browser-mockup {
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 16px 16px 0 0;
-    padding: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 15px;
+    gap: 16px;
+    margin-top: 30px;
+    height: 250px;
+    border: 1px solid rgba(207, 207, 207, 0.44);
+    border-bottom: none;
 }
 
 .c-browser-header {
@@ -790,25 +794,26 @@ header {
 
 .c-browser-url-bar {
     background: #FFFFFF;
-    border: 1px solid #E4E5E6;
-    border-radius: 8px;
-    padding: 6px 12px;
+    border: 1px solid #E5E7EB;
+    border-radius: 100px;
+    padding: 8px 16px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-size: 13px;
     color: #1E1E1E;
     font-weight: 500;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .c-url-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .c-url-icon svg {
@@ -818,10 +823,11 @@ header {
 
 .c-browser-body {
     display: flex;
-    gap: 12px;
-    margin-top: 4px;
-    height: 120px;
-    overflow: hidden;
+    gap: 16px;
+    margin-top: 12px;
+    height: auto;
+    background: #fff;
+    padding: 0;
 }
 
 .c-left-col {
@@ -831,16 +837,16 @@ header {
 }
 
 .c-block-left {
-    width: 70px;
-    height: 70px;
-    border-radius: 12px;
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
     flex-shrink: 0;
 }
 
 .c-block-left-bottom {
-    width: 70px;
-    height: 20px;
-    border-radius: 12px 12px 0 0;
+    width: 100px;
+    height: 12px;
+    border-radius: 6px;
 }
 
 .c-block-center {
@@ -858,9 +864,9 @@ header {
 }
 
 .c-block-right {
-    width: 120px;
+    flex-grow: 1;
     height: 120px;
-    border-radius: 12px 0 0 0;
+    border-radius: 16px;
     flex-shrink: 0;
 }
 
@@ -868,7 +874,8 @@ header {
 .custom-chat-mockup {
     display: flex;
     gap: 16px;
-    margin-top: 15px;
+    margin-top: 30px;
+    height: 250px;
 }
 
 .c-palette-panel {
@@ -1066,7 +1073,7 @@ header {
 /* Integration Mockup Styles */
 .custom-integration-mockup {
     position: relative;
-    height: 210px;
+    height: 250px;
     width: 100%;
     margin-top: 15px;
     overflow: hidden;
@@ -1085,7 +1092,7 @@ header {
 
 .c-center-block {
     position: absolute;
-    bottom: 15px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -1161,8 +1168,8 @@ header {
     align-items: center;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
-    padding: 10px 40px 10px 0;
-    border-radius: 36px;
+    padding: 12px 40px 12px 0;
+    border-radius: 30px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1176,8 +1183,8 @@ header {
 
 .feature-icon-column {
     flex-shrink: 0;
-    width: 350px;
-    height: 290px;
+    width: 280px;
+    height: 230px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1195,17 +1202,23 @@ header {
 }
 
 .feature-text h3 {
-    font-size: 24px;
+    font-family: 'Rebond Grotesque', 'Inter', sans-serif;
+    font-size: 32px;
     margin-bottom: 12px;
-    font-weight: 700;
-    color: #1E1E1E;
+    font-weight: 500;
+    color: #000000;
+    letter-spacing: 0px;
 }
 
 .feature-text p {
-    color: #666;
-    font-size: 16px;
-    line-height: 1.6;
+    color: #444444;
+    font-family: 'Archivo', sans-serif;
+    font-size: 22px;
+    line-height: 32px;
     margin-bottom: 0;
+    font-weight: 400;
+    letter-spacing: 0px;
+    max-width: 460px;
 }
 
 /* Pricing Section */
@@ -1312,14 +1325,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1268px;
-    height: 477px;
-    max-width: 95%;
+    width: 100%;
+    max-width: 1280px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 80px;
     border: 1px solid #E2E2E2;
-    padding: 0 100px;
+    padding: 0 80px;
     backdrop-filter: blur(20px);
     box-shadow: 0 20px 80px rgba(0, 0, 0, 0.05);
     position: relative;
