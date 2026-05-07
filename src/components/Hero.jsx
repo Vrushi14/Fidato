@@ -43,7 +43,7 @@ const Hero = () => {
           </MagneticButton>
         </div>
 
-        <div className="hero-image-container" style={{ marginTop: '20px', width: '100%', maxWidth: '1000px', margin: '20px auto 0' }}>
+        <div className="hero-image-container" style={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}>
           <img src={heroImage} alt="Fidato AI Interface" style={{ width: '100%', height: 'auto' }} />
         </div>
 

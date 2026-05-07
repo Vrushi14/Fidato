@@ -77,7 +77,8 @@
 }
 
 .pricing-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
     padding: 50px 40px;
     border-radius: 40px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.03);
@@ -86,7 +87,7 @@
     flex-direction: column;
     height: 100%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .card-top {
@@ -197,7 +198,6 @@
     font-weight: 700;
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s ease;
     border: none;
     margin-bottom: 30px; /* Space between button and features */
 }
@@ -209,7 +209,6 @@
 
 .plan-btn.filled:hover {
     background: #FF6633;
-    transform: scale(1.02);
 }
 
 .plan-btn.outline {
@@ -220,7 +219,6 @@
 
 .plan-btn.outline:hover {
     background: rgba(255, 122, 80, 0.05);
-    transform: scale(1.02);
 }
 
 .plan-btn.outline-dark {

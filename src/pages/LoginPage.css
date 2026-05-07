@@ -124,15 +124,10 @@
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(255, 107, 61, 0.2);
 }
 
-.login-submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 40px rgba(255, 107, 61, 0.3);
-    filter: brightness(1.1);
-}
+
 
 .login-form-footer-links {
     display: flex;

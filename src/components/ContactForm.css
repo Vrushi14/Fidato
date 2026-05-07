@@ -113,20 +113,11 @@
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
     margin-top: 10px;
     box-shadow: 0 10px 30px rgba(255, 107, 61, 0.3);
 }
 
-.form-submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 40px rgba(255, 107, 61, 0.4);
-    filter: brightness(1.1);
-}
 
-.form-submit-btn:active {
-    transform: translateY(0);
-}
 
 @media (max-width: 1024px) {
     .contact-card-container {
