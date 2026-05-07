@@ -17,8 +17,8 @@ export default function Reveal({ children, width = "100%", delay = 0, yOffset = 
         <div ref={ref} style={{ position: "relative", width }}>
             <motion.div
                 variants={{
-                    hidden: { opacity: 0, y: yOffset },
-                    visible: { opacity: 1, y: 0 },
+                    hidden: { opacity: 0, y: yOffset, filter: 'blur(5px)' },
+                    visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
                 }}
                 initial="hidden"
                 animate={mainControls}

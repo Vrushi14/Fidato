@@ -2,13 +2,18 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { HashLink as NavHashLink } from 'react-router-hash-link'
 import MagneticButton from './MagneticButton'
+import { motion } from 'framer-motion'
 
 const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
 
   return (
-    <header>
+    <motion.header
+      initial={{ opacity: 0, y: -30, filter: 'blur(5px)' }}
+      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+    >
       <nav className="navbar">
         <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
           <svg width="51" height="53" viewBox="0 0 51 53" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +46,7 @@ const Navbar = () => {
           </MagneticButton>
         </div>
       </nav>
-    </header>
+    </motion.header>
   )
 }
 

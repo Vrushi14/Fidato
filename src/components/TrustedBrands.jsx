@@ -115,16 +115,19 @@ const TrustedBrands = () => {
 
         .tb-badge {
           display: inline-block;
-          padding: 6px 18px;
-          background: rgba(255,255,255,0.85);
-          border: 1px solid rgba(0,0,0,0.08);
+          padding: 8px 24px;
+          background: rgba(255, 255, 255, 0.85);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           border-radius: 999px;
-          font-size: 13px;
-          color: #555;
-          letter-spacing: 0.01em;
+          font-family: 'Archivo', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          color: #444;
+          line-height: 21.6px;
+          letter-spacing: 0.36px;
           margin-bottom: 24px;
           backdrop-filter: blur(8px);
-          box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
         .tb-heading {
@@ -206,14 +209,21 @@ const TrustedBrands = () => {
         }
 
         .tb-author-name {
-          font-size: 20px;
-          font-weight: 600;
+          font-family: 'Inter', sans-serif;
+          font-size: 24px;
+          font-weight: 500;
           color: #000;
+          line-height: 24.4px;
+          letter-spacing: 0%;
         }
-
+        
         .tb-author-role {
-          font-size: 13px;
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           color: #888;
+          line-height: 14.2px;
+          letter-spacing: 0%;
         }
 
         .tb-nav-btn {

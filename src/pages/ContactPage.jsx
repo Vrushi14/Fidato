@@ -26,11 +26,11 @@ const ContactPage = () => {
   }, [])
 
   return (
-    <div className="contact-page-content" style={{ paddingTop: '80px' }}>
+    <div className="contact-page-content" style={{ paddingTop: '60px' }}>
       <Reveal delay={0.1}>
-        <div className="contact-header" style={{ textAlign: 'center', marginBottom: '60px', maxWidth: '800px', margin: '0 auto 60px' }}>
-          <h1 className="section-title">Get in touch with us</h1>
-          <p className="section-subtitle" style={{ fontSize: '18px', color: '#666', lineHeight: '1.6' }}>
+        <div className="contact-header" style={{ textAlign: 'center', marginBottom: '20px', maxWidth: '800px', margin: '0 auto 20px' }}>
+          <h1 className="section-title" style={{ color: '#000000', fontFamily: 'Rebond Grotesque', fontWeight: '500', fontSize: '48px', lineHeight: '55px', letterSpacing: '0px' }}>Get in touch with us</h1>
+          <p className="section-subtitle" style={{ color: '#000000', fontFamily: 'Archivo', fontWeight: '500', fontSize: '19px', lineHeight: '22px', letterSpacing: '0px' }}>
             We're here to help! Whether you have a question about our app, need assistance with your account, or want to provide feedback, our team is ready to assist you.
           </p>
         </div>
@@ -42,7 +42,7 @@ const ContactPage = () => {
         </Reveal>
       </div>
 
-      <div style={{ marginTop: '100px' }}>
+      <div style={{ marginTop: '60px' }}>
         <Reveal delay={0.3}>
           <CTA />
         </Reveal>

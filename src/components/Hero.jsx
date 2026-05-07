@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import MagneticButton from './MagneticButton'
 import heroImage from '../../images/image.png'
+import { motion } from 'framer-motion'
 
 const Hero = () => {
   const marqueeRef = useRef(null);
@@ -19,16 +20,31 @@ const Hero = () => {
       <div className="container">
 
 
-        <h1 className="hero-title">
+        <motion.h1
+          className="hero-title"
+          initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+        >
           Your Website Can Now <br />
           Talk, Sell & Support — Automatically
-        </h1>
+        </motion.h1>
 
-        <p className="hero-subtitle">
+        <motion.p
+          className="hero-subtitle"
+          initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+        >
           Fidato AI learns from your actual website in seconds. Zero training needed. Zero hallucinations. 100% accurate answers that keep your customers happy 24/7.
-        </p>
+        </motion.p>
 
-        <div className="hero-test-container">
+        <motion.div
+          className="hero-test-container"
+          initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
+        >
           <div className="hero-url-input-wrapper">
             <div className="hero-input-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -41,11 +57,17 @@ const Hero = () => {
           <MagneticButton>
             <button className="btn btn-hero-primary hero-test-btn">Test on your Website</button>
           </MagneticButton>
-        </div>
+        </motion.div>
 
-        <div className="hero-image-container" style={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}>
+        <motion.div
+          className="hero-image-container"
+          style={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}
+          initial={{ opacity: 0, y: 40, filter: 'blur(8px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
+        >
           <img src={heroImage} alt="Fidato AI Interface" style={{ width: '100%', height: 'auto' }} />
-        </div>
+        </motion.div>
 
         <div className="hero-trusted">
           <p className="trusted-text">More than 200+ companies trusted us worldwide</p>

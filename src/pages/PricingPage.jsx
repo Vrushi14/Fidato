@@ -3,6 +3,7 @@ import Lenis from 'lenis'
 import Pricing from '../components/Pricing'
 import CTA from '../components/CTA'
 import Reveal from '../components/Reveal'
+import PricingBackground from '../components/PricingBackground'
 
 const PricingPage = () => {
   useEffect(() => {
@@ -31,7 +32,8 @@ const PricingPage = () => {
   }, [])
 
   return (
-    <div className="pricing-page-content" style={{ paddingTop: '20px' }}>
+    <div className="pricing-page-content" style={{ paddingTop: '20px', position: 'relative', overflow: 'hidden' }}>
+      <PricingBackground />
       <Reveal delay={0.1}>
         <Pricing />
       </Reveal>

@@ -145,6 +145,7 @@ const Pricing = () => {
         <ScaleReveal delay={0.4}>
           <div className="basic-plan-horizontal">
             <div className="basic-info">
+            <div className="basic-title-wrap">
               <h3 className="plan-name">{basicPlan.name}</h3>
               <p className="plan-desc">{basicPlan.desc}</p>
             </div>
@@ -152,6 +153,7 @@ const Pricing = () => {
               <span className="amount">{basicPlan.price}</span>
               <span className="period">{basicPlan.period}</span>
             </div>
+          </div>
           
           <div className="basic-features-grid">
             <h4>What's included</h4>

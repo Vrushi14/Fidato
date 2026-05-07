@@ -34,9 +34,9 @@ const FAQPage = () => {
   return (
     <div className="faq-page-content" style={{ paddingTop: '80px' }}>
       <Reveal delay={0.1}>
-        <div className="faq-page-header" style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <h1 className="section-title">Frequently Asked Questions</h1>
-          <p className="section-subtitle">Everything you need to know about Fidato AI.</p>
+        <div className="faq-page-header" style={{ textAlign: 'center', marginBottom: '10px' }}>
+          <h1 className="section-title" style={{ color: '#000000', fontFamily: 'Rebond Grotesque', fontWeight: '500', fontSize: '48px', lineHeight: '55px', letterSpacing: '0px' }}>Frequently Asked Questions</h1>
+          <p className="section-subtitle" style={{ color: '#000000', fontFamily: 'Archivo', fontWeight: '500', fontSize: '19px', lineHeight: '22px', letterSpacing: '0px' }}>Everything you need to know about Fidato AI.</p>
         </div>
       </Reveal>
 

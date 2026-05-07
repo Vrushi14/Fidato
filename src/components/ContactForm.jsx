@@ -30,7 +30,7 @@ const ContactForm = () => {
 
         <div className="info-group">
           <label>Address:</label>
-          <p>123, Villa Plaza, Hanuman Road, Near Airport, Maharashtra-400057</p>
+          <p>121, Vile Parle, Hanuman Road, Near Airport Maharashtra 400057</p>
         </div>
 
         <div className="info-group">
@@ -41,7 +41,7 @@ const ContactForm = () => {
         <div className="info-group">
           <label>Phone:</label>
           <p>+1 234 567 78</p>
-          <span className="availability">Available Mon-Fri 10AM-6PM (IST)</span>
+          <span className="availability">Available Monday to Friday, 9AM- 6PM (IST)</span>
         </div>
       </div>
 
@@ -70,12 +70,12 @@ const ContactForm = () => {
           </div>
 
           <div className="form-group full-width">
-            <label>Your message *</label>
+            <label>Your e-mail address *</label>
             <textarea placeholder="Tell us how we can help..." rows="5" required></textarea>
           </div>
 
           <button type="submit" className="form-submit-btn">
-            Send Us A Message
+            Contact Us
           </button>
         </form>
       </div>

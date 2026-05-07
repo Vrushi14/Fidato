@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
   {
@@ -29,7 +30,7 @@ const faqs = [
 
 const SparkIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-    <path d="M12 0C12 0 12 10 24 12C12 14 12 24 12 24C12 24 12 14 0 12C12 10 12 0 12 0Z" fill="#FF6B3D"/>
+    <path d="M12 0C12 0 12 10 24 12C12 14 12 24 12 24C12 24 12 14 0 12C12 10 12 0 12 0Z" fill="#FF6B3D" />
   </svg>
 );
 
@@ -72,31 +73,43 @@ const FAQ = ({ light = false, hideTitle = false }) => {
               {faqs.map((faq, index) => {
                 const isOpen = openItems.includes(index);
                 return (
-                  <div 
-                    key={index} 
-                    className={`faq-card ${isOpen ? 'open' : ''}`} 
+                  <motion.div
+                    key={index}
+                    className={`faq-card ${isOpen ? 'open' : ''}`}
                     onClick={() => toggleItem(index)}
+                    layout
+                    transition={{ layout: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }}
                   >
                     <div className="faq-q-wrapper">
                       <h3 className="faq-q">{faq.q}</h3>
                       <div className="faq-icon-btn">
                         {isOpen ? (
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke={light ? "#000" : "#fff"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M13 1L1 13M1 1l12 12" />
                           </svg>
                         ) : (
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke={light ? "#000" : "#fff"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M7 1v12M1 7h12" />
                           </svg>
                         )}
                       </div>
                     </div>
-                    {isOpen && (
-                      <div className="faq-a-wrapper">
-                        <p className="faq-a">{faq.a}</p>
-                      </div>
-                    )}
-                  </div>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          className="faq-a-wrapper"
+                          key="answer"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                          style={{ overflow: 'hidden' }}
+                        >
+                          <p className="faq-a">{faq.a}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
                 );
               })}
             </div>
@@ -104,9 +117,10 @@ const FAQ = ({ light = false, hideTitle = false }) => {
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .faq-section {
-          padding: 80px 0;
+          padding: 0 0 80px 0;
           position: relative;
           background: transparent;
         }
@@ -114,7 +128,7 @@ const FAQ = ({ light = false, hideTitle = false }) => {
         .faq-card-wrapper {
           background-color: #0A0A0A;
           border-radius: 80px;
-          padding: 100px 40px;
+          padding: 60px 40px 100px;
           position: relative;
           overflow: hidden;
           box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
@@ -137,15 +151,17 @@ const FAQ = ({ light = false, hideTitle = false }) => {
 
         .faq-header {
           text-align: center;
-          margin-bottom: 60px;
+          margin-bottom: 40px;
         }
 
         .faq-header h2 {
+          font-family: 'Rebond Grotesque', sans-serif;
           font-size: 48px;
+          line-height: 55px;
           color: #ffffff;
-          font-weight: 700;
+          font-weight: 500;
           margin-bottom: 16px;
-          letter-spacing: -0.02em;
+          letter-spacing: 0px;
         }
 
         .light-theme .faq-header h2 {
@@ -153,13 +169,17 @@ const FAQ = ({ light = false, hideTitle = false }) => {
         }
 
         .faq-header p {
-          color: #a0a0a0;
-          font-size: 18px;
+          font-family: 'Archivo', sans-serif;
+          color: #000000;
+          font-size: 19px;
+          line-height: 22px;
+          font-weight: 500;
           margin: 0;
+          letter-spacing: 0px;
         }
 
         .light-theme .faq-header p {
-          color: #666666;
+          color: #000000;
         }
 
         .faq-container {
@@ -169,28 +189,30 @@ const FAQ = ({ light = false, hideTitle = false }) => {
         }
 
         .faq-card {
-          background-color: #1A1A1A;
+          background-color: #FFFFFF;
           border-radius: 24px;
           padding: 24px 32px;
           cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+          border: 1px solid rgba(0, 0, 0, 0.05);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
         }
 
         .light-theme .faq-card {
-          background-color: #ffffff;
+          background-color: #FFFFFF;
           border: 1px solid rgba(0, 0, 0, 0.05);
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
         }
 
         .faq-card:hover {
-          background-color: #222222;
-          border-color: rgba(255, 255, 255, 0.1);
+          background-color: rgba(255, 255, 255, 0.95);
+          border-color: rgba(0, 0, 0, 0.1);
           transform: translateY(-2px);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
         }
 
         .light-theme .faq-card:hover {
-          background-color: #ffffff;
+          background-color: rgba(255, 255, 255, 0.5);
           border-color: rgba(0, 0, 0, 0.1);
           box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
         }
@@ -203,7 +225,7 @@ const FAQ = ({ light = false, hideTitle = false }) => {
         }
 
         .faq-q {
-          color: #ffffff;
+          color: #1A1A1A;
           font-size: 18px;
           font-weight: 600;
           margin: 0;
@@ -227,8 +249,7 @@ const FAQ = ({ light = false, hideTitle = false }) => {
         .faq-a-wrapper {
           margin-top: 16px;
           padding-top: 16px;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-          animation: slideDown 0.3s ease-out forwards;
+          border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .light-theme .faq-a-wrapper {
@@ -236,7 +257,7 @@ const FAQ = ({ light = false, hideTitle = false }) => {
         }
 
         .faq-a {
-          color: #a0a0a0;
+          color: #444444;
           font-size: 16px !important;
           line-height: 1.8;
           margin: 0;
