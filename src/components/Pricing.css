@@ -343,7 +343,7 @@
 }
 
 .basic-info .plan-price .amount {
-    font-size: 36px;
+    font-size: 40px;
 }
 
 .basic-features-grid {
@@ -352,8 +352,12 @@
 }
 
 .basic-features-grid h4 {
-    font-size: 12px;
-    margin-bottom: 15px;
+    font-family: 'Archivo', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1A1A1A;
+    line-height: 32px;
 }
 
 .features-columns {
@@ -371,9 +375,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    font-family: 'Archivo', sans-serif;
     font-size: 13px;
+    font-weight: 400;
     color: #666;
-    margin-bottom: 8px;
+    margin-bottom: 0;
+    line-height: 32px;
 }
 
 .basic-plan-horizontal .plan-btn {
