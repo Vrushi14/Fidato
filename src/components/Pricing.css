@@ -12,17 +12,17 @@
     font-size: 48px;
     font-weight: 500;
     line-height: 55px;
-    margin-bottom: 24px;
-    color: #1A1A1A;
+    margin-bottom: 12px;
+    color: #000000;
     letter-spacing: 0px;
 }
 
 .pricing-header .section-subtitle {
     font-size: 18px;
-    color: #555;
-    max-width: 600px;
+    color: #000000;
+    max-width: 1000px;
     margin: 0 auto 40px;
-    line-height: 1.6;
+    line-height: 1.4;
 }
 
 .highlight-wrapper {
@@ -99,6 +99,8 @@
     /* Ensures buttons align horizontally */
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .card-features {
@@ -154,7 +156,8 @@
     font-weight: 500;
     margin-bottom: 15px;
     letter-spacing: -0.01em;
-    color: #1A1A1A;
+    color: #000000;
+    text-align: left;
 }
 
 .dark .plan-name {
@@ -165,11 +168,12 @@
     font-family: 'Archivo', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: #444;
+    color: #000000;
     line-height: 22px;
     margin-bottom: 30px;
     min-height: 50px;
-    max-width: 286px;
+    max-width: 100%;
+    text-align: left;
 }
 
 .dark .plan-desc {
@@ -209,7 +213,7 @@
 
 /* Buttons */
 .plan-btn {
-    width: 260px;
+    width: 100%;
     height: 51px;
     display: flex;
     align-items: center;
@@ -220,7 +224,7 @@
     font-size: 16px;
     cursor: pointer;
     border: none;
-    margin: 0 auto 30px;
+    margin: 0 0 30px;
     padding: 0;
     text-decoration: none;
     box-sizing: border-box;
@@ -288,7 +292,7 @@
     align-items: center;
     gap: 12px;
     font-family: 'Archivo', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     color: #444;
     margin-bottom: 0;
@@ -349,8 +353,7 @@
     font-size: 40px;
 }
 
-.basic-features-grid {
-}
+.basic-features-grid {}
 
 .basic-features-grid h4 {
     font-family: 'Archivo', sans-serif;
@@ -377,7 +380,7 @@
     align-items: center;
     gap: 10px;
     font-family: 'Archivo', sans-serif;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 400;
     color: #666;
     margin-bottom: 0;

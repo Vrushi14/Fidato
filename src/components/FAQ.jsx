@@ -158,9 +158,9 @@ const FAQ = ({ light = false, hideTitle = false }) => {
           font-family: 'Rebond Grotesque', sans-serif;
           font-size: 48px;
           line-height: 55px;
-          color: #ffffff;
+          color: #000000;
           font-weight: 500;
-          margin-bottom: 16px;
+          margin-bottom: 8px;
           letter-spacing: 0px;
         }
 
@@ -226,6 +226,7 @@ const FAQ = ({ light = false, hideTitle = false }) => {
 
         .faq-q {
           color: #1A1A1A;
+          font-family: 'Archivo', sans-serif;
           font-size: 18px;
           font-weight: 600;
           margin: 0;
@@ -258,6 +259,7 @@ const FAQ = ({ light = false, hideTitle = false }) => {
 
         .faq-a {
           color: #444444;
+          font-family: 'Archivo', sans-serif;
           font-size: 16px !important;
           line-height: 1.8;
           margin: 0;

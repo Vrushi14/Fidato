@@ -13,6 +13,11 @@ const ContactForm = () => {
   if (submitted) {
     return (
       <div className="contact-card-container success-state">
+        <div className="contact-bg-svg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
+          <svg width="100%" height="100%" viewBox="0 0 1200 616" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <rect x="0.5" y="0.5" width="1199" height="615" rx="35.5" fill="white" fillOpacity="0.3" stroke="#E2E2E2" />
+          </svg>
+        </div>
         <div className="success-message">
           <div className="success-icon">✓</div>
           <h2>Thank you!</h2>
@@ -25,12 +30,17 @@ const ContactForm = () => {
 
   return (
     <div className="contact-card-container">
+      <div className="contact-bg-svg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
+        <svg width="100%" height="100%" viewBox="0 0 1200 616" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <rect x="0.5" y="0.5" width="1199" height="615" rx="35.5" fill="white" fillOpacity="0.3" stroke="#E2E2E2" />
+        </svg>
+      </div>
       <div className="contact-info-side">
         <h2>Contact Us</h2>
 
         <div className="info-group">
           <label>Address:</label>
-          <p>121, Vile Parle, Hanuman Road, Near Airport Maharashtra 400057</p>
+          <p>121, Vile Parle, Hanuman Road, Near Airport Maharashtra-00057</p>
         </div>
 
         <div className="info-group">
@@ -46,6 +56,11 @@ const ContactForm = () => {
       </div>
 
       <div className="contact-form-side">
+        <div className="form-side-bg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
+          <svg width="100%" height="100%" viewBox="0 0 716 562" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <rect x="0.5" y="0.5" width="715" height="561" rx="35.5" fill="white" fillOpacity="0.5" stroke="white" />
+          </svg>
+        </div>
         <form className="fidato-contact-form" onSubmit={(e) => e.preventDefault()}>
           <div className="form-row">
             <div className="form-group">

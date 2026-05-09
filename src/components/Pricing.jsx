@@ -82,8 +82,8 @@ const Pricing = () => {
           <p className="section-subtitle">
             <span className="highlight-wrapper">
               Start free
-              <svg className="sketch-underline" viewBox="0 0 100 20" preserveAspectRatio="none">
-                <path d="M5 15 Q 50 20 95 12" stroke="#FF7A50" strokeWidth="3" fill="none" strokeLinecap="round" />
+              <svg className="sketch-underline" width="107" height="9" viewBox="0 0 107 9" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M106.99 1.1583C106.413 1.15593 105.799 1.21082 105.222 1.20845C93.0873 1.30619 80.9692 1.64186 68.8222 2.42032C50.269 3.52513 31.6968 4.92512 13.3149 7.34294C9.88371 7.80457 6.51485 8.29918 3.14526 8.79387C2.59453 8.88182 2.1412 8.94556 1.62556 8.97624C0.914398 9.0554 0.310661 8.96269 0.0657269 8.29733C-0.179917 7.63191 0.30207 7.12539 0.862831 6.88985C1.59333 6.51558 2.38541 6.17431 3.22977 6.01377C5.60388 5.52321 8.07611 5.00845 10.4667 4.75582C37.5575 1.63563 64.6073 -0.361059 91.8853 0.0545579C96.5664 0.106611 101.228 0.45385 105.9 0.653503C106.282 0.704281 106.663 0.755065 106.983 0.772787C107.009 0.863114 107 1.01071 106.99 1.1583Z" fill="black" />
               </svg>
             </span> and upgrade as your business grows. No hidden fees, cancel anytime.
           </p>

@@ -152,32 +152,41 @@ const Features = () => {
 
   return (
     <section className="features-section" id="features" style={{ position: 'relative' }}>
-      <div style={{
-        position: 'absolute', inset: 0,
-        overflow: 'hidden', zIndex: -1,
-        pointerEvents: 'none'
+      <div className="features-bg-gradient" style={{ 
+        position: 'absolute', 
+        inset: 0, 
+        zIndex: 0, 
+        pointerEvents: 'none', 
+        overflow: 'hidden',
+        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
+        maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)'
       }}>
-        <svg width="100%" height="100%" viewBox="0 0 1440 1879" fill="none" xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid slice"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-          <g opacity="0.4" filter="url(#filter0_f_133_486)">
-            <path d="M723 100C243.065 100 -146 475.857 -146 939.5C-146 1403.14 243.065 1779 723 1779C1202.94 1779 1592 1403.14 1592 939.5C1592 475.857 1202.94 100 723 100Z" fill="url(#paint0_linear_133_486)"/>
+        <svg width="100%" height="100%" viewBox="0 0 1440 1492" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice">
+          <g opacity="0.61">
+            <g filter="url(#filter0_f_133_247_features)">
+              <ellipse cx="512.742" cy="393.246" rx="512.742" ry="393.246" transform="matrix(-1 4.60688e-09 4.60688e-09 1 649.483 141)" fill="#C1BCFF"/>
+              <ellipse cx="512.742" cy="393.246" rx="512.742" ry="393.246" transform="matrix(-1 4.60688e-09 4.60688e-09 1 1582 59)" fill="#FFBCBD"/>
+              <ellipse cx="399.115" cy="305.918" rx="399.115" ry="305.918" transform="matrix(-1 4.60688e-09 4.60688e-09 1 1767.29 337.087)" fill="#FFD9DD"/>
+              <ellipse cx="399.115" cy="305.918" rx="399.115" ry="305.918" transform="matrix(-1 4.60688e-09 4.60688e-09 1 1324 435)" fill="#DEB5FF"/>
+              <ellipse cx="399.115" cy="305.918" rx="399.115" ry="305.918" transform="matrix(-1 4.60688e-09 4.60688e-09 1 653 422)" fill="#DEB5FF"/>
+              <ellipse cx="442.435" cy="339.135" rx="442.435" ry="339.135" transform="matrix(-1 4.60688e-09 4.60688e-09 1 626.758 328.515)" fill="#FFAAC2"/>
+              <ellipse cx="132.091" cy="68.0413" rx="132.091" ry="68.0413" transform="matrix(-1 4.60688e-09 4.60688e-09 1 1456.23 599.609)" fill="#FFDA58"/>
+              <ellipse cx="132.091" cy="68.0413" rx="132.091" ry="68.0413" transform="matrix(-1 4.60688e-09 4.60688e-09 1 1456.23 573.893)" fill="#FFDD65"/>
+              <ellipse cx="322.5" cy="285" rx="322.5" ry="285" transform="matrix(-1 4.60688e-09 4.60688e-09 1 1038 638)" fill="#C173FF" fillOpacity="0.56"/>
+              <ellipse cx="381.5" cy="370" rx="381.5" ry="370" transform="matrix(-1 4.60688e-09 4.60688e-09 1 1017 346)" fill="#FFBCBD"/>
+              <ellipse cx="363.606" cy="278.594" rx="363.606" ry="278.594" transform="matrix(-1 4.60688e-09 4.60688e-09 1 1003 548)" fill="#C173FF"/>
+            </g>
           </g>
           <defs>
-            <filter id="filter0_f_133_486" x="-246" y="0" width="1938" height="1879" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <filter id="filter0_f_133_247_features" x="-659.591" y="-224.591" width="2710.47" height="1716.18" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
               <feFlood floodOpacity="0" result="BackgroundImageFix"/>
               <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-              <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_133_486"/>
+              <feGaussianBlur stdDeviation="141.795" result="effect1_foregroundBlur_133_247_features"/>
             </filter>
-            <linearGradient id="paint0_linear_133_486" x1="-146" y1="939.5" x2="1292.28" y2="282.927" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#D7F0FF"/>
-              <stop offset="0.333333" stopColor="#D9CFFF"/>
-              <stop offset="0.666667" stopColor="#FFD1EA"/>
-              <stop offset="1" stopColor="#FFE3D2"/>
-            </linearGradient>
           </defs>
         </svg>
       </div>
+
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <h2 className="section-title">Introducing AI-Powered <br /> Support That Actually Works</h2>
         <p className="section-subtitle features-sub">Fidato AI Powerful features designed to reduce support workload while improving customer experience.</p>

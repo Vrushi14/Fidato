@@ -1,23 +1,48 @@
 import React, { useState } from 'react';
-import ScaleReveal from './ScaleReveal';
+import { motion, AnimatePresence } from 'framer-motion';
 
-
+const testimonials = [
+  {
+    id: 1,
+    text: "Fidato AI handles customer questions about our menu, hours, and delivery areas 24/7. Our phone lines are finally free to take actual orders!",
+    author: "Sebastian",
+    role: "Founder @ Revocalize AI"
+  },
+  {
+    id: 2,
+    text: "Implementing Fidato took less than an hour. The AI immediately understood our product catalog and began resolving 70% of tier 1 tickets automatically.",
+    author: "Marcus Chen",
+    role: "Operations Director at InnovateCorp"
+  },
+  {
+    id: 3,
+    text: "What blew me away was how perfectly Fidato captured our brand voice. It doesn't sound like a bot; it sounds exactly like our best human agents.",
+    author: "Elena Rodriguez",
+    role: "VP of Digital Experience at RetailPlus"
+  },
+  {
+    id: 4,
+    text: "The integration with our existing CRM was flawless. Fidato not only answers questions but actually helps drive conversions by proactively assisting customers.",
+    author: "David Kim",
+    role: "E-commerce Manager at StyleHub"
+  }
+];
 
 const TrustedBrands = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
   return (
     <section className="tb-section" style={{ position: 'relative' }}>
       <div className="tb-container">
-        <div style={{
-          position: 'absolute', inset: 0,
-          overflow: 'hidden', zIndex: -1,
-          pointerEvents: 'none',
-          borderRadius: '36px'
-        }}>
-          <svg width="100%" height="100%" viewBox="0 0 1440 1578" fill="none" xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid slice"
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+        {/* Background Gradient SVG */}
+        <div className="tb-bg-gradient" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', borderRadius: '36px' }}>
+          <svg width="100%" height="100%" viewBox="0 0 1440 1578" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style={{ transform: 'scale(1.2)' }}>
             <g filter="url(#filter0_f_133_862)">
-              <path d="M534.152 383.611C304.696 483.299 201.583 745.443 303.842 969.128C406.102 1192.81 675.011 1293.33 904.468 1193.64C1133.92 1093.96 1237.04 831.813 1134.78 608.128C1032.52 384.443 763.609 283.924 534.152 383.611Z" fill="url(#paint0_linear_133_862)" fillOpacity="0.85"/>
+              <path d="M534.152 383.611C304.696 483.299 201.583 745.443 303.842 969.128C406.102 1192.81 675.011 1293.33 904.468 1193.64C1133.92 1093.96 1237.04 831.813 1134.78 608.128C1032.52 384.443 763.609 283.924 534.152 383.611Z" fill="url(#paint0_linear_133_862)" fillOpacity="0.6"/>
             </g>
             <defs>
               <filter id="filter0_f_133_862" x="-80.7621" y="9.15527e-05" width="1600.14" height="1577.26" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -34,6 +59,7 @@ const TrustedBrands = () => {
             </defs>
           </svg>
         </div>
+
         <div className="tb-inner" style={{ position: 'relative', zIndex: 1 }}>
           {/* Pill badge */}
           <div className="tb-badge">What our clients say</div>
@@ -43,41 +69,58 @@ const TrustedBrands = () => {
             Trusted by global&nbsp;<em>brands</em>
           </h2>
 
-          {/* Testimonial Card */}
-          <div className="tb-card-wrapper">
-            <div className="tb-card">
-              {/* Left Navigation */}
-              <button className="tb-nav-btn tb-nav-left" aria-label="Previous">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-              </button>
+          {/* Testimonial Stacked Cards */}
+          <div className="tb-card-wrapper" onClick={handleNext}>
+            <AnimatePresence initial={false}>
+              {testimonials.map((testimonial, i) => {
+                let relativeIndex = i - currentIndex;
+                if (relativeIndex < 0) relativeIndex += testimonials.length;
 
-              <div className="tb-card-content">
-                <div className="tb-stars">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="tb-star">★</span>
-                  ))}
-                </div>
-                
-                <p className="tb-quote">
-                  "Fidato AI handles customer questions about our menu, hours, and delivery areas 24/7. Our phone lines are finally free to take actual orders!"
-                </p>
+                // Only show top 3 cards
+                if (relativeIndex > 2) return null;
 
-                <div className="tb-author-section">
-                  <span className="tb-author-name">Sebastian</span>
-                  <span className="tb-author-role">Founder @ Revocalize AI</span>
-                </div>
-              </div>
+                return (
+                  <motion.div
+                    key={testimonial.id}
+                    className="tb-card"
+                    initial={{ opacity: 0, y: -50, scale: 0.9 }}
+                    animate={{ 
+                      opacity: relativeIndex === 0 ? 1 : relativeIndex === 1 ? 0.7 : 0.4,
+                      y: relativeIndex * 40, 
+                      scale: 1 - relativeIndex * 0.04,
+                      zIndex: testimonials.length - relativeIndex,
+                      filter: relativeIndex === 0 ? 'blur(0px)' : `blur(${relativeIndex * 2}px)`
+                    }}
+                    exit={{ opacity: 0, y: -100, scale: 1.1, filter: 'blur(10px)' }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <div className="tb-card-content">
+                      <div className="tb-stars">
+                        {[...Array(5)].map((_, i) => (
+                          <span key={i} className="tb-star">★</span>
+                        ))}
+                      </div>
+                      
+                      <p className="tb-quote">
+                        "{testimonial.text}"
+                      </p>
 
-              {/* Right Navigation */}
-              <button className="tb-nav-btn tb-nav-right" aria-label="Next">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </button>
-            </div>
+                      <div className="tb-author-section">
+                        <span className="tb-author-name">{testimonial.author}</span>
+                        <span className="tb-author-role">{testimonial.role}</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
+          <button className="tb-next-review-btn" onClick={(e) => { e.stopPropagation(); handleNext(); }}>
+            Click to see next review
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '6px' }}>
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -152,22 +195,28 @@ const TrustedBrands = () => {
 
         .tb-card-wrapper {
           width: 100%;
+          height: 280px;
           display: flex;
           justify-content: center;
-          margin-bottom: 60px;
+          position: relative;
+          perspective: 1000px;
+          cursor: pointer;
         }
 
         .tb-card {
-          width: 794px;
-          height: 338.99px;
-          background: #FFFFFF;
+          width: 650px;
+          height: 280px;
+          background: rgba(255, 255, 255, 0.6);
+          backdrop-filter: blur(30px);
+          border: 1px solid rgba(255, 255, 255, 0.8);
           border-radius: 22px;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: center;
           padding: 0 40px;
-          position: relative;
+          position: absolute;
           box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+          transform-origin: top center;
         }
 
         .tb-card-content {
@@ -182,22 +231,22 @@ const TrustedBrands = () => {
         .tb-stars {
           display: flex;
           gap: 4px;
-          margin-bottom: 30px;
+          margin-bottom: 20px;
         }
         
         .tb-star {
-          font-size: 18px;
+          font-size: 16px;
           color: #FFB800;
         }
 
         .tb-quote {
           font-family: 'Archivo', sans-serif;
-          font-size: 24px;
-          line-height: 33.6px;
+          font-size: 20px;
+          line-height: 30px;
           color: #111111;
           text-align: center;
-          max-width: 679px;
-          margin: 0 auto 35px;
+          max-width: 580px;
+          margin: 0 auto 25px;
           font-weight: 400;
           letter-spacing: -0.28px;
         }
@@ -210,7 +259,7 @@ const TrustedBrands = () => {
 
         .tb-author-name {
           font-family: 'Inter', sans-serif;
-          font-size: 24px;
+          font-size: 18px;
           font-weight: 500;
           color: #000;
           line-height: 24.4px;
@@ -226,40 +275,40 @@ const TrustedBrands = () => {
           letter-spacing: 0%;
         }
 
-        .tb-nav-btn {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
+        .tb-next-review-btn {
+          margin-top: 40px;
+          padding: 14px 28px;
+          background: transparent;
+          color: #111;
           border: none;
-          background: #F8F9FA;
-          color: #000;
+          border-radius: 999px;
+          font-family: 'Inter', sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          cursor: pointer;
           display: flex;
           align-items: center;
-          justify-content: center;
-          cursor: pointer;
           transition: all 0.2s ease;
         }
 
-        .tb-nav-btn:hover {
-          background: #EEF0F2;
-          transform: scale(1.05);
+        .tb-next-review-btn:hover {
+          color: #555;
+          transform: translateY(-2px);
         }
 
         @media (max-width: 850px) {
+          .tb-card-wrapper {
+            height: 400px;
+          }
           .tb-card {
             width: 100%;
             height: auto;
-            padding: 60px 24px;
-            flex-direction: column;
-            gap: 40px;
+            min-height: 350px;
+            padding: 40px 24px;
           }
           
           .tb-card-content {
             padding: 0;
-          }
-
-          .tb-nav-btn {
-            display: none; /* Hide nav arrows on mobile for better fit */
           }
         }
       `}} />
@@ -268,4 +317,3 @@ const TrustedBrands = () => {
 };
 
 export default TrustedBrands;
-

@@ -92,7 +92,7 @@ const Footer = () => {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          padding: 60px 60px 40px;
+          padding: 40px 60px 40px;
           gap: 40px;
           max-width: 1280px;
           margin: 0 auto;

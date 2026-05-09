@@ -33,7 +33,7 @@ const PricingPage = () => {
 
   return (
     <div className="pricing-page-content" style={{ paddingTop: '20px', position: 'relative', overflow: 'hidden' }}>
-      <PricingBackground />
+
       <Reveal delay={0.1}>
         <Pricing />
       </Reveal>
