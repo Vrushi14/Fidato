@@ -28,9 +28,9 @@ const ContactPage = () => {
   return (
     <div className="contact-page-content" style={{ paddingTop: '60px' }}>
       <Reveal delay={0.1}>
-        <div className="contact-header" style={{ textAlign: 'center', marginBottom: '20px', maxWidth: '800px', margin: '0 auto 20px' }}>
-          <h1 className="section-title" style={{ color: '#000000', fontFamily: 'Rebond Grotesque', fontWeight: '500', fontSize: '48px', lineHeight: '55px', letterSpacing: '0px' }}>Get in touch with us</h1>
-          <p className="section-subtitle" style={{ color: '#000000', fontFamily: 'Archivo', fontWeight: '500', fontSize: '19px', lineHeight: '22px', letterSpacing: '0px' }}>
+        <div className="contact-header" style={{ textAlign: 'center', marginBottom: '20px', maxWidth: '800px', margin: '0 auto 24px', padding: '0 20px' }}>
+          <h1 className="section-title">Get in touch with us</h1>
+          <p className="section-subtitle contact-subtitle">
             We're here to help! Whether you have a question about our app, need assistance with your account, or want to provide feedback, our team is ready to assist you.
           </p>
         </div>

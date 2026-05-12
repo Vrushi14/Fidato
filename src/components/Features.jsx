@@ -154,12 +154,15 @@ const Features = () => {
     <section className="features-section" id="features" style={{ position: 'relative' }}>
       <div className="features-bg-gradient" style={{ 
         position: 'absolute', 
-        inset: 0, 
+        top: 0,
+        bottom: '-300px',
+        left: 0,
+        right: 0,
         zIndex: 0, 
         pointerEvents: 'none', 
         overflow: 'hidden',
-        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
-        maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)'
+        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)',
+        maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)'
       }}>
         <svg width="100%" height="100%" viewBox="0 0 1440 1492" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice">
           <g opacity="0.61">
@@ -196,9 +199,7 @@ const Features = () => {
             <ScaleReveal key={i} delay={i * 0.1}>
               <div className="feature-item">
                 <div className="feature-icon-column">
-                  <Parallax offset={20}>
-                    <FeatureIcon iconPaths={f.iconPaths} theme={f.theme} />
-                  </Parallax>
+                  <FeatureIcon iconPaths={f.iconPaths} theme={f.theme} />
                 </div>
                 <div className="feature-text">
                   <h3>{f.title}</h3>

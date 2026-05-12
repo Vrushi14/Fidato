@@ -1,21 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const ChatWidget = ({ buttonColor = '#3B82F6', isGradient = false }) => {
+const ChatWidget = ({ buttonColor = '#3B82F6', isGradient = false, overrideStyles = {}, className = '', widgetPosition = 'bottom-right' }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    let placementStyles = {};
+    switch (widgetPosition) {
+        case 'bottom-left':
+            placementStyles = { bottom: '24px', left: '24px', right: 'auto', top: 'auto', transform: 'none' };
+            break;
+        case 'bottom-center':
+            placementStyles = { bottom: '24px', left: '50%', right: 'auto', top: 'auto', transform: 'translateX(-50%)' };
+            break;
+        case 'middle-right':
+            placementStyles = { top: '50%', right: '24px', left: 'auto', bottom: 'auto', transform: 'translateY(-50%)' };
+            break;
+        case 'bottom-right':
+        default:
+            placementStyles = { bottom: '24px', right: '24px', left: 'auto', top: 'auto', transform: 'none' };
+            break;
+    }
+
     return (
-        <div style={{
-            position: 'absolute',
-            bottom: '24px',
-            right: '24px',
-            width: '395px',
-            height: '731px',
+        <div className={`chat-widget-wrapper ${isOpen ? 'is-open' : ''} ${className}`} style={{
+            position: 'fixed',
+            ...placementStyles,
+            ...overrideStyles,
+            width: isOpen ? '395px' : 'auto',
+            height: isOpen ? '731px' : 'auto',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-end',
+            justifyContent: 'flex-end',
             gap: '20px',
             zIndex: 50,
             fontFamily: 'Inter, sans-serif'
         }}>
             {/* Widget Container */}
+            {isOpen && (
             <div style={{
                 flex: 1,
                 width: '100%',
@@ -65,7 +86,7 @@ const ChatWidget = ({ buttonColor = '#3B82F6', isGradient = false }) => {
                         <button style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#F8FAFC', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
                         </button>
-                        <button style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#F8FAFC', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+                        <button onClick={() => setIsOpen(false)} style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#F8FAFC', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                         </button>
                     </div>
@@ -185,9 +206,10 @@ const ChatWidget = ({ buttonColor = '#3B82F6', isGradient = false }) => {
                     </div>
                 </div>
             </div>
+            )}
 
             {/* Floating Action Button */}
-            <div style={{
+            <div onClick={() => setIsOpen(!isOpen)} style={{
                 width: '64px',
                 height: '64px',
                 borderRadius: '50%',

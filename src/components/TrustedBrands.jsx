@@ -39,7 +39,7 @@ const TrustedBrands = () => {
     <section className="tb-section" style={{ position: 'relative' }}>
       <div className="tb-container">
         {/* Background Gradient SVG */}
-        <div className="tb-bg-gradient" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', borderRadius: '36px' }}>
+        <div className="tb-bg-gradient" style={{ position: 'absolute', top: '-20%', left: 0, width: '100%', height: '140%', zIndex: 0, pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', borderRadius: '36px' }}>
           <svg width="100%" height="100%" viewBox="0 0 1440 1578" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style={{ transform: 'scale(1.2)' }}>
             <g filter="url(#filter0_f_133_862)">
               <path d="M534.152 383.611C304.696 483.299 201.583 745.443 303.842 969.128C406.102 1192.81 675.011 1293.33 904.468 1193.64C1133.92 1093.96 1237.04 831.813 1134.78 608.128C1032.52 384.443 763.609 283.924 534.152 383.611Z" fill="url(#paint0_linear_133_862)" fillOpacity="0.6"/>
@@ -127,8 +127,8 @@ const TrustedBrands = () => {
       <style dangerouslySetInnerHTML={{ __html: `
         .tb-section {
           position: relative;
-          padding: 120px 24px;
-          overflow: hidden;
+          padding: 60px 24px;
+          overflow: visible;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -296,19 +296,149 @@ const TrustedBrands = () => {
           transform: translateY(-2px);
         }
 
-        @media (max-width: 850px) {
-          .tb-card-wrapper {
-            height: 400px;
+        /* ── Tablet (≤ 900px) ── */
+        @media (max-width: 900px) {
+          .tb-section {
+            padding: 60px 16px;
           }
+
+          .tb-container {
+            width: 100%;
+            height: auto;
+            min-height: unset;
+            padding: 52px 20px 52px;
+            border-radius: 24px;
+          }
+
+          .tb-heading {
+            font-size: 36px;
+            line-height: 44px;
+            margin: 0 0 48px;
+          }
+
+          .tb-heading em {
+            font-size: 36px;
+            line-height: 44px;
+          }
+
+          .tb-badge {
+            font-size: 15px;
+            padding: 7px 18px;
+            margin-bottom: 18px;
+          }
+
+          .tb-card-wrapper {
+            height: 300px;
+            width: 100%;
+          }
+
+          .tb-card {
+            width: calc(100% - 32px);
+            height: auto;
+            min-height: 260px;
+            padding: 32px 24px;
+          }
+
+          .tb-card-content {
+            padding: 0;
+          }
+
+          .tb-quote {
+            font-size: 17px;
+            line-height: 26px;
+            margin-bottom: 20px;
+          }
+
+          .tb-author-name {
+            font-size: 15px;
+          }
+
+          .tb-next-review-btn {
+            margin-top: 32px;
+            font-size: 14px;
+          }
+        }
+
+        /* ── Mobile (≤ 540px) ── */
+        @media (max-width: 540px) {
+          .tb-section {
+            padding: 40px 12px;
+          }
+
+          .tb-container {
+            width: 100%;
+            height: auto;
+            min-height: unset;
+            padding: 40px 16px 44px;
+            border-radius: 20px;
+          }
+
+          .tb-badge {
+            font-size: 13px;
+            padding: 6px 14px;
+            margin-bottom: 14px;
+          }
+
+          .tb-heading {
+            font-size: 28px;
+            line-height: 36px;
+            margin: 0 0 36px;
+          }
+
+          .tb-heading em {
+            font-size: 28px;
+            line-height: 36px;
+          }
+
+          .tb-card-wrapper {
+            height: 320px;
+            width: 100%;
+          }
+
           .tb-card {
             width: 100%;
             height: auto;
-            min-height: 350px;
-            padding: 40px 24px;
+            min-height: 280px;
+            padding: 28px 20px;
           }
-          
+
           .tb-card-content {
             padding: 0;
+          }
+
+          .tb-stars {
+            margin-bottom: 14px;
+          }
+
+          .tb-star {
+            font-size: 14px;
+          }
+
+          .tb-quote {
+            font-size: 15px;
+            line-height: 23px;
+            margin-bottom: 16px;
+            max-width: 100%;
+          }
+
+          .tb-author-section {
+            gap: 3px;
+          }
+
+          .tb-author-name {
+            font-size: 14px;
+            line-height: 20px;
+          }
+
+          .tb-author-role {
+            font-size: 12px;
+            line-height: 16px;
+          }
+
+          .tb-next-review-btn {
+            margin-top: 28px;
+            font-size: 13px;
+            padding: 10px 20px;
           }
         }
       `}} />

@@ -1,21 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { HashLink as NavHashLink } from 'react-router-hash-link'
 import MagneticButton from './MagneticButton'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+
+// Define framer motion variants
+const menuVariants = {
+  closed: {
+    transition: { staggerChildren: 0.05, staggerDirection: -1 }
+  },
+  open: {
+    transition: { staggerChildren: 0.07, delayChildren: 0.1 }
+  }
+};
+
+const itemVariants = {
+  closed: { opacity: 0, x: -20 },
+  open: { opacity: 1, x: 0 }
+};
+
+const navLinksData = [
+  { name: 'Home', path: '/', isHash: false },
+  { name: 'Benefits', path: '/#features', isHash: true },
+  { name: 'Pricing', path: '/pricing', isHash: false },
+  { name: 'How It Works', path: '/#steps', isHash: true },
+  { name: 'FAQ', path: '/faq', isHash: false },
+  { name: 'Contact Us', path: '/contact', isHash: false },
+];
 
 const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <motion.header
       initial={{ opacity: 0, y: -30, filter: 'blur(5px)' }}
       animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+      style={{ zIndex: 1000 }}
     >
       <nav className="navbar">
-        <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
+        <Link to="/" className="logo" style={{ textDecoration: 'none' }} onClick={closeMobileMenu}>
           <svg width="51" height="53" viewBox="0 0 51 53" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9.98568 5.03741L1.76995 17.0277C0.617924 18.615 -0.0016823 20.5263 4.10173e-05 22.4876V40.2525C-0.00578909 42.2077 0.610029 44.1139 1.75854 45.6961C2.90706 47.2784 4.52881 48.4548 6.38953 49.0551L14.5677 51.6512C15.8241 52.0516 17.1529 52.1726 18.461 52.0056C19.7691 51.8385 21.0248 51.3874 22.1403 50.684L42.8439 41.351L9.98568 5.03741Z" fill="#F26419"/>
             <path d="M19.6662 46.4072C13.4269 46.4072 8.15479 41.2853 8.15479 35.2291V11.1781C8.15727 8.21508 9.33511 5.37413 11.4299 3.2785C13.5246 1.18287 16.3651 0.00372918 19.3282 0H39.0131C41.9765 0.00372686 44.8176 1.18255 46.9131 3.27804C49.0086 5.37353 50.1875 8.21465 50.1912 11.1781V30.8631C50.1875 33.8261 49.0084 36.6666 46.9128 38.7613C44.8172 40.8561 41.9761 42.0339 39.0131 42.0364H19.6662V46.4072Z" fill="#F26419"/>
@@ -45,7 +79,58 @@ const Navbar = () => {
             <Link to="/login" className="btn btn-primary">Sign In</Link>
           </MagneticButton>
         </div>
+
+        <button className="mobile-menu-btn" onClick={toggleMobileMenu} aria-label="Toggle Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {isMobileMenuOpen ? (
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            ) : (
+              <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            )}
+          </svg>
+        </button>
       </nav>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            className="mobile-menu-overlay"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20, transition: { delay: 0.3 } }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div 
+              className="mobile-menu-links"
+              variants={menuVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+            >
+              {navLinksData.map((link, index) => (
+                <motion.div key={index} variants={itemVariants} className="mobile-link-wrapper">
+                  {link.isHash ? (
+                    <NavHashLink smooth to={link.path} onClick={closeMobileMenu} className="mobile-link-item">
+                      <span>{link.name}</span>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </NavHashLink>
+                  ) : (
+                    <Link to={link.path} onClick={closeMobileMenu} className={`mobile-link-item ${location.pathname === link.path ? 'active' : ''}`}>
+                      <span>{link.name}</span>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </Link>
+                  )}
+                </motion.div>
+              ))}
+              
+              <motion.div variants={itemVariants} className="mobile-link-wrapper" style={{ marginTop: '8px', borderBottom: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <Link to="/signup" className="btn-get-started" onClick={closeMobileMenu}>Get Started Now</Link>
+                <Link to="/login" className="btn btn-primary" onClick={closeMobileMenu} style={{ width: '100%', justifyContent: 'center', background: 'transparent', border: '1px solid rgba(255,255,255,0.2)', fontSize: '13px', padding: '8px 16px' }}>Sign In</Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   )
 }

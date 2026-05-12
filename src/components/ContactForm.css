@@ -167,15 +167,88 @@
     }
 }
 
-@media (max-width: 600px) {
-    .form-row {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+    .contact-card-container {
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 24px;
+        gap: 24px;
     }
 
-    .contact-card-container {
-        padding: 30px 20px;
-        border-radius: 30px;
+    .desktop-only-svg {
+        display: none !important;
     }
+
+    .contact-form-side {
+        padding: 0;
+    }
+    
+    .contact-info-side {
+        padding-top: 0;
+    }
+
+    .contact-info-side h2 {
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 20px;
+    }
+
+    .info-group {
+        margin-bottom: 16px;
+    }
+
+    .info-group label {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    .info-group p,
+    .info-link {
+        font-size: 15px;
+        line-height: 1.4;
+    }
+
+    .availability {
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .form-row {
+        gap: 12px;
+    }
+
+    .contact-subtitle {
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+    }
+
+    .form-group input {
+        padding: 0 16px;
+        height: 40px;
+        font-size: 13px;
+        border-radius: 20px;
+    }
+
+    .form-group label {
+        font-size: 12px;
+    }
+
+    .form-group textarea {
+        padding: 14px 16px;
+        font-size: 13px;
+        border-radius: 16px;
+    }
+    
+    .form-submit-btn {
+        height: 44px;
+        font-size: 15px;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* If screen is extremely small, we can stack inputs, but image shows side-by-side on typical mobile. Let's keep them side-by-side unless it breaks. We'll leave it as is to match the image exactly. */
 }
 
 /* Success State */

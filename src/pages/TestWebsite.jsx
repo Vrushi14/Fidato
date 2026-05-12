@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ChatWidget from '../components/ChatWidget';
+import './TestWebsite.css';
 
 const TestWebsite = () => {
     const navigate = useNavigate();
@@ -13,11 +14,31 @@ const TestWebsite = () => {
     const [isGradient, setIsGradient] = React.useState(true);
     const [appearanceOpen, setAppearanceOpen] = React.useState(true);
     const [behaviorOpen, setBehaviorOpen] = React.useState(true);
+    const [widgetPosition, setWidgetPosition] = React.useState('bottom-right');
 
     return (
         <div className="test-website-container" style={{ minHeight: '100vh', background: '#F8FAFC' }}>
             <header className="test-header">
-                <svg width="1440" height="106" viewBox="0 0 1440 106" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: 'auto', display: 'block' }}>
+                {/* Mobile Header */}
+                <div className="test-header-mobile">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'white', fontWeight: 'bold', fontSize: '18px', fontFamily: 'Archivo, sans-serif' }}>
+                        <svg width="24" height="24" viewBox="0 0 51 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.98568 5.03741L1.76995 17.0277C0.617924 18.615 -0.0016823 20.5263 4.10173e-05 22.4876V40.2525C-0.00578909 42.2077 0.610029 44.1139 1.75854 45.6961C2.90706 47.2784 4.52881 48.4548 6.38953 49.0551L14.5677 51.6512C15.8241 52.0516 17.1529 52.1726 18.461 52.0056C19.7691 51.8385 21.0248 51.3874 22.1403 50.684L42.8439 41.351L9.98568 5.03741Z" fill="#F26419"/>
+                            <path d="M19.6662 46.4072C13.4269 46.4072 8.15479 41.2853 8.15479 35.2291V11.1781C8.15727 8.21508 9.33511 5.37413 11.4299 3.2785C13.5246 1.18287 16.3651 0.00372918 19.3282 0H39.0131C41.9765 0.00372686 44.8176 1.18255 46.9131 3.27804C49.0086 5.37353 50.1875 8.21465 50.1912 11.1781V30.8631C50.1875 33.8261 49.0084 36.6666 46.9128 38.7613C44.8172 40.8561 41.9761 42.0339 39.0131 42.0364H19.6662V46.4072Z" fill="#F26419"/>
+                            <path d="M19.136 5C17.509 5.00372 15.9497 5.65199 14.7996 6.80292C13.6496 7.95385 13.0025 9.51368 13 11.1407V35.1917C13 38.3982 15.9107 41.2197 19.2768 41.323V36.9616H38.8209C40.4475 36.9591 42.0068 36.3118 43.1569 35.1616C44.3071 34.0115 44.9544 32.4523 44.9569 30.8257V11.1407C44.9556 9.5133 44.3089 7.95274 43.1586 6.80155C42.0083 5.65035 40.4483 5.00249 38.8209 5H19.136Z" fill="white"/>
+                            <path d="M25.9713 12.8823H21.624V22.5206H25.9713V12.8823Z" fill="black"/>
+                            <path d="M37.8253 12.8822H33.478V22.5206H37.8253V12.8822Z" fill="black"/>
+                        </svg>
+                        Fidato
+                    </div>
+                    <div className="test-header-mobile-buttons">
+                        <button onClick={() => navigate('/signup')} style={{ background: isGradient ? 'linear-gradient(90deg, #FF8651 0%, #FF5430 100%)' : buttonColor, color: 'white', border: 'none', borderRadius: '20px', padding: '8px 16px', fontSize: '13px', fontWeight: 600 }}>Create Account</button>
+                        <button onClick={() => navigate('/')} style={{ background: 'transparent', color: 'white', border: 'none', fontSize: '14px', cursor: 'pointer' }}>Exit</button>
+                    </div>
+                </div>
+
+                {/* Desktop Header */}
+                <svg className="test-header-svg" width="1440" height="106" viewBox="0 0 1440 106" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_d_133_1036)">
                         <rect width="1440" height="84" fill="url(#paint0_linear_header)" />
                         <rect x="-0.5" y="-0.5" width="1441" height="85" stroke="black" />
@@ -73,42 +94,22 @@ const TestWebsite = () => {
                 </svg>
             </header>
 
-            <main className="test-content" style={{ padding: '40px', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', gap: '40px' }}>
+            <main className="test-content">
                 {/* Configuration Card with SVG Background */}
                 <div className="config-card-container" style={{
                     position: 'relative',
                     width: '344px',
-                    height: '1094px',
-                    fontFamily: 'Archivo, sans-serif'
+                    fontFamily: 'Archivo, sans-serif',
+                    backgroundColor: 'white',
+                    borderRadius: '32px',
+                    border: '1px solid #E2E8F0',
+                    boxShadow: '0 4px 6px rgba(16, 24, 40, 0.03), 0 12px 16px rgba(16, 24, 40, 0.08)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    overflow: 'hidden'
                 }}>
-                    {/* SVG Background Layer */}
-                    <svg width="344" height="1094" viewBox="0 0 344 1094" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
-                        <g filter="url(#filter_config_card)">
-                            <path d="M12 32C12 14.3269 26.3269 0 44 0H300C317.673 0 332 14.3269 332 32V1038C332 1055.67 317.673 1070 300 1070H44C26.3269 1070 12 1055.67 12 1038V32Z" fill="white"/>
-                            <path d="M44 0.5H300C317.397 0.5 331.5 14.603 331.5 32V1038C331.5 1055.4 317.397 1069.5 300 1069.5H44C26.603 1069.5 12.5 1055.4 12.5 1038V32C12.5 14.603 26.603 0.5 44 0.5Z" stroke="#E2E8F0"/>
-                        </g>
-                        <defs>
-                            <filter id="filter_config_card" x="0" y="0" width="344" height="1094" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feMorphology radius="2" operator="erode" in="SourceAlpha" result="effect1_dropShadow_card"/>
-                                <feOffset dy="4"/>
-                                <feGaussianBlur stdDeviation="3"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.03 0"/>
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_card"/>
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feMorphology radius="4" operator="erode" in="SourceAlpha" result="effect2_dropShadow_card"/>
-                                <feOffset dy="12"/>
-                                <feGaussianBlur stdDeviation="8"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.08 0"/>
-                                <feBlend mode="normal" in2="effect1_dropShadow_card" result="effect2_dropShadow_card"/>
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_card" result="shape"/>
-                            </filter>
-                        </defs>
-                    </svg>
-
                     {/* Content Layer */}
-                    <div style={{ position: 'relative', zIndex: 1, padding: '32px 36px 40px 36px', width: '100%', height: '1070px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ position: 'relative', zIndex: 1, padding: '32px 36px 40px 36px', width: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', flex: 1 }}>
                         {/* Header */}
                         <div style={{ paddingBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #F1F5F9' }}>
                             <h2 style={{ fontSize: '16px', fontWeight: 700, margin: 0, color: '#0F172A' }}>Configuration Chat AI</h2>
@@ -119,7 +120,7 @@ const TestWebsite = () => {
                         </div>
 
                         {/* Scrollable Content Area */}
-                        <div className="hide-scrollbar" style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', margin: '0 -23px', padding: '0 23px' }}>
+                        <div className="hide-scrollbar" style={{ flex: 1, overflowY: 'visible', overflowX: 'hidden', margin: '0 -23px', padding: '0 23px' }}>
                             {/* Appearance Section */}
                         <div 
                             onClick={() => setAppearanceOpen(!appearanceOpen)}
@@ -146,29 +147,41 @@ const TestWebsite = () => {
                                     <textarea defaultValue="Hi! I'm Fidato AI.&#10;What can I help you with today?" style={{ width: '100%', height: '80px', padding: '12px 16px', borderRadius: '16px', border: '1px solid #E2E8F0', fontSize: '14px', outline: 'none', resize: 'none' }} />
                                 </div>
 
-                                <div style={{ marginBottom: '20px' }}>
+                                <div style={{ marginBottom: '20px', position: 'relative' }}>
                                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#475569', marginBottom: '8px' }}>Widget Position</label>
                                     <div style={{ display: 'flex', borderRadius: '12px', border: '1px solid #E2E8F0', overflow: 'hidden' }}>
-                                        {/* Position 1 */}
-                                        <div style={{ flex: 1, padding: '10px', textAlign: 'center', borderRight: '1px solid #E2E8F0', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                        {/* Position 1 (Bottom Left) */}
+                                        <div 
+                                            onClick={() => setWidgetPosition('bottom-left')}
+                                            style={{ flex: 1, padding: '10px', textAlign: 'center', borderRight: '1px solid #E2E8F0', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: widgetPosition === 'bottom-left' ? '#F1F5F9' : 'transparent' }}
+                                        >
                                             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15.625 0.9375C15.625 1.18614 15.5262 1.4246 15.3504 1.60041C15.1746 1.77623 14.9361 1.875 14.6875 1.875H0.9375C0.68886 1.875 0.450403 1.77623 0.274587 1.60041C0.0987721 1.4246 0 1.18614 0 0.9375C0 0.68886 0.0987721 0.450403 0.274587 0.274587C0.450403 0.0987721 0.68886 0 0.9375 0H14.6875C14.9361 0 15.1746 0.0987721 15.3504 0.274587C15.5262 0.450403 15.625 0.68886 15.625 0.9375ZM14.375 4.6875V11.5625C14.375 11.9769 14.2104 12.3743 13.9174 12.6674C13.6243 12.9604 13.2269 13.125 12.8125 13.125H10C9.5856 13.125 9.18817 12.9604 8.89515 12.6674C8.60212 12.3743 8.4375 11.9769 8.4375 11.5625V4.6875C8.4375 4.2731 8.60212 3.87567 8.89515 3.58265C9.18817 3.28962 9.5856 3.125 10 3.125H12.8125C13.2269 3.125 13.6243 3.28962 13.9174 3.58265C14.2104 3.87567 14.375 4.2731 14.375 4.6875ZM12.5 5H10.3125V11.25H12.5V5ZM7.1875 4.6875V14.6875C7.1875 15.1019 7.02288 15.4993 6.72985 15.7924C6.43683 16.0854 6.0394 16.25 5.625 16.25H2.8125C2.3981 16.25 2.00067 16.0854 1.70765 15.7924C1.41462 15.4993 1.25 15.1019 1.25 14.6875V4.6875C1.25 4.2731 1.41462 3.87567 1.70765 3.58265C2.00067 3.28962 2.3981 3.125 2.8125 3.125H5.625C6.0394 3.125 6.43683 3.28962 6.72985 3.58265C7.02288 3.87567 7.1875 4.2731 7.1875 4.6875ZM5.3125 5H3.125V14.375H5.3125V5Z" fill="#475569"/>
                                             </svg>
                                         </div>
-                                        {/* Position 2 */}
-                                        <div style={{ flex: 1, padding: '10px', textAlign: 'center', borderRight: '1px solid #E2E8F0', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                        {/* Position 2 (Bottom Center) */}
+                                        <div 
+                                            onClick={() => setWidgetPosition('bottom-center')}
+                                            style={{ flex: 1, padding: '10px', textAlign: 'center', borderRight: '1px solid #E2E8F0', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: widgetPosition === 'bottom-center' ? '#F1F5F9' : 'transparent' }}
+                                        >
                                             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1.33866e-06 0.937499C1.3604e-06 0.688859 0.0987734 0.450402 0.274589 0.274586C0.450405 0.0987707 0.688861 -1.30576e-06 0.937501 -1.28402e-06L14.6875 -8.19589e-08C14.9361 -6.0222e-08 15.1746 0.098772 15.3504 0.274588C15.5262 0.450403 15.625 0.68886 15.625 0.9375C15.625 1.18614 15.5262 1.4246 15.3504 1.60041C15.1746 1.77623 14.9361 1.875 14.6875 1.875L0.937501 1.875C0.688861 1.875 0.450404 1.77623 0.274589 1.60041C0.0987733 1.4246 1.31692e-06 1.18614 1.33866e-06 0.937499ZM7.1875 4.6875L7.1875 11.5625C7.1875 11.9769 7.02288 12.3743 6.72985 12.6674C6.43683 12.9604 6.0394 13.125 5.625 13.125L2.8125 13.125C2.3981 13.125 2.00067 12.9604 1.70765 12.6674C1.41462 12.3743 1.25 11.9769 1.25 11.5625L1.25 4.6875C1.25 4.2731 1.41462 3.87567 1.70765 3.58264C2.00067 3.28962 2.3981 3.125 2.8125 3.125L5.625 3.125C6.0394 3.125 6.43683 3.28962 6.72986 3.58264C7.02288 3.87567 7.1875 4.2731 7.1875 4.6875ZM5.3125 5L3.125 5L3.125 11.25L5.3125 11.25L5.3125 5ZM14.375 4.6875L14.375 14.6875C14.375 15.1019 14.2104 15.4993 13.9174 15.7924C13.6243 16.0854 13.2269 16.25 12.8125 16.25L10 16.25C9.5856 16.25 9.18817 16.0854 8.89515 15.7924C8.60212 15.4993 8.4375 15.1019 8.4375 14.6875L8.4375 4.6875C8.4375 4.2731 8.60212 3.87567 8.89515 3.58264C9.18817 3.28962 9.5856 3.125 10 3.125L12.8125 3.125C13.2269 3.125 13.6243 3.28962 13.9174 3.58265C14.2104 3.87567 14.375 4.2731 14.375 4.6875ZM12.5 5L10.3125 5L10.3125 14.375L12.5 14.375L12.5 5Z" fill="#475569"/>
                                             </svg>
                                         </div>
-                                        {/* Position 3 */}
-                                        <div style={{ flex: 1, padding: '10px', textAlign: 'center', borderRight: '1px solid #E2E8F0', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                        {/* Position 3 (Bottom Right) */}
+                                        <div 
+                                            onClick={() => setWidgetPosition('bottom-right')}
+                                            style={{ flex: 1, padding: '10px', textAlign: 'center', borderRight: '1px solid #E2E8F0', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: widgetPosition === 'bottom-right' ? '#F1F5F9' : 'transparent' }}
+                                        >
                                             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1.875 0.9375V14.6875C1.875 14.9361 1.77623 15.1746 1.60041 15.3504C1.4246 15.5262 1.18614 15.625 0.9375 15.625C0.68886 15.625 0.450403 15.5262 0.274587 15.3504C0.0987721 15.1746 0 14.9361 0 14.6875V0.9375C0 0.68886 0.0987721 0.450403 0.274587 0.274587C0.450403 0.0987721 0.68886 0 0.9375 0C1.18614 0 1.4246 0.0987721 1.60041 0.274587C1.77623 0.450403 1.875 0.68886 1.875 0.9375ZM3.125 5.625V2.8125C3.125 2.3981 3.28962 2.00067 3.58265 1.70765C3.87567 1.41462 4.2731 1.25 4.6875 1.25H14.5625C14.9769 1.25 15.3743 1.41462 15.6674 1.70765C15.9604 2.00067 16.125 2.3981 16.125 2.8125V5.625C16.125 6.0394 15.9604 6.43683 15.6674 6.72985C15.3743 7.02288 14.9769 7.1875 14.5625 7.1875H4.6875C4.2731 7.1875 3.87567 7.02288 3.58265 6.72985C3.28962 6.43683 3.125 6.0394 3.125 5.625ZM5 5.3125H14.25V3.125H5V5.3125ZM13.25 10V12.8125C13.25 13.2269 13.0854 13.6243 12.7924 13.9174C12.4993 14.2104 12.1019 14.375 11.6875 14.375H4.6875C4.2731 14.375 3.87567 14.2104 3.58265 13.9174C3.28962 13.6243 3.125 13.2269 3.125 12.8125V10C3.125 9.5856 3.28962 9.18817 3.58265 8.89515C3.87567 8.60212 4.2731 8.4375 4.6875 8.4375H11.6875C12.1019 8.4375 12.4993 8.60212 12.7924 8.89515C13.0854 9.18817 13.25 9.5856 13.25 10ZM11.375 10.3125H5V12.5H11.375V10.3125Z" fill="#475569"/>
                                             </svg>
                                         </div>
-                                        {/* Position 4 (Selected) */}
-                                        <div style={{ flex: 1, padding: '10px', textAlign: 'center', backgroundColor: '#F1F5F9', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                        {/* Position 4 (Middle Right) */}
+                                        <div 
+                                            onClick={() => setWidgetPosition('middle-right')}
+                                            style={{ flex: 1, padding: '10px', textAlign: 'center', backgroundColor: widgetPosition === 'middle-right' ? '#F1F5F9' : 'transparent', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                                        >
                                             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M16.125 0.9375V14.6875C16.125 14.9361 16.0262 15.1746 15.8504 15.3504C15.6746 15.5262 15.4361 15.625 15.1875 15.625C14.9389 15.625 14.7004 15.5262 14.5246 15.3504C14.3488 15.1746 14.25 14.9361 14.25 14.6875V0.9375C14.25 0.68886 14.3488 0.450403 14.5246 0.274587C14.7004 0.0987721 14.9389 0 15.1875 0C15.4361 0 15.6746 0.0987721 15.8504 0.274587C16.0262 0.450403 16.125 0.68886 16.125 0.9375ZM13 2.8125V5.625C13 6.0394 12.8354 6.43683 12.5424 6.72985C12.2493 7.02288 11.8519 7.1875 11.4375 7.1875H1.5625C1.1481 7.1875 0.750671 7.02288 0.457646 6.72985C0.16462 6.43683 0 6.0394 0 5.625V2.8125C0 2.3981 0.16462 2.00067 0.457646 1.70765C0.750671 1.41462 1.1481 1.25 1.5625 1.25H11.4375C11.8519 1.25 12.2493 1.41462 12.5424 1.70765C12.8354 2.00067 13 2.3981 13 2.8125ZM11.125 3.125H1.875V5.3125H11.125V3.125ZM13 10V12.8125C13 13.2269 12.8354 13.6243 12.5424 13.9174C12.2493 14.2104 11.8519 14.375 11.4375 14.375H4.4375C4.0231 14.375 3.62567 14.2104 3.33265 13.9174C3.03962 13.6243 2.875 13.2269 2.875 12.8125V10C2.875 9.5856 3.03962 9.18817 3.33265 8.89515C3.62567 8.60212 4.0231 8.4375 4.4375 8.4375H11.4375C11.8519 8.4375 12.2493 8.60212 12.5424 8.89515C12.8354 9.18817 13 9.5856 13 10ZM11.125 10.3125H4.75V12.5H11.125V10.3125Z" fill="#475569"/>
                                             </svg>
@@ -176,7 +189,7 @@ const TestWebsite = () => {
                                     </div>
                                 </div>
 
-                                <div style={{ marginBottom: '20px' }}>
+                                <div style={{ marginBottom: '20px', position: 'relative' }}>
                                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#475569', marginBottom: '8px' }}>Button Color</label>
                                     <div style={{ display: 'flex', gap: '10px' }}>
                                         {/* Multi-color (Gradient) */}
@@ -218,6 +231,7 @@ const TestWebsite = () => {
                                             </div>
                                         ))}
                                     </div>
+                                    <ChatWidget buttonColor={buttonColor} isGradient={isGradient} className="chat-widget-placement" widgetPosition={widgetPosition} />
                                 </div>
 
                                 <div style={{ marginBottom: '20px' }}>
@@ -351,7 +365,7 @@ const TestWebsite = () => {
                 </div>
 
                 {/* Right side - Dynamic Preview Area */}
-                <div style={{ position: 'relative', flex: 1, height: '1000px', maxWidth: '1000px', paddingTop: '0px', display: 'flex', flexDirection: 'column' }}>
+                <div className="test-preview-area">
 
 
                     {targetUrl && (
@@ -392,9 +406,6 @@ const TestWebsite = () => {
                             />
                         </div>
                     )}
-
-                    {/* Render the Floating Chat Widget inside the Preview Area */}
-                    <ChatWidget buttonColor={buttonColor} isGradient={isGradient} />
                 </div>
             </main>
         </div>

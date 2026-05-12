@@ -29,8 +29,8 @@ function AppContent() {
           zIndex: -1, 
           pointerEvents: 'none', 
           overflow: 'hidden',
-          maskImage: 'linear-gradient(to bottom, black 80%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent)'
+          maskImage: 'linear-gradient(to bottom, black 85%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent)'
         }}>
           <svg width="100%" height="100%" viewBox="0 0 1440 2400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice">
             <g opacity="0.61">
@@ -94,7 +94,7 @@ function AppContent() {
           bottom: 0, 
           left: 0, 
           width: '100%', 
-          height: '2400px', 
+          height: '4000px', 
           zIndex: -1, 
           pointerEvents: 'none', 
           overflow: 'hidden',

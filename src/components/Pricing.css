@@ -408,18 +408,34 @@
 
     .basic-plan-horizontal {
         grid-template-columns: 1fr;
-        padding: 40px;
-        text-align: center;
+        padding: 40px 24px;
+        text-align: left;
+    }
+
+    .basic-info {
+        align-items: flex-start;
     }
 
     .basic-features-grid {
         border-left: none;
         padding-left: 0;
         border-top: 1px solid #EEE;
-        padding-top: 30px;
+        padding-top: 24px;
     }
 
     .features-columns {
-        justify-content: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .features-columns ul {
+        width: 100%;
+    }
+
+    .features-columns li {
+        font-size: 14px;
+        color: #444;
+        gap: 12px;
     }
 }

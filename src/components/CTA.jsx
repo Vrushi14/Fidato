@@ -7,13 +7,21 @@ const CTA = () => {
     <section className="cta-section" id="contact">
       <div className="container">
         <div className="cta-card glass-card">
+
+          {/* Text block */}
           <div className="cta-content">
-            <h2>Let's hope on a call and <br /> see if <em>we're a good fit</em></h2>
+            <h2>Let's hope on a call and <br /> see if <br className="cta-mobile-br" /><em>we're a good fit</em></h2>
             <p>We bet we're the missing puzzle piece you've been searching for.</p>
+
+            {/* Desktop button (hidden on mobile) */}
             <MagneticButton>
-              <Link to="/contact" className="btn btn-primary btn-cta" style={{ textDecoration: 'none', display: 'inline-block' }}>Book a Call with Ritesh</Link>
+              <Link to="/contact" className="btn btn-primary btn-cta cta-btn-desktop" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                Book a Call with Ritesh
+              </Link>
             </MagneticButton>
           </div>
+
+          {/* Logo visual */}
           <div className="cta-visual">
             <div className="cta-logo-large">
               <svg width="275" height="276" viewBox="0 0 275 276" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,6 +33,15 @@ const CTA = () => {
               </svg>
             </div>
           </div>
+
+          {/* Mobile-only full-width button */}
+          <Link to="/contact" className="btn-cta-mobile" style={{ textDecoration: 'none' }}>
+            Book a Call with Ritesh
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
+
         </div>
       </div>
     </section>

@@ -13,7 +13,7 @@ const ContactForm = () => {
   if (submitted) {
     return (
       <div className="contact-card-container success-state">
-        <div className="contact-bg-svg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
+        <div className="contact-bg-svg desktop-only-svg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
           <svg width="100%" height="100%" viewBox="0 0 1200 616" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <rect x="0.5" y="0.5" width="1199" height="615" rx="35.5" fill="white" fillOpacity="0.3" stroke="#E2E2E2" />
           </svg>
@@ -30,7 +30,7 @@ const ContactForm = () => {
 
   return (
     <div className="contact-card-container">
-      <div className="contact-bg-svg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
+      <div className="contact-bg-svg desktop-only-svg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
         <svg width="100%" height="100%" viewBox="0 0 1200 616" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
           <rect x="0.5" y="0.5" width="1199" height="615" rx="35.5" fill="white" fillOpacity="0.3" stroke="#E2E2E2" />
         </svg>
@@ -56,7 +56,7 @@ const ContactForm = () => {
       </div>
 
       <div className="contact-form-side">
-        <div className="form-side-bg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
+        <div className="form-side-bg desktop-only-svg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
           <svg width="100%" height="100%" viewBox="0 0 716 562" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <rect x="0.5" y="0.5" width="715" height="561" rx="35.5" fill="white" fillOpacity="0.5" stroke="white" />
           </svg>
@@ -68,7 +68,7 @@ const ContactForm = () => {
               <input type="text" placeholder="First Name" required />
             </div>
             <div className="form-group">
-              <label>&nbsp;</label>
+              <label>Your Name *</label>
               <input type="text" placeholder="Last Name" required />
             </div>
           </div>
@@ -84,8 +84,7 @@ const ContactForm = () => {
             </div>
           </div>
 
-          <div className="form-group full-width">
-            <label>Your e-mail address *</label>
+          <div className="form-group full-width" style={{ marginTop: '4px' }}>
             <textarea placeholder="Tell us how we can help..." rows="5" required></textarea>
           </div>
 

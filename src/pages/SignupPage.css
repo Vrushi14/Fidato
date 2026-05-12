@@ -5,12 +5,6 @@
     flex-direction: column;
 }
 
-@media (min-width: 1025px) {
-    .signup-page {
-        height: 100vh;
-        overflow-y: auto;
-    }
-}
 
 .signup-split {
     display: grid;
@@ -18,20 +12,13 @@
     min-height: 100vh;
 }
 
-@media (min-width: 1025px) {
-    .signup-split {
-        height: 100vh;
-        overflow-y: auto;
-    }
-}
 
-/* Form Side */
 .signup-form-side {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 60px 60px 120px;
+    align-items: flex-start;
+    padding: 60px 60px 120px 100px;
     position: relative;
     background: #FFFFFF;
 }
@@ -59,7 +46,7 @@
 
 .signup-form-header {
     margin-bottom: 20px;
-    text-align: center;
+    text-align: left;
 }
 
 .signup-form-header h1 {
@@ -69,7 +56,6 @@
     color: #111;
     margin-bottom: 12px;
     letter-spacing: -0.02em;
-    white-space: nowrap;
 }
 
 .signup-form-header p {
@@ -144,7 +130,7 @@
 
 .signup-form-footer-links {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: 14px;
     color: #666;
     margin-top: 8px;
@@ -175,9 +161,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     overflow: hidden;
-    padding: 60px;
+    padding: 60px 60px 60px 100px;
 }
 
 .signup-mesh {
@@ -201,7 +187,7 @@
     z-index: 2;
     width: 100%;
     max-width: 800px;
-    text-align: center;
+    text-align: left;
 }
 
 .signup-visual-content h2 {
@@ -212,7 +198,6 @@
     line-height: 1.2;
     margin-bottom: 16px;
     letter-spacing: -0.02em;
-    white-space: nowrap;
 }
 
 .signup-visual-content p {
@@ -246,7 +231,7 @@
 .signup-mockup-wrapper {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .signup-mockup-img {
@@ -274,9 +259,42 @@
         display: none;
     }
 
+    .signup-form-side {
+        padding: 40px 20px;
+        align-items: center;
+    }
+
+    .signup-form-header {
+        text-align: center;
+    }
+
+    .signup-form-footer-links {
+        justify-content: center;
+    }
+
+    .signup-form-header h1 {
+        font-size: 36px;
+    }
+
     .signup-copyright {
         position: static;
         margin-top: 60px;
         transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-form-side {
+        padding: 30px 15px;
+    }
+
+    .signup-form-header h1 {
+        font-size: 28px;
+    }
+
+    .signup-form-footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
     }
 }

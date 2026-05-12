@@ -1,0 +1,89 @@
+.test-content {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.test-preview-area {
+    position: relative;
+    flex: 1;
+    height: 1000px;
+    max-width: 1000px;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.test-header-mobile {
+    display: none;
+}
+
+.chat-widget-placement {
+    position: absolute !important;
+    top: 50% !important;
+    right: -24px !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    z-index: 1000 !important;
+}
+
+@media (max-width: 480px) {
+    .chat-widget-wrapper.is-open {
+        position: fixed !important;
+        width: calc(100vw - 32px) !important;
+        height: calc(100vh - 120px) !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        right: 16px !important;
+        left: 16px !important;
+        top: 60px !important;
+        bottom: auto !important;
+        transform: none !important;
+    }
+}
+
+.test-header-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 1024px) {
+    .test-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .test-preview-area {
+        width: 100%;
+        height: 700px;
+        flex: none;
+    }
+
+    .test-header-svg {
+        display: none !important;
+    }
+
+    .test-header-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        background: #111;
+    }
+
+    .test-header-mobile-buttons {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .config-card-container {
+        width: 100% !important;
+        max-width: 344px;
+    }
+}
