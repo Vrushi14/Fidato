@@ -30,6 +30,17 @@
     z-index: 1000 !important;
 }
 
+@media (min-width: 1025px) {
+    .chat-widget-placement {
+        position: fixed !important;
+        top: auto !important;
+        right: 40px !important;
+        bottom: 650px !important;
+        left: auto !important;
+        transform: none !important;
+    }
+}
+
 @media (max-width: 480px) {
     .chat-widget-wrapper.is-open {
         position: fixed !important;

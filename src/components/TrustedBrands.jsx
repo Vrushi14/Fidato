@@ -39,7 +39,19 @@ const TrustedBrands = () => {
     <section className="tb-section" style={{ position: 'relative' }}>
       <div className="tb-container">
         {/* Background Gradient SVG */}
-        <div className="tb-bg-gradient" style={{ position: 'absolute', top: '-20%', left: 0, width: '100%', height: '140%', zIndex: 0, pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', borderRadius: '36px' }}>
+        <motion.div 
+          className="tb-bg-gradient" 
+          style={{ position: 'absolute', top: '-20%', left: 0, width: '100%', height: '140%', zIndex: 0, pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', borderRadius: '36px' }}
+          animate={{
+            x: [0, 30, -30, 0],
+            y: [0, 20, -20, 0]
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
           <svg width="100%" height="100%" viewBox="0 0 1440 1578" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style={{ transform: 'scale(1.2)' }}>
             <g filter="url(#filter0_f_133_862)">
               <path d="M534.152 383.611C304.696 483.299 201.583 745.443 303.842 969.128C406.102 1192.81 675.011 1293.33 904.468 1193.64C1133.92 1093.96 1237.04 831.813 1134.78 608.128C1032.52 384.443 763.609 283.924 534.152 383.611Z" fill="url(#paint0_linear_133_862)" fillOpacity="0.6"/>
@@ -58,7 +70,31 @@ const TrustedBrands = () => {
               </linearGradient>
             </defs>
           </svg>
-        </div>
+        </motion.div>
+
+        {/* Animated Lower Circular Area */}
+        <motion.div
+          style={{
+            position: 'absolute',
+            bottom: '-15%',
+            left: '50%',
+            width: '600px',
+            height: '600px',
+            background: 'radial-gradient(circle, rgba(224,185,253,0.15) 0%, transparent 70%)',
+            zIndex: 0,
+            pointerEvents: 'none',
+            borderRadius: '50%',
+            filter: 'blur(40px)',
+          }}
+          animate={{
+            x: ['-50%', '-30%', '-70%', '-50%'],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
 
         <div className="tb-inner" style={{ position: 'relative', zIndex: 1 }}>
           {/* Pill badge */}
@@ -276,7 +312,7 @@ const TrustedBrands = () => {
         }
 
         .tb-next-review-btn {
-          margin-top: 40px;
+          margin-top: 60px;
           padding: 14px 28px;
           background: transparent;
           color: #111;
