@@ -8,10 +8,10 @@ const FidatoIcon = ({ size = 58, light = false }) => {
   return (
     <div style={{
       width: size, height: size,
-      backgroundColor: light ? 'transparent' : '#579AFF',
+      backgroundColor: light ? 'transparent' : '#F26419',
       borderRadius: light ? '8px' : '50%',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      boxShadow: light ? 'none' : '0 0 0 6px rgba(87, 154, 255, 0.39)',
+      boxShadow: light ? 'none' : '0 0 0 6px rgba(242, 100, 25, 0.2)',
       position: 'relative'
     }}>
       <svg width={size * 1.6} height={size * 1.6} viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,11 +169,14 @@ const ChatWidget = ({
   const panelHeight = isMobile ? '100vh' : (isExpanded ? '550px' : '450px');
 
   const getPositionStyles = () => {
+    const bottomOffset = isMobile ? '24px' : '40px';
+    const sideOffset = isMobile ? '24px' : '40px';
+    
     switch (widgetPosition) {
-      case 'bottom-left': return { bottom: isMobile ? '24px' : '650px', left: isMobile ? '24px' : '24px', alignItems: 'flex-start' };
-      case 'bottom-center': return { bottom: isMobile ? '24px' : '650px', left: '50%', transform: 'translateX(-50%)', alignItems: 'center' };
-      case 'middle-right': return { top: '50%', right: '24px', transform: 'translateY(-50%)', alignItems: 'flex-end' };
-      default: return { bottom: isMobile ? '24px' : '650px', right: isMobile ? '24px' : '24px', alignItems: 'flex-end' };
+      case 'bottom-left': return { bottom: bottomOffset, left: sideOffset, alignItems: 'flex-start' };
+      case 'bottom-center': return { bottom: bottomOffset, left: '50%', transform: 'translateX(-50%)', alignItems: 'center' };
+      case 'middle-right': return { top: '50%', right: sideOffset, transform: 'translateY(-50%)', alignItems: 'flex-end' };
+      default: return { bottom: bottomOffset, right: sideOffset, alignItems: 'flex-end' };
     }
   };
 
@@ -222,7 +225,7 @@ const ChatWidget = ({
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <div style={{
                 width: '32px', height: '32px', borderRadius: '50%',
-                backgroundColor: isGradient ? '#3B82F6' : buttonColor, display: 'flex',
+                backgroundColor: isGradient ? '#F26419' : buttonColor, display: 'flex',
                 alignItems: 'center', justifyContent: 'center',
                 overflow: 'hidden'
               }}>
@@ -293,7 +296,7 @@ const ChatWidget = ({
                 {msg.role === 'assistant' && (
                   <div style={{
                     width: '32px', height: '32px', borderRadius: '50%',
-                    backgroundColor: isGradient ? '#3B82F6' : buttonColor, display: 'flex',
+                    backgroundColor: isGradient ? '#F26419' : buttonColor, display: 'flex',
                     alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                     overflow: 'hidden'
                   }}>
@@ -307,11 +310,12 @@ const ChatWidget = ({
                 <div style={{
                   maxWidth: '80%',
                   padding: msg.role === 'user' ? '12px 16px' : '0',
-                  borderRadius: '16px',
-                  backgroundColor: msg.role === 'user' ? '#F1F5F9' : 'transparent',
-                  color: '#1E293B',
+                  borderRadius: msg.role === 'user' ? '20px 20px 4px 20px' : '0',
+                  backgroundColor: msg.role === 'user' ? (isGradient ? '#3B82F6' : buttonColor) : 'transparent',
+                  color: msg.role === 'user' ? 'white' : '#1E293B',
                   fontSize: '14px',
-                  lineHeight: '1.5'
+                  lineHeight: '1.5',
+                  boxShadow: msg.role === 'user' ? '0 4px 15px rgba(0,0,0,0.05)' : 'none'
                 }}>
                   {msg.text}
                 </div>
@@ -321,7 +325,7 @@ const ChatWidget = ({
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <div style={{
                   width: '32px', height: '32px', borderRadius: '50%',
-                  backgroundColor: '#3B82F6', display: 'flex',
+                  backgroundColor: isGradient ? '#3B82F6' : buttonColor, display: 'flex',
                   alignItems: 'center', justifyContent: 'center'
                 }}>
                   <FidatoIcon size={18} light />
@@ -396,9 +400,9 @@ const ChatWidget = ({
           width: '64px',
           height: '64px',
           borderRadius: '50%',
-          backgroundColor: isGradient ? '#3B82F6' : buttonColor,
-          border: '4px solid #DBEAFE',
-          boxShadow: `0 10px 25px -5px ${isGradient ? 'rgba(59, 130, 246, 0.4)' : buttonColor + '66'}`,
+          backgroundColor: isGradient ? '#F26419' : buttonColor,
+          border: `4px solid ${isGradient ? 'rgba(242, 100, 25, 0.1)' : buttonColor + '1A'}`,
+          boxShadow: `0 10px 25px -5px ${isGradient ? 'rgba(242, 100, 25, 0.4)' : buttonColor + '66'}`,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -409,7 +413,15 @@ const ChatWidget = ({
         onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
         onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
       >
-        {isOpen ? <CloseIcon /> : <FidatoIcon size={24} light />}
+        {isOpen ? <CloseIcon /> : (
+          avatar ? (
+            <div style={{ width: '56px', height: '56px', borderRadius: '50%', overflow: 'hidden' }}>
+              <img src={avatar} alt="FAB Avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+          ) : (
+            <FidatoIcon size={24} light />
+          )
+        )}
       </button>
 
       <style>{`

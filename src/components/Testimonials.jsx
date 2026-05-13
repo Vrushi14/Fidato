@@ -36,54 +36,53 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-section" style={{ backgroundColor: '#EEF0FF', padding: '100px 0', textAlign: 'center', overflow: 'hidden' }}>
       <div className="container">
-        <h2 className="section-title">Trusted by global brands</h2>
-        
-        <div className="testimonials-stack" onClick={handleNext} style={{ perspective: "1000px" }}>
-          <AnimatePresence initial={false}>
-            {testimonials.map((testimonial, i) => {
-              let relativeIndex = i - currentIndex;
-              if (relativeIndex < 0) relativeIndex += testimonials.length;
+        <h2 className="section-title" style={{ fontSize: '64px', fontWeight: 500, color: '#111', marginBottom: '16px', letterSpacing: '-0.02em' }}>Our clients trust us</h2>
+        <p style={{ fontSize: '14px', fontWeight: 600, color: '#111', marginBottom: '60px', opacity: 0.8 }}>AND BASED ON WHAT THEY SAY, WE'RE NAILING IT.</p>
 
-              if (relativeIndex > 2) return null;
+        <div className="reviews" style={{ position: 'relative', width: '100%', maxWidth: '600px', margin: '0 auto 40px', minHeight: '200px' }}>
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={testimonial.id}
+              className={`review-content ${index === currentIndex ? 'active' : ''}`}
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.4)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.5)',
+                borderRadius: '16px',
+                padding: '40px',
+                textAlign: 'left',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+                width: '100%'
+              }}
+            >
+              <p className="testimonial-text" style={{ fontSize: '20px', lineHeight: '1.5', color: '#111', marginBottom: '24px' }}>
+                « {testimonial.text} »
+              </p>
+              <div className="author" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: '#DDD', overflow: 'hidden' }}>
+                  <img src={`https://i.pravatar.cc/100?u=${testimonial.id}`} alt={testimonial.author} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div className="author-info">
+                  <strong style={{ display: 'block', fontSize: '16px', color: '#111' }}>{testimonial.author}</strong>
+                  <span style={{ fontSize: '13px', color: '#666' }}>{testimonial.role}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
 
-              return (
-                <motion.div
-                  key={testimonial.id}
-                  className="testimonial-card"
-                  initial={{ opacity: 0, y: -50, scale: 0.9 }}
-                  animate={{ 
-                    opacity: relativeIndex === 0 ? 1 : relativeIndex === 1 ? 0.7 : 0.4,
-                    y: relativeIndex * 30, 
-                    scale: 1 - relativeIndex * 0.08,
-                    zIndex: testimonials.length - relativeIndex,
-                    filter: relativeIndex === 0 ? 'blur(0px)' : `blur(${relativeIndex * 2}px)`
-                  }}
-                  exit={{ opacity: 0, y: -100, scale: 1.1, filter: 'blur(10px)' }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div className="stars">★★★★★</div>
-                  <p className="testimonial-text">
-                    "{testimonial.text}"
-                  </p>
-                  <div className="author">
-                    <div className="author-info">
-                      <strong>{testimonial.author}</strong>
-                      <span>{testimonial.role}</span>
-                    </div>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </AnimatePresence>
-        </div>
-        <div style={{ marginTop: '40px', fontSize: '14px', color: '#666' }}>
-          Click the card to see the next review
-        </div>
+        <button
+          className="next-review-btn"
+          onClick={handleNext}
+        >
+          Next review
+        </button>
       </div>
     </section>
   )
 }
+
 
 export default Testimonials;

@@ -10,11 +10,12 @@ import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import TestWebsite from './pages/TestWebsite'
+import Dashboard from './pages/Dashboard'
 import PageTransition from './components/PageTransition'
 
 function AppContent() {
   const location = useLocation();
-  const authRoutes = ['/login', '/signup', '/test-website'];
+  const authRoutes = ['/login', '/signup', '/test-website', '/dashboard'];
   const hideLayout = authRoutes.includes(location.pathname);
 
   return (
@@ -70,6 +71,7 @@ function AppContent() {
             <Route path="/login" element={<PageTransition><LoginPage /></PageTransition>} />
             <Route path="/signup" element={<PageTransition><SignupPage /></PageTransition>} />
             <Route path="/test-website" element={<PageTransition><TestWebsite /></PageTransition>} />
+            <Route path="/dashboard" element={<PageTransition><Dashboard /></PageTransition>} />
             <Route path="*" element={<PageTransition><Home /></PageTransition>} />
           </Routes>
         </AnimatePresence>
