@@ -232,6 +232,16 @@ header {
     color: #FFFFFF;
 }
 
+.logo svg:first-of-type {
+    width: 42px;
+    height: auto;
+}
+
+.logo svg:last-of-type {
+    width: 95px;
+    height: auto;
+}
+
 .nav-links {
     display: flex;
     gap: 10px;
@@ -392,13 +402,18 @@ header {
 
 .hero-title {
     font-family: 'Rebond Grotesque', 'Inter', sans-serif;
-    font-size: 64px;
+    font-size: clamp(28px, 7.5vw, 64px);
     font-weight: 600;
-    line-height: 75px;
-    letter-spacing: 0px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
     margin-bottom: 16px;
     color: #000000;
     text-align: center;
+}
+
+.hero-line {
+    display: block;
+    width: 100%;
 }
 
 .hero-subtitle {
@@ -1799,9 +1814,30 @@ header {
     }
 
     .hero-title {
-        font-size: 42px;
-        line-height: 1.1;
         letter-spacing: -0.02em;
+    }
+
+    .logo svg:first-of-type {
+        width: 34px;
+    }
+
+    .logo svg:last-of-type {
+        width: 80px;
+    }
+
+    .c-center-block svg {
+        width: 48px;
+        height: auto;
+    }
+
+    .c-url-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .c-chat-icon {
+        width: 18px;
+        height: 18px;
     }
 
     .hero-subtitle {
@@ -1825,34 +1861,37 @@ header {
     }
 
     .hero-test-container {
-        flex-direction: row;
-        padding: 8px 12px;
-        gap: 8px;
+        flex-direction: column;
+        padding: 16px;
+        gap: 12px;
         height: auto;
         min-height: auto;
-        max-width: 380px;
+        max-width: 320px;
         border-radius: 20px;
         margin: 0 auto 24px;
     }
 
     .hero-url-input-wrapper {
-        padding: 0 12px;
-        height: 38px;
-        flex: 1;
-        font-size: 13px;
+        padding: 0 16px;
+        height: 52px;
+        width: 100%;
+        font-size: 15px;
+        border-radius: 26px;
     }
 
     .hero-url-input-wrapper input {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .hero-svg-button {
-        flex: 1;
+        width: 100%;
         display: flex;
         justify-content: center;
-        transform: scale(0.9);
-        transform-origin: center right;
+        transform: scale(1.3);
+        transform-origin: center center;
         flex-shrink: 0;
+        margin-top: 15px;
+        margin-bottom: 10px;
     }
 
     .hero-test-btn {
@@ -1867,47 +1906,53 @@ header {
 
     .feature-item {
         flex-direction: column;
-        padding: 8px 20px 4px;
-        text-align: left;
-        border-radius: 20px;
-        align-items: flex-start;
-        gap: 0;
-        margin: 0 auto 10px;
-        max-width: 280px;
+        padding: 20px;
+        text-align: center;
+        border-radius: 24px;
+        align-items: center;
+        gap: 12px;
+        margin: 0 auto 16px;
+        max-width: 320px;
     }
 
     .feature-icon-column {
         width: 100%;
-        height: 48px;
+        height: 100px;
         flex-shrink: 0;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
-        margin-bottom: 0;
-        margin-left: -75px;
-        margin-top: 0px;
+        justify-content: center;
+        margin-bottom: 8px;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .feature-svg-visual {
+        width: 100%;
+        height: 100%;
+        transform: scale(1.4);
     }
 
     .feature-visual-wrapper {
-        transform: scale(0.28);
-        transform-origin: left center;
+        transform: scale(0.35);
+        transform-origin: center center;
     }
 
     .feature-text {
         padding-right: 0;
-        text-align: left;
+        text-align: center;
     }
 
     .feature-text h3 {
-        font-size: 18px;
-        margin-bottom: 2px;
-        text-align: left;
+        font-size: 20px;
+        margin-bottom: 8px;
+        text-align: center;
     }
 
     .feature-text p {
-        font-size: 13px;
-        line-height: 1.4;
-        text-align: left;
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: center;
         opacity: 0.85;
         margin-bottom: 0;
     }
@@ -1961,7 +2006,7 @@ header {
 
     .step-card {
         padding: 24px 24px 0;
-        min-height: 350px;
+        min-height: auto;
         max-height: none;
         border-radius: 40px;
         max-width: 320px;
@@ -1971,6 +2016,11 @@ header {
         flex-direction: column;
         text-align: left;
         position: relative;
+    }
+
+    .step-card:nth-child(1),
+    .step-card:nth-child(2) {
+        height: 390px;
     }
 
     .step-card h3 {
@@ -1984,7 +2034,7 @@ header {
     .step-card p {
         font-size: 14px;
         line-height: 1.5;
-        margin-bottom: 20px;
+        margin-bottom: 4px;
         opacity: 0.85;
         text-align: left;
         max-width: 100%;
@@ -1998,7 +2048,7 @@ header {
     }
 
     .step-card .step-visual {
-        margin-top: auto;
+        margin-top: 4px;
         width: calc(100% + 48px);
         margin-left: -24px;
         margin-bottom: -15px;
@@ -2011,20 +2061,31 @@ header {
 
     .step-card.custom-card .step-visual {
         transform: scale(1);
-        margin-top: auto;
+        margin-top: 4px;
         margin-bottom: -15px;
         width: calc(100% + 48px);
         margin-left: -24px;
     }
 
     .custom-integration-mockup {
-        height: 200px;
+        height: 170px;
         width: 100%;
     }
 
+    .c-icon-plus, .c-icon-slack, .c-icon-shopify, .c-icon-whatsapp, .c-icon-jira {
+        transform: scale(0.7);
+    }
+
+    .c-icon-plus { top: 5px; left: 5%; }
+    .c-icon-shopify { top: 5px; right: 5%; }
+    .c-icon-slack { top: 30px; left: 50%; transform: translateX(-50%) scale(0.7); }
+    .c-icon-whatsapp { top: 75px; left: 10%; }
+    .c-icon-jira { top: 75px; right: 10%; }
+    .c-center-block { bottom: 5px; left: 50%; transform: translateX(-50%); }
+
     .custom-browser-mockup,
     .custom-chat-panel {
-        height: 200px;
+        height: 170px;
         width: 100%;
     }
 
@@ -2052,11 +2113,6 @@ header {
 }
 
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 36px;
-        line-height: 44px;
-    }
-
     .section-title {
         font-size: 28px !important;
         line-height: 34px;
@@ -2070,7 +2126,7 @@ header {
 
     .c-step-text-wrapper {
         height: auto;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 }
 
