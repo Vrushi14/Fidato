@@ -439,3 +439,13 @@
         gap: 12px;
     }
 }
+
+@media (max-width: 768px) {
+    .pricing-header {
+        margin-bottom: 30px;
+    }
+
+    .currency-toggle {
+        margin-top: 10px;
+    }
+}

@@ -306,7 +306,13 @@ const FAQ = ({ light = false, hideTitle = false }) => {
 
         @media (max-width: 768px) {
           .faq-section { padding: 40px 0; }
-          .faq-card { padding: 20px 24px; }
+          .faq-card-wrapper { 
+            padding: 40px 0px; 
+            margin: 0 -10px; 
+            width: calc(100% + 20px);
+            border-radius: 32px;
+          }
+          .faq-card { padding: 18px 12px; width: 100%; }
           .faq-header h2 { font-size: 28px; }
           .faq-spark { display: none; }
         }

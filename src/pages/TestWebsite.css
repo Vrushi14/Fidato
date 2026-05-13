@@ -35,7 +35,7 @@
         position: fixed !important;
         top: auto !important;
         right: 40px !important;
-        bottom: 650px !important;
+        bottom: 620px !important;
         left: auto !important;
         transform: none !important;
     }
@@ -83,7 +83,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 16px 20px;
+        padding: 8px 20px;
         background: #111;
     }
 

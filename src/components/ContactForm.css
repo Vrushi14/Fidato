@@ -215,7 +215,8 @@
     }
 
     .form-row {
-        gap: 12px;
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .contact-subtitle {

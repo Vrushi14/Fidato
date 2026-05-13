@@ -18,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 60px 60px 60px 100px;
+    padding: 40px 60px 60px 100px;
     position: relative;
 }
 
@@ -34,7 +34,7 @@
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .login-logo span {
@@ -151,7 +151,7 @@
 
 .login-copyright {
     position: absolute;
-    bottom: 10px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 13px;
@@ -216,41 +216,77 @@
     .login-form-side {
         padding: 40px 20px;
         align-items: center;
+        min-height: 100vh;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .login-logo {
+        margin-bottom: 20px;
     }
 
     .login-form-header {
         text-align: center;
+        margin-bottom: 20px;
     }
 
     .login-form-header h1 {
-        font-size: 36px;
+        font-size: 32px;
+    }
+
+    .login-form {
+        gap: 16px;
+    }
+
+    .login-form-group {
+        gap: 6px;
+    }
+
+    .login-form-group input {
+        padding: 12px 20px;
+        height: 48px;
+    }
+
+    .login-submit-btn {
+        padding: 14px;
+        margin-top: 10px;
     }
 
     .login-copyright {
         position: static;
-        margin-top: 60px;
+        margin-top: 30px;
         transform: none;
     }
 }
 
 @media (max-width: 480px) {
     .login-form-side {
-        padding: 30px 15px;
+        padding: 20px;
     }
 
     .login-form-header h1 {
         font-size: 28px;
     }
 
+    .login-form-header p {
+        font-size: 14px;
+    }
+
     .login-form-footer-links {
         flex-direction: column;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
+        margin-top: 15px;
     }
 
     .login-form-options {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+        font-size: 13px;
+        gap: 8px;
+    }
+
+    .login-copyright {
+        margin-top: 20px;
+        font-size: 12px;
     }
 }

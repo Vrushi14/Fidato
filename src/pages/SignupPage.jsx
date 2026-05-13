@@ -94,7 +94,7 @@ const SignupPage = () => {
             </form>
 
             <div className="signup-copyright">
-              © 2026 Fidato AI . All rights reserved.
+              © 2026 Fidato AI . All Rights Reserved.
             </div>
           </div>
         </div>

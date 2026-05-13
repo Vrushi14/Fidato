@@ -68,7 +68,7 @@ const ContactForm = () => {
               <input type="text" placeholder="First Name" required />
             </div>
             <div className="form-group">
-              <label>Your Name *</label>
+              <label>Last Name *</label>
               <input type="text" placeholder="Last Name" required />
             </div>
           </div>

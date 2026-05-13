@@ -15,14 +15,32 @@ const TestWebsite = () => {
     const [appearanceOpen, setAppearanceOpen] = React.useState(true);
     const [behaviorOpen, setBehaviorOpen] = React.useState(true);
     const [widgetPosition, setWidgetPosition] = React.useState('bottom-right');
+    const [chatTitle, setChatTitle] = React.useState('');
+    const [welcomeMessage, setWelcomeMessage] = React.useState('');
+    const [autoOpen, setAutoOpen] = React.useState('No');
+    const [showWelcome, setShowWelcome] = React.useState('Yes');
+    const [activeAvatar, setActiveAvatar] = React.useState(0);
+    const [customAvatar, setCustomAvatar] = React.useState(null);
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setSelectedFile(file.name);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setCustomAvatar(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
     return (
         <div className="test-website-container" style={{ minHeight: '100vh', background: '#F8FAFC' }}>
             <header className="test-header">
                 {/* Mobile Header */}
                 <div className="test-header-mobile">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'white', fontWeight: 'bold', fontSize: '18px', fontFamily: 'Archivo, sans-serif' }}>
-                        <svg width="24" height="24" viewBox="0 0 51 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'white', fontWeight: 600, fontSize: '16px', fontFamily: 'Archivo, sans-serif' }}>
+                        <svg width="20" height="20" viewBox="0 0 51 53" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9.98568 5.03741L1.76995 17.0277C0.617924 18.615 -0.0016823 20.5263 4.10173e-05 22.4876V40.2525C-0.00578909 42.2077 0.610029 44.1139 1.75854 45.6961C2.90706 47.2784 4.52881 48.4548 6.38953 49.0551L14.5677 51.6512C15.8241 52.0516 17.1529 52.1726 18.461 52.0056C19.7691 51.8385 21.0248 51.3874 22.1403 50.684L42.8439 41.351L9.98568 5.03741Z" fill="#F26419"/>
                             <path d="M19.6662 46.4072C13.4269 46.4072 8.15479 41.2853 8.15479 35.2291V11.1781C8.15727 8.21508 9.33511 5.37413 11.4299 3.2785C13.5246 1.18287 16.3651 0.00372918 19.3282 0H39.0131C41.9765 0.00372686 44.8176 1.18255 46.9131 3.27804C49.0086 5.37353 50.1875 8.21465 50.1912 11.1781V30.8631C50.1875 33.8261 49.0084 36.6666 46.9128 38.7613C44.8172 40.8561 41.9761 42.0339 39.0131 42.0364H19.6662V46.4072Z" fill="#F26419"/>
                             <path d="M19.136 5C17.509 5.00372 15.9497 5.65199 14.7996 6.80292C13.6496 7.95385 13.0025 9.51368 13 11.1407V35.1917C13 38.3982 15.9107 41.2197 19.2768 41.323V36.9616H38.8209C40.4475 36.9591 42.0068 36.3118 43.1569 35.1616C44.3071 34.0115 44.9544 32.4523 44.9569 30.8257V11.1407C44.9556 9.5133 44.3089 7.95274 43.1586 6.80155C42.0083 5.65035 40.4483 5.00249 38.8209 5H19.136Z" fill="white"/>
@@ -32,26 +50,26 @@ const TestWebsite = () => {
                         Fidato
                     </div>
                     <div className="test-header-mobile-buttons">
-                        <button onClick={() => navigate('/signup')} style={{ background: isGradient ? 'linear-gradient(90deg, #FF8651 0%, #FF5430 100%)' : buttonColor, color: 'white', border: 'none', borderRadius: '20px', padding: '8px 16px', fontSize: '13px', fontWeight: 600 }}>Create Account</button>
-                        <button onClick={() => navigate('/')} style={{ background: 'transparent', color: 'white', border: 'none', fontSize: '14px', cursor: 'pointer' }}>Exit</button>
+                        <button onClick={() => navigate('/signup')} style={{ background: isGradient ? 'linear-gradient(90deg, #FF8651 0%, #FF5430 100%)' : buttonColor, color: 'white', border: 'none', borderRadius: '16px', padding: '6px 12px', fontSize: '12px', fontWeight: 600 }}>Create Account</button>
+                        <button onClick={() => navigate('/')} style={{ background: 'transparent', color: 'white', border: 'none', fontSize: '12px', cursor: 'pointer' }}>Exit</button>
                     </div>
                 </div>
 
                 {/* Desktop Header */}
-                <svg className="test-header-svg" width="1440" height="106" viewBox="0 0 1440 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="test-header-svg" width="1440" height="80" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_d_133_1036)">
-                        <rect width="1440" height="84" fill="url(#paint0_linear_header)" />
-                        <rect x="-0.5" y="-0.5" width="1441" height="85" stroke="black" />
+                        <rect width="1440" height="64" fill="url(#paint0_linear_header)" />
+                        <rect x="-0.5" y="-0.5" width="1441" height="65" stroke="black" />
                     </g>
 
                     {/* Create Account Button (Integrated) */}
-                    <g transform="translate(1060, 20)" style={{ cursor: 'pointer' }} onClick={() => navigate('/signup')}>
-                        <rect width="237" height="46" rx="23" fill={isGradient ? "url(#paint0_linear_signup)" : buttonColor} />
-                        <text x="118.5" y="23.5" fill="white" fontSize="16" fontFamily="Archivo, sans-serif" textAnchor="middle" dominantBaseline="middle" style={{ fontWeight: 500 }}>Create an Account</text>
+                    <g transform="translate(1090, 14)" style={{ cursor: 'pointer' }} onClick={() => navigate('/signup')}>
+                        <rect width="180" height="36" rx="18" fill={isGradient ? "url(#paint0_linear_signup)" : buttonColor} />
+                        <text x="90" y="18.5" fill="white" fontSize="14" fontFamily="Archivo, sans-serif" textAnchor="middle" dominantBaseline="middle" style={{ fontWeight: 500 }}>Create an Account</text>
                     </g>
 
                     {/* Exit Button Path */}
-                    <g style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
+                    <g transform="translate(210, -3) scale(0.85)" style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
                         <path
                             d="M1317 42C1317 29.2975 1327.3 19 1340 19H1388C1400.7 19 1411 29.2975 1411 42C1411 54.7025 1400.7 65 1388 65H1340C1327.3 65 1317 54.7025 1317 42Z"
                             fill="#2C2C2C"
@@ -60,17 +78,19 @@ const TestWebsite = () => {
                         <path d="M1344.5 47.75C1344.5 47.9489 1344.42 48.1397 1344.28 48.2803C1344.14 48.421 1343.95 48.5 1343.75 48.5H1339.75C1339.55 48.5 1339.36 48.421 1339.22 48.2803C1339.08 48.1397 1339 47.9489 1339 47.75V36.75C1339 36.5511 1339.08 36.3603 1339.22 36.2197C1339.36 36.079 1339.55 36 1339.75 36H1343.75C1343.95 36 1344.14 36.079 1344.28 36.2197C1344.42 36.3603 1344.5 36.5511 1344.5 36.75C1344.5 36.9489 1344.42 37.1397 1344.28 37.2803C1344.14 37.421 1343.95 37.5 1343.75 37.5H1340.5V47H1343.75C1343.95 47 1344.14 47.079 1344.28 47.2197C1344.42 47.3603 1344.5 47.5511 1344.5 47.75ZM1351.28 41.7194L1348.78 39.2194C1348.64 39.0785 1348.45 38.9993 1348.25 38.9993C1348.05 38.9993 1347.86 39.0785 1347.72 39.2194C1347.58 39.3603 1347.5 39.5514 1347.5 39.7506C1347.5 39.9499 1347.58 40.141 1347.72 40.2819L1348.94 41.5H1343.75C1343.55 41.5 1343.36 41.579 1343.22 41.7197C1343.08 41.8603 1343 42.0511 1343 42.25C1343 42.4489 1343.08 42.6397 1343.22 42.7803C1343.36 42.921 1343.55 43 1343.75 43H1348.94L1347.72 44.2194C1347.58 44.3603 1347.5 44.5514 1347.5 44.7506C1347.5 44.9499 1347.58 45.141 1347.72 45.2819C1347.86 45.4228 1348.05 45.5019 1348.25 45.5019C1348.45 45.5019 1348.64 45.4228 1348.78 45.2819L1351.28 42.7819C1351.35 42.7122 1351.41 42.6295 1351.44 42.5383C1351.48 42.4472 1351.5 42.3495 1351.5 42.2508C1351.5 42.152 1351.48 42.0543 1351.44 41.9631C1351.41 41.8719 1351.35 41.7891 1351.28 41.7194Z" fill="white" style={{ pointerEvents: 'none' }} />
                     </g>
 
-                    <path d="M41.9857 21.0374L33.7699 33.0277C32.6179 34.615 31.9983 36.5263 32 38.4876V56.2525C31.9942 58.2077 32.61 60.1139 33.7585 61.6961C34.9071 63.2784 36.5288 64.4548 38.3895 65.0551L46.5677 67.6512C47.8241 68.0516 49.1529 68.1726 50.461 68.0056C51.7691 67.8385 53.0248 67.3874 54.1403 66.684L74.8439 57.351L41.9857 21.0374Z" fill="#F26419" />
-                    <path d="M51.6657 62.4072C45.4264 62.4072 40.1543 57.2853 40.1543 51.2291V27.1781C40.1568 24.2151 41.3346 21.3741 43.4294 19.2785C45.5241 17.1829 48.3647 16.0037 51.3277 16H71.0126C73.9761 16.0037 76.8171 17.1825 78.9126 19.278C81.0081 21.3735 82.187 24.2147 82.1907 27.1781V46.8631C82.187 49.8261 81.0079 52.6666 78.9123 54.7613C76.8167 56.8561 73.9756 58.0339 71.0126 58.0364H51.6657V62.4072Z" fill="#F26419" />
-                    <path d="M51.136 21C49.509 21.0037 47.9497 21.652 46.7996 22.8029C45.6496 23.9539 45.0025 25.5137 45 27.1407V51.1917C45 54.3982 47.9107 57.2197 51.2768 57.323V52.9616H70.8209C72.4475 52.9591 74.0068 52.3118 75.1569 51.1616C76.3071 50.0115 76.9544 48.4523 76.9569 46.8257V27.1407C76.9556 25.5133 76.3089 23.9527 75.1586 22.8015C74.0083 21.6504 72.4483 21.0025 70.8209 21H51.136Z" fill="white" />
-                    <path d="M57.9713 28.8823H53.624V38.5206H57.9713V28.8823Z" fill="black" />
-                    <path d="M69.8258 28.8822H65.4785V38.5206H69.8258V28.8822Z" fill="black" />
-                    <path d="M198.765 53.3503C196.752 53.3503 194.969 52.9045 193.416 52.013C191.862 51.096 190.626 49.8733 189.709 48.345C188.818 46.7912 188.372 45.0591 188.372 43.1487C188.372 41.2383 188.818 39.519 189.709 37.9907C190.626 36.4369 191.862 35.2142 193.416 34.3227C194.969 33.4057 196.752 32.9472 198.765 32.9472C200.751 32.9472 202.522 33.4057 204.076 34.3227C205.629 35.2142 206.852 36.4241 207.743 37.9525C208.66 39.4808 209.119 41.2129 209.119 43.1487C209.119 45.0591 208.66 46.7912 207.743 48.345C206.852 49.8733 205.629 51.096 204.076 52.013C202.522 52.9045 200.751 53.3503 198.765 53.3503ZM198.765 49.6059C199.962 49.6059 201.006 49.3257 201.898 48.7653C202.789 48.1795 203.477 47.4026 203.961 46.4346C204.445 45.4667 204.687 44.3714 204.687 43.1487C204.687 41.9516 204.445 40.869 203.961 39.9011C203.477 38.9077 202.789 38.1308 201.898 37.5704C201.006 36.9845 199.962 36.6916 198.765 36.6916C197.542 36.6916 196.485 36.9845 195.593 37.5704C194.727 38.1308 194.04 38.8949 193.53 39.8629C193.046 40.8308 192.804 41.9261 192.804 43.1487C192.804 44.3459 193.046 45.4412 193.53 46.4346C194.04 47.4026 194.727 48.1795 195.593 48.7653C196.485 49.3257 197.542 49.6059 198.765 49.6059Z" fill="white" />
-                    <path d="M181.131 52.8918C179.399 52.8918 178.036 52.3951 177.043 51.4017C176.075 50.4082 175.591 49.0582 175.591 47.3516V28.5151H179.947V47.1606C179.947 47.7464 180.125 48.2304 180.481 48.6125C180.838 48.9691 181.309 49.1474 181.895 49.1474H185.983V52.8918H181.131ZM172.229 37.1501V33.4057H186.022V37.1501H172.229Z" fill="white" />
-                    <path d="M157.801 53.3503C155.942 53.3503 154.337 52.8918 152.987 51.9748C151.637 51.0578 150.593 49.8351 149.854 48.3068C149.141 46.753 148.784 45.0464 148.784 43.187C148.784 41.2511 149.192 39.519 150.007 37.9907C150.847 36.4369 152.032 35.2142 153.56 34.3227C155.114 33.4057 156.961 32.9472 159.1 32.9472C161.214 32.9472 163.01 33.4057 164.488 34.3227C165.99 35.2142 167.137 36.4369 167.926 37.9907C168.741 39.519 169.149 41.2256 169.149 43.1105V52.8918H164.755V49.262H164.679C164.297 49.9752 163.8 50.6502 163.189 51.287C162.577 51.8984 161.826 52.3951 160.934 52.7771C160.043 53.1592 158.998 53.3503 157.801 53.3503ZM158.986 49.6059C160.132 49.6059 161.125 49.3257 161.966 48.7653C162.832 48.1795 163.494 47.4026 163.953 46.4346C164.437 45.4412 164.679 44.3332 164.679 43.1105C164.679 41.8879 164.449 40.8053 163.991 39.8629C163.532 38.8949 162.883 38.1308 162.042 37.5704C161.202 36.9845 160.196 36.6916 159.024 36.6916C157.801 36.6916 156.757 36.9845 155.891 37.5704C155.025 38.1308 154.363 38.8949 153.904 39.8629C153.446 40.8308 153.216 41.9261 153.216 43.1487C153.216 44.3459 153.446 45.4412 153.904 46.4346C154.363 47.4026 155.012 48.1795 155.853 48.7653C156.719 49.3257 157.763 49.6059 158.986 49.6059Z" fill="white" />
-                    <path d="M134.656 53.3503C133.103 53.3503 131.689 53.1083 130.415 52.6243C129.167 52.1149 128.097 51.3889 127.206 50.4465C126.34 49.504 125.665 48.396 125.181 47.1224C124.722 45.8233 124.493 44.3969 124.493 42.8431C124.493 40.8563 124.888 39.1242 125.678 37.6468C126.493 36.1694 127.613 35.0232 129.04 34.2081C130.466 33.3675 132.097 32.9472 133.931 32.9472C134.848 32.9472 135.714 33.0873 136.529 33.3675C137.344 33.6477 138.082 34.0425 138.745 34.552C139.407 35.0614 139.942 35.66 140.349 36.3478H140.388V25H144.782V42.9195C144.782 45.0592 144.349 46.9186 143.483 48.4979C142.642 50.0517 141.457 51.2488 139.929 52.0894C138.426 52.93 136.669 53.3503 134.656 53.3503ZM134.656 49.6059C135.777 49.6059 136.758 49.3384 137.598 48.8035C138.465 48.2432 139.14 47.479 139.624 46.5111C140.107 45.5431 140.349 44.4224 140.349 43.1488C140.349 41.8752 140.107 40.7544 139.624 39.7865C139.14 38.8185 138.465 38.0671 137.598 37.5322C136.758 36.9718 135.765 36.6916 134.618 36.6916C133.523 36.6916 132.542 36.9718 131.676 37.5322C130.81 38.0926 130.135 38.8567 129.651 39.8247C129.167 40.7926 128.925 41.9006 128.925 43.1488C128.925 44.4224 129.167 45.5431 129.651 46.5111C130.135 47.479 130.81 48.2432 131.676 48.8035C132.568 49.3384 133.561 49.6059 134.656 49.6059Z" fill="white" />
-                    <path d="M115.938 52.8918V33.4057H120.332V52.8918H115.938ZM118.115 30.693C117.351 30.693 116.689 30.4128 116.129 29.8524C115.568 29.292 115.288 28.6298 115.288 27.8656C115.288 27.1014 115.568 26.4392 116.129 25.8788C116.689 25.3184 117.351 25.0382 118.115 25.0382C118.905 25.0382 119.567 25.3184 120.102 25.8788C120.663 26.4392 120.943 27.1014 120.943 27.8656C120.943 28.6298 120.663 29.292 120.102 29.8524C119.567 30.4128 118.905 30.693 118.115 30.693Z" fill="white" />
-                    <path d="M95 52.8918V33.5204C95 32.1194 95.3311 30.8713 95.9934 29.776C96.6557 28.6552 97.5345 27.7764 98.6298 27.1396C99.7505 26.4774 101.011 26.1462 102.412 26.1462H111.964V30.1581H102.909C101.941 30.1581 101.139 30.4892 100.502 31.1515C99.8906 31.7883 99.585 32.5779 99.585 33.5204V38.411H110.627V42.4228H99.585V52.8918H95Z" fill="white" />
+                    <g transform="translate(10, -5) scale(0.85)">
+                        <path d="M41.9857 21.0374L33.7699 33.0277C32.6179 34.615 31.9983 36.5263 32 38.4876V56.2525C31.9942 58.2077 32.61 60.1139 33.7585 61.6961C34.9071 63.2784 36.5288 64.4548 38.3895 65.0551L46.5677 67.6512C47.8241 68.0516 49.1529 68.1726 50.461 68.0056C51.7691 67.8385 53.0248 67.3874 54.1403 66.684L74.8439 57.351L41.9857 21.0374Z" fill="#F26419" />
+                        <path d="M51.6657 62.4072C45.4264 62.4072 40.1543 57.2853 40.1543 51.2291V27.1781C40.1568 24.2151 41.3346 21.3741 43.4294 19.2785C45.5241 17.1829 48.3647 16.0037 51.3277 16H71.0126C73.9761 16.0037 76.8171 17.1825 78.9126 19.278C81.0081 21.3735 82.187 24.2147 82.1907 27.1781V46.8631C82.187 49.8261 81.0079 52.6666 78.9123 54.7613C76.8167 56.8561 73.9756 58.0339 71.0126 58.0364H51.6657V62.4072Z" fill="#F26419" />
+                        <path d="M51.136 21C49.509 21.0037 47.9497 21.652 46.7996 22.8029C45.6496 23.9539 45.0025 25.5137 45 27.1407V51.1917C45 54.3982 47.9107 57.2197 51.2768 57.323V52.9616H70.8209C72.4475 52.9591 74.0068 52.3118 75.1569 51.1616C76.3071 50.0115 76.9544 48.4523 76.9569 46.8257V27.1407C76.9556 25.5133 76.3089 23.9527 75.1586 22.8015C74.0083 21.6504 72.4483 21.0025 70.8209 21H51.136Z" fill="white" />
+                        <path d="M57.9713 28.8823H53.624V38.5206H57.9713V28.8823Z" fill="black" />
+                        <path d="M69.8258 28.8822H65.4785V38.5206H69.8258V28.8822Z" fill="black" />
+                        <path d="M198.765 53.3503C196.752 53.3503 194.969 52.9045 193.416 52.013C191.862 51.096 190.626 49.8733 189.709 48.345C188.818 46.7912 188.372 45.0591 188.372 43.1487C188.372 41.2383 188.818 39.519 189.709 37.9907C190.626 36.4369 191.862 35.2142 193.416 34.3227C194.969 33.4057 196.752 32.9472 198.765 32.9472C200.751 32.9472 202.522 33.4057 204.076 34.3227C205.629 35.2142 206.852 36.4241 207.743 37.9525C208.66 39.4808 209.119 41.2129 209.119 43.1487C209.119 45.0591 208.66 46.7912 207.743 48.345C206.852 49.8733 205.629 51.096 204.076 52.013C202.522 52.9045 200.751 53.3503 198.765 53.3503ZM198.765 49.6059C199.962 49.6059 201.006 49.3257 201.898 48.7653C202.789 48.1795 203.477 47.4026 203.961 46.4346C204.445 45.4667 204.687 44.3714 204.687 43.1487C204.687 41.9516 204.445 40.869 203.961 39.9011C203.477 38.9077 202.789 38.1308 201.898 37.5704C201.006 36.9845 199.962 36.6916 198.765 36.6916C197.542 36.6916 196.485 36.9845 195.593 37.5704C194.727 38.1308 194.04 38.8949 193.53 39.8629C193.046 40.8308 192.804 41.9261 192.804 43.1487C192.804 44.3459 193.046 45.4412 193.53 46.4346C194.04 47.4026 194.727 48.1795 195.593 48.7653C196.485 49.3257 197.542 49.6059 198.765 49.6059Z" fill="white" />
+                        <path d="M181.131 52.8918C179.399 52.8918 178.036 52.3951 177.043 51.4017C176.075 50.4082 175.591 49.0582 175.591 47.3516V28.5151H179.947V47.1606C179.947 47.7464 180.125 48.2304 180.481 48.6125C180.838 48.9691 181.309 49.1474 181.895 49.1474H185.983V52.8918H181.131ZM172.229 37.1501V33.4057H186.022V37.1501H172.229Z" fill="white" />
+                        <path d="M157.801 53.3503C155.942 53.3503 154.337 52.8918 152.987 51.9748C151.637 51.0578 150.593 49.8351 149.854 48.3068C149.141 46.753 148.784 45.0464 148.784 43.187C148.784 41.2511 149.192 39.519 150.007 37.9907C150.847 36.4369 152.032 35.2142 153.56 34.3227C155.114 33.4057 156.961 32.9472 159.1 32.9472C161.214 32.9472 163.01 33.4057 164.488 34.3227C165.99 35.2142 167.137 36.4369 167.926 37.9907C168.741 39.519 169.149 41.2256 169.149 43.1105V52.8918H164.755V49.262H164.679C164.297 49.9752 163.8 50.6502 163.189 51.287C162.577 51.8984 161.826 52.3951 160.934 52.7771C160.043 53.1592 158.998 53.3503 157.801 53.3503ZM158.986 49.6059C160.132 49.6059 161.125 49.3257 161.966 48.7653C162.832 48.1795 163.494 47.4026 163.953 46.4346C164.437 45.4412 164.679 44.3332 164.679 43.1105C164.679 41.8879 164.449 40.8053 163.991 39.8629C163.532 38.8949 162.883 38.1308 162.042 37.5704C161.202 36.9845 160.196 36.6916 159.024 36.6916C157.801 36.6916 156.757 36.9845 155.891 37.5704C155.025 38.1308 154.363 38.8949 153.904 39.8629C153.446 40.8308 153.216 41.9261 153.216 43.1487C153.216 44.3459 153.446 45.4412 153.904 46.4346C154.363 47.4026 155.012 48.1795 155.853 48.7653C156.719 49.3257 157.763 49.6059 158.986 49.6059Z" fill="white" />
+                        <path d="M134.656 53.3503C133.103 53.3503 131.689 53.1083 130.415 52.6243C129.167 52.1149 128.097 51.3889 127.206 50.4465C126.34 49.504 125.665 48.396 125.181 47.1224C124.722 45.8233 124.493 44.3969 124.493 42.8431C124.493 40.8563 124.888 39.1242 125.678 37.6468C126.493 36.1694 127.613 35.0232 129.04 34.2081C130.466 33.3675 132.097 32.9472 133.931 32.9472C134.848 32.9472 135.714 33.0873 136.529 33.3675C137.344 33.6477 138.082 34.0425 138.745 34.552C139.407 35.0614 139.942 35.66 140.349 36.3478H140.388V25H144.782V42.9195C144.782 45.0592 144.349 46.9186 143.483 48.4979C142.642 50.0517 141.457 51.2488 139.929 52.0894C138.426 52.93 136.669 53.3503 134.656 53.3503ZM134.656 49.6059C135.777 49.6059 136.758 49.3384 137.598 48.8035C138.465 48.2432 139.14 47.479 139.624 46.5111C140.107 45.5431 140.349 44.4224 140.349 43.1488C140.349 41.8752 140.107 40.7544 139.624 39.7865C139.14 38.8185 138.465 38.0671 137.598 37.5322C136.758 36.9718 135.765 36.6916 134.618 36.6916C133.523 36.6916 132.542 36.9718 131.676 37.5322C130.81 38.0926 130.135 38.8567 129.651 39.8247C129.167 40.7926 128.925 41.9006 128.925 43.1488C128.925 44.4224 129.167 45.5431 129.651 46.5111C130.135 47.479 130.81 48.2432 131.676 48.8035C132.568 49.3384 133.561 49.6059 134.656 49.6059Z" fill="white" />
+                        <path d="M115.938 52.8918V33.4057H120.332V52.8918H115.938ZM118.115 30.693C117.351 30.693 116.689 30.4128 116.129 29.8524C115.568 29.292 115.288 28.6298 115.288 27.8656C115.288 27.1014 115.568 26.4392 116.129 25.8788C116.689 25.3184 117.351 25.0382 118.115 25.0382C118.905 25.0382 119.567 25.3184 120.102 25.8788C120.663 26.4392 120.943 27.1014 120.943 27.8656C120.943 28.6298 120.663 29.292 120.102 29.8524C119.567 30.4128 118.905 30.693 118.115 30.693Z" fill="white" />
+                        <path d="M95 52.8918V33.5204C95 32.1194 95.3311 30.8713 95.9934 29.776C96.6557 28.6552 97.5345 27.7764 98.6298 27.1396C99.7505 26.4774 101.011 26.1462 102.412 26.1462H111.964V30.1581H102.909C101.941 30.1581 101.139 30.4892 100.502 31.1515C99.8906 31.7883 99.585 32.5779 99.585 33.5204V38.411H110.627V42.4228H99.585V52.8918H95Z" fill="white" />
+                    </g>
                     <defs>
                         <filter id="filter0_d_133_1036" x="-12" y="-4" width="1466" height="110" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                             <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -113,9 +133,39 @@ const TestWebsite = () => {
                         {/* Header */}
                         <div style={{ paddingBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #F1F5F9' }}>
                             <h2 style={{ fontSize: '16px', fontWeight: 700, margin: 0, color: '#0F172A' }}>Configuration Chat AI</h2>
-                            <div style={{ display: 'flex', gap: '12px', color: '#94A3B8' }}>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            <div style={{ display: 'flex', gap: '8px', color: '#94A3B8' }}>
+                                <div 
+                                    onClick={() => alert('Opening Settings Menu...')}
+                                    style={{ 
+                                        cursor: 'pointer', 
+                                        padding: '4px', 
+                                        borderRadius: '8px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        transition: 'all 0.2s ease'
+                                    }}
+                                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#F1F5F9'; e.currentTarget.style.color = '#475569'; }}
+                                    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#94A3B8'; }}
+                                >
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                                </div>
+                                <div 
+                                    onClick={() => navigate('/')}
+                                    style={{ 
+                                        cursor: 'pointer', 
+                                        padding: '4px', 
+                                        borderRadius: '8px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        transition: 'all 0.2s ease'
+                                    }}
+                                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#FEE2E2'; e.currentTarget.style.color = '#EF4444'; }}
+                                    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#94A3B8'; }}
+                                >
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                </div>
                             </div>
                         </div>
 
@@ -139,12 +189,44 @@ const TestWebsite = () => {
                             <div style={{ paddingTop: '20px' }}>
                                 <div style={{ marginBottom: '20px' }}>
                                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#475569', marginBottom: '8px' }}>Chat Title</label>
-                                    <input type="text" defaultValue="Fidato AI" style={{ width: '100%', padding: '12px 16px', borderRadius: '16px', border: '1px solid #E2E8F0', fontSize: '14px', outline: 'none' }} />
+                                    <textarea 
+                                        value={chatTitle} 
+                                        onChange={(e) => setChatTitle(e.target.value)} 
+                                        placeholder="Fidato AI"
+                                        style={{ 
+                                            width: '100%', 
+                                            height: '52px',
+                                            padding: '16px 24px', 
+                                            borderRadius: '24px', 
+                                            border: '1px solid #E2E8F0', 
+                                            fontSize: '14px', 
+                                            outline: 'none',
+                                            resize: 'none',
+                                            fontFamily: 'Archivo, sans-serif',
+                                            boxSizing: 'border-box'
+                                        }} 
+                                    />
                                 </div>
 
                                 <div style={{ marginBottom: '20px' }}>
                                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#475569', marginBottom: '8px' }}>Welcome Message</label>
-                                    <textarea defaultValue="Hi! I'm Fidato AI.&#10;What can I help you with today?" style={{ width: '100%', height: '80px', padding: '12px 16px', borderRadius: '16px', border: '1px solid #E2E8F0', fontSize: '14px', outline: 'none', resize: 'none' }} />
+                                    <textarea 
+                                        value={welcomeMessage} 
+                                        onChange={(e) => setWelcomeMessage(e.target.value)} 
+                                        placeholder={"Hi! I'm Fidato AI.\nWhat can I help you with today?"}
+                                        style={{ 
+                                            width: '100%', 
+                                            height: '100px', 
+                                            padding: '16px 24px', 
+                                            borderRadius: '24px', 
+                                            border: '1px solid #E2E8F0', 
+                                            fontSize: '14px', 
+                                            outline: 'none', 
+                                            resize: 'none',
+                                            fontFamily: 'Archivo, sans-serif',
+                                            boxSizing: 'border-box'
+                                        }} 
+                                    />
                                 </div>
 
                                 <div style={{ marginBottom: '20px', position: 'relative' }}>
@@ -231,7 +313,17 @@ const TestWebsite = () => {
                                             </div>
                                         ))}
                                     </div>
-                                    <ChatWidget buttonColor={buttonColor} isGradient={isGradient} className="chat-widget-placement" widgetPosition={widgetPosition} />
+                                    <ChatWidget 
+                                        buttonColor={buttonColor} 
+                                        isGradient={isGradient} 
+                                        className="chat-widget-placement" 
+                                        widgetPosition={widgetPosition} 
+                                        title={chatTitle || 'Fidato AI'}
+                                        welcomeMessage={welcomeMessage || "Hi! I'm Fidato AI.\nWhat can I help you with today?"}
+                                        autoOpen={autoOpen === 'Yes'}
+                                        showWelcome={showWelcome === 'Yes'}
+                                        avatar={activeAvatar === 1 && customAvatar ? customAvatar : null}
+                                    />
                                 </div>
 
                                 <div style={{ marginBottom: '20px' }}>
@@ -246,8 +338,28 @@ const TestWebsite = () => {
                                             <path d="M18.0876 5.93665H16.0088V10.3784H18.0876V5.93665Z" fill="black"/>
                                         </svg>
                                     </div>
-                                        {[1, 2, 3, 4].map(i => (
-                                            <div key={i} style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#E2E8F0', cursor: 'pointer' }}></div>
+                                        {[1, 2, 3, 4].map((i, idx) => (
+                                            <div 
+                                                key={i} 
+                                                onClick={() => setActiveAvatar(idx + 1)}
+                                                style={{ 
+                                                    width: '40px', height: '40px', borderRadius: '50%', 
+                                                    backgroundColor: '#E2E8F0', cursor: 'pointer',
+                                                    border: activeAvatar === idx + 1 ? '2px solid #3B82F6' : 'none',
+                                                    transition: 'all 0.2s ease',
+                                                    overflow: 'hidden',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    backgroundImage: (idx === 0 && customAvatar) ? `url(${customAvatar})` : 'none',
+                                                    backgroundSize: 'cover',
+                                                    backgroundPosition: 'center'
+                                                }}
+                                            >
+                                                {idx === 0 && customAvatar ? null : (idx + 1 === 1 ? (
+                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                                ) : null)}
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
@@ -262,7 +374,14 @@ const TestWebsite = () => {
                                             style={{ display: 'none' }} 
                                             onChange={(e) => {
                                                 if (e.target.files && e.target.files[0]) {
-                                                    setSelectedFile(e.target.files[0].name);
+                                                    const file = e.target.files[0];
+                                                    setSelectedFile(file.name);
+                                                    const reader = new FileReader();
+                                                    reader.onload = (event) => {
+                                                        setCustomAvatar(event.target.result);
+                                                        setActiveAvatar(1); // Auto-select the custom avatar slot
+                                                    };
+                                                    reader.readAsDataURL(file);
                                                 }
                                             }}
                                         />
@@ -296,7 +415,7 @@ const TestWebsite = () => {
                                 <div style={{ marginBottom: '20px' }}>
                                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#475569', marginBottom: '8px' }}>Auto-open on Load</label>
                                     <div style={{ position: 'relative' }}>
-                                        <select style={{ width: '100%', padding: '12px 16px', borderRadius: '16px', border: '1px solid #E2E8F0', fontSize: '14px', outline: 'none', appearance: 'none', backgroundColor: 'white' }}>
+                                        <select value={autoOpen} onChange={(e) => setAutoOpen(e.target.value)} style={{ width: '100%', padding: '12px 16px', borderRadius: '16px', border: '1px solid #E2E8F0', fontSize: '14px', outline: 'none', appearance: 'none', backgroundColor: 'white' }}>
                                             <option>No</option>
                                             <option>Yes</option>
                                         </select>
@@ -307,7 +426,7 @@ const TestWebsite = () => {
                                 <div style={{ marginBottom: '32px' }}>
                                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#475569', marginBottom: '8px' }}>Show Welcome Message</label>
                                     <div style={{ position: 'relative' }}>
-                                        <select style={{ width: '100%', padding: '12px 16px', borderRadius: '16px', border: '1px solid #E2E8F0', fontSize: '14px', outline: 'none', appearance: 'none', backgroundColor: 'white' }}>
+                                        <select value={showWelcome} onChange={(e) => setShowWelcome(e.target.value)} style={{ width: '100%', padding: '12px 16px', borderRadius: '16px', border: '1px solid #E2E8F0', fontSize: '14px', outline: 'none', appearance: 'none', backgroundColor: 'white' }}>
                                             <option>Yes</option>
                                             <option>No</option>
                                         </select>
@@ -320,7 +439,9 @@ const TestWebsite = () => {
 
                         {/* Actions */}
                         <div style={{ marginTop: 'auto', paddingTop: '20px' }}>
-                            <button style={{
+                            <button 
+                                onClick={() => alert('Changes saved successfully!')}
+                                style={{
                                 width: '100%',
                                 padding: '14px',
                                 borderRadius: '20px',
@@ -342,7 +463,20 @@ const TestWebsite = () => {
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                             </button>
 
-                            <button style={{
+                            <button 
+                                onClick={() => {
+                                    setChatTitle('');
+                                    setWelcomeMessage('');
+                                    setWidgetPosition('bottom-right');
+                                    setButtonColor('linear-gradient(90deg, #FF8651 0%, #FF5430 100%)');
+                                    setIsGradient(true);
+                                    setAutoOpen('No');
+                                    setShowWelcome('Yes');
+                                    setActiveAvatar(0);
+                                    setCustomAvatar(null);
+                                    setSelectedFile('No file Chosen');
+                                }}
+                                style={{
                                 width: '100%',
                                 padding: '14px',
                                 borderRadius: '20px',

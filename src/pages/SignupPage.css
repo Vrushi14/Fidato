@@ -145,7 +145,7 @@
 
 .signup-copyright {
     position: absolute;
-    bottom: 10px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 13px;
@@ -262,6 +262,10 @@
     .signup-form-side {
         padding: 40px 20px;
         align-items: center;
+        min-height: 100vh;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
     }
 
     .signup-form-header {
@@ -273,28 +277,57 @@
     }
 
     .signup-form-header h1 {
-        font-size: 36px;
+        font-size: 32px;
+        margin-bottom: 8px;
+    }
+
+    .signup-form {
+        gap: 12px;
+    }
+
+    .signup-form-group {
+        gap: 6px;
+    }
+
+    .signup-form-group input {
+        padding: 10px 20px;
+        height: 44px;
+    }
+
+    .signup-submit-btn {
+        padding: 12px;
+        margin-top: 8px;
     }
 
     .signup-copyright {
         position: static;
-        margin-top: 60px;
+        margin-top: 30px;
         transform: none;
     }
 }
 
 @media (max-width: 480px) {
     .signup-form-side {
-        padding: 30px 15px;
+        padding: 20px;
     }
 
     .signup-form-header h1 {
-        font-size: 28px;
+        font-size: 26px;
+    }
+
+    .signup-form-header p {
+        font-size: 14px;
     }
 
     .signup-form-footer-links {
         flex-direction: column;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .signup-copyright {
+        margin-top: 20px;
+        font-size: 12px;
     }
 }
