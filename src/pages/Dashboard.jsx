@@ -5,6 +5,7 @@ import {
   FiGrid,
   FiPlus,
   FiX,
+  FiMenu,
 } from 'react-icons/fi';
 
 const SidebarSection = ({ title, children, style }) => (
@@ -309,24 +310,23 @@ const Dashboard = () => {
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column', overflowX: 'hidden' }}>
         {/* Top Bar */}
         <header className="dashboard-header">
-          <h2 className="dashboard-header-title">Welcome Rohan Chandra</h2>
+          <h2 className="dashboard-header-title">Welcome<span className="dashboard-user-name"> Rohan Chandra</span></h2>
           <button type="button" className="dashboard-header-new-btn dashboard-header-new-inline">
             <FiPlus size={18} strokeWidth={2.5} /> New Chatbot
           </button>
-          <button
-            type="button"
-            className="dashboard-header-avatar"
-            aria-expanded={mobileNavOpen}
-            aria-controls="dashboard-mobile-nav"
-            aria-label="Open navigation menu"
-            onClick={() => {
-              if (typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches) {
-                setMobileNavOpen(true);
-              }
-            }}
-          >
-            RC
-          </button>
+          <div className="dashboard-header-right-group">
+            <div className="dashboard-header-avatar">
+              <span>RC</span>
+            </div>
+            <button
+              type="button"
+              className="dashboard-header-menu-btn"
+              onClick={() => setMobileNavOpen(true)}
+              aria-label="Open navigation menu"
+            >
+              <FiMenu size={22} />
+            </button>
+          </div>
           <button type="button" className="dashboard-header-new-btn dashboard-header-new-block">
             <FiPlus size={18} strokeWidth={2.5} /> New Chatbot
           </button>
@@ -480,6 +480,11 @@ const Dashboard = () => {
         .dashboard-header-new-block {
           display: none !important;
         }
+        .dashboard-header-right-group {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
         .dashboard-header-avatar {
           width: 42px;
           height: 42px;
@@ -496,17 +501,27 @@ const Dashboard = () => {
           padding: 0;
           font-family: inherit;
           cursor: default;
-          transition: filter 0.15s ease, transform 0.15s ease;
+        }
+        .dashboard-header-menu-btn {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          width: 42px;
+          height: 42px;
+          background: transparent;
+          border: 1px solid #E5E7EB;
+          border-radius: 12px;
+          color: #374151;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .dashboard-header-menu-btn:hover {
+          background: #F9FAFB;
+          border-color: #D1D5DB;
         }
         @media (max-width: 768px) {
-          .dashboard-header-avatar {
-            cursor: pointer;
-          }
-          .dashboard-header-avatar:hover {
-            filter: brightness(1.06);
-          }
-          .dashboard-header-avatar:active {
-            transform: scale(0.97);
+          .dashboard-header-menu-btn {
+            display: flex;
           }
         }
 
@@ -523,20 +538,20 @@ const Dashboard = () => {
         .dashboard-mobile-drawer {
           position: fixed;
           top: 0;
-          left: 0;
+          right: 0;
           height: 100vh;
           height: 100dvh;
           width: min(320px, 88vw);
           z-index: 201;
           background: #F5F4F0;
-          border-right: 1px solid #E5E7EB;
+          border-left: 1px solid #E5E7EB;
           display: flex;
           flex-direction: column;
-          box-shadow: 8px 0 32px rgba(0, 0, 0, 0.12);
+          box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
           animation: dashboardDrawerIn 0.22s ease-out;
         }
         @keyframes dashboardDrawerIn {
-          from { transform: translateX(-100%); opacity: 0.96; }
+          from { transform: translateX(100%); opacity: 0.96; }
           to { transform: translateX(0); opacity: 1; }
         }
         .dashboard-mobile-drawer-head {
@@ -672,7 +687,10 @@ const Dashboard = () => {
             font-size: 16px !important;
             line-height: 1.3;
           }
-          .dashboard-header-avatar {
+          .dashboard-user-name {
+            display: none;
+          }
+          .dashboard-header-right-group {
             margin-left: auto;
           }
           .dashboard-header-new-inline {
