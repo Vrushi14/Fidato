@@ -77,7 +77,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="footer-bottom" style={{ position: 'relative', zIndex: 1 }}>
         <p>© 2026 Fidato AI &nbsp; All Rights Reserved.</p>
-        <p>Crafted with ❤️ @ AgnesCreative</p>
+        <p>Crafted with ❤️ @ <a href="https://agnescreative.agency/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', fontWeight: '600' }}>AgnesCreative</a></p>
       </div>
 
       <style>{`

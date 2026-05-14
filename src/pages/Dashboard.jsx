@@ -1,20 +1,194 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  FiGrid, 
-  FiMessageSquare, 
-  FiDatabase, 
-  FiBarChart2, 
-  FiUsers, 
-  FiLayout, 
-  FiCreditCard, 
-  FiSettings,
-  FiPlus
+import {
+  FiGrid,
+  FiPlus,
+  FiX,
 } from 'react-icons/fi';
+
+const SidebarSection = ({ title, children, style }) => (
+  <div style={{ padding: '0 12px', ...style }}>
+    <div className="sidebar-section-title" style={{ fontSize: '11px', fontWeight: 900, color: '#9CA3AF', padding: '0 12px', marginBottom: '10px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{title}</div>
+    {children}
+  </div>
+);
+
+const SidebarItem = ({ icon, label, active, onSelect }) => (
+  <div
+    role="button"
+    tabIndex={0}
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '12px',
+      padding: '12px 14px',
+      borderRadius: '12px',
+      cursor: 'pointer',
+      background: active ? 'white' : 'transparent',
+      color: active ? '#FF6B3D' : '#4B5563',
+      boxShadow: active ? '0 4px 6px -1px rgba(0,0,0,0.05)' : 'none',
+      marginBottom: '4px',
+      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+      justifyContent: 'flex-start',
+    }}
+    className="sidebar-item"
+    onClick={() => onSelect?.()}
+    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect?.(); } }}
+    onMouseEnter={(e) => { if (!active) { e.currentTarget.style.background = 'rgba(255,255,255,0.5)'; e.currentTarget.style.color = '#111827'; } }}
+    onMouseLeave={(e) => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#4B5563'; } }}
+  >
+    <span style={{ fontSize: '20px', display: 'flex', alignItems: 'center', flexShrink: 0 }}>{icon}</span>
+    <span className="sidebar-label" style={{ fontSize: '14.5px', fontWeight: active ? 800 : 700, whiteSpace: 'nowrap' }}>{label}</span>
+  </div>
+);
+
+const DashboardUpgradeBlock = () => (
+  <div style={{ background: 'white', borderRadius: '16px', padding: '20px', border: '1px solid #E5E7EB', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+    <div style={{ fontSize: '14px', fontWeight: 700, color: '#111827' }}>Growth Plan</div>
+    <div style={{ fontSize: '12px', color: '#FF6B3D', marginTop: '6px', fontWeight: 600 }}>312 / 500 sessions used</div>
+    <button
+      type="button"
+      style={{
+        width: '100%',
+        height: '35px',
+        marginTop: '16px',
+        background: '#FF6337',
+        color: 'white',
+        border: 'none',
+        borderRadius: '111px',
+        fontSize: '14px',
+        fontWeight: 700,
+        cursor: 'pointer',
+        transition: 'all 0.2s ease',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 2px 4px rgba(255, 99, 55, 0.2)',
+      }}
+      onMouseEnter={(e) => { e.currentTarget.style.background = '#FF4D1A'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+      onMouseLeave={(e) => { e.currentTarget.style.background = '#FF6337'; e.currentTarget.style.transform = 'translateY(0)'; }}
+    >
+      Upgrade to Pro
+    </button>
+  </div>
+);
+
+const DashboardSidebarNav = ({ onItemSelect }) => (
+  <>
+    <SidebarSection title="MAIN">
+      <SidebarItem icon={<FiGrid />} label="Overview" active onSelect={onItemSelect} />
+      <SidebarItem
+        icon={(
+          <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.26628 6.77562C4.26628 6.77562 5.14128 7.75072 6.59961 7.75072C8.05794 7.75072 8.93294 6.77562 8.93294 6.77562M8.43294 3.5253H8.43961M4.76628 3.5253H4.77294M3.26628 10.351V11.8692C3.26628 12.2156 3.26628 12.3888 3.3391 12.4777C3.40242 12.5551 3.49846 12.6001 3.59997 12.6C3.71669 12.5999 3.85539 12.4917 4.13278 12.2753L5.72308 11.0347C6.04795 10.7813 6.21039 10.6546 6.39127 10.5645C6.55174 10.4846 6.72256 10.4261 6.89909 10.3908C7.09806 10.351 7.30607 10.351 7.72211 10.351H9.39961C10.5197 10.351 11.0798 10.351 11.5076 10.1384C11.8839 9.95145 12.1899 9.65311 12.3816 9.28616C12.5996 8.86899 12.5996 8.32288 12.5996 7.23067V3.72032C12.5996 2.62811 12.5996 2.082 12.3816 1.66483C12.1899 1.29788 11.8839 0.999536 11.5076 0.812565C11.0798 0.600006 10.5197 0.600006 9.39961 0.600006H3.79961C2.6795 0.600006 2.11945 0.600006 1.69163 0.812565C1.3153 0.999536 1.00934 1.29788 0.817596 1.66483C0.599609 2.082 0.599609 2.62811 0.599609 3.72032V7.75072C0.599609 8.35526 0.599609 8.65754 0.667758 8.90554C0.852692 9.57853 1.39179 10.1042 2.08197 10.2845C2.3363 10.351 2.6463 10.351 3.26628 10.351ZM8.76628 3.5253C8.76628 3.70481 8.61704 3.85033 8.43294 3.85033C8.24885 3.85033 8.09961 3.70481 8.09961 3.5253C8.09961 3.34579 8.24885 3.20027 8.43294 3.20027C8.61704 3.20027 8.76628 3.34579 8.76628 3.5253ZM5.09961 3.5253C5.09961 3.70481 4.95037 3.85033 4.76628 3.85033C4.58218 3.85033 4.43294 3.70481 4.43294 3.5253C4.43294 3.34579 4.58218 3.20027 4.76628 3.20027C4.95037 3.20027 5.09961 3.34579 5.09961 3.5253Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        )}
+        label="My Chatboat"
+        onSelect={onItemSelect}
+      />
+      <SidebarItem
+        icon={(
+          <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.26628 4.17536H6.59961M3.26628 6.45059H8.59961M5.05544 10.351H9.39961C10.5197 10.351 11.0798 10.351 11.5076 10.1384C11.8839 9.95145 12.1899 9.65311 12.3816 9.28616C12.5996 8.86899 12.5996 8.32288 12.5996 7.23067V3.72032C12.5996 2.62811 12.5996 2.082 12.3816 1.66483C12.1899 1.29788 11.8839 0.999536 11.5076 0.812565C11.0798 0.600006 10.5197 0.600006 9.39961 0.600006H3.79961C2.6795 0.600006 2.11945 0.600006 1.69163 0.812565C1.3153 0.999536 1.00934 1.29788 0.817596 1.66483C0.599609 2.082 0.599609 2.62811 0.599609 3.72032V11.8692C0.599609 12.2156 0.599609 12.3888 0.672428 12.4777C0.735758 12.5551 0.831789 12.6001 0.933303 12.6C1.05003 12.5999 1.18872 12.4917 1.46611 12.2753L3.05642 11.0347C3.38129 10.7813 3.54372 10.6546 3.7246 10.5645C3.88508 10.4846 4.05589 10.4261 4.23242 10.3908C4.43139 10.351 4.63941 10.351 5.05544 10.351Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        )}
+        label="Conversations"
+        onSelect={onItemSelect}
+      />
+      <SidebarItem
+        icon={(
+          <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.0489 8.85892C9.86563 9.06615 9.6733 9.27079 9.47218 9.4719C6.56364 12.3804 2.91971 13.4522 1.33323 11.8657C0.245583 10.7781 0.407334 8.72338 1.5538 6.60161M3.12542 4.36796C3.31615 4.15109 3.5168 3.93701 3.72704 3.72677C6.63558 0.818226 10.2795 -0.253519 11.866 1.33296C12.9544 2.42136 12.7917 4.47812 11.643 6.60145M9.47218 3.72676C12.3807 6.6353 13.4525 10.2792 11.866 11.8657C10.2795 13.4522 6.63558 12.3804 3.72704 9.4719C0.8185 6.56336 -0.253244 2.91943 1.33323 1.33296C2.91971 -0.253519 6.56364 0.818225 9.47218 3.72676ZM7.26259 6.58519C7.26259 6.95913 6.95945 7.26226 6.58552 7.26226C6.21158 7.26226 5.90844 6.95913 5.90844 6.58519C5.90844 6.21126 6.21158 5.90812 6.58552 5.90812C6.95945 5.90812 7.26259 6.21126 7.26259 6.58519Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        )}
+        label="Knowledge Base"
+        onSelect={onItemSelect}
+      />
+    </SidebarSection>
+
+    <SidebarSection title="INSIGHTS" style={{ marginTop: '32px' }}>
+      <SidebarItem
+        icon={(
+          <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.59961 3.26667H1.66628C1.29291 3.26667 1.10622 3.26667 0.963616 3.33934C0.838174 3.40325 0.736187 3.50524 0.672272 3.63068C0.599609 3.77329 0.599609 3.95997 0.599609 4.33334V11.5333C0.599609 11.9067 0.599609 12.0934 0.672272 12.236C0.736187 12.3614 0.838174 12.4634 0.963616 12.5273C1.10622 12.6 1.29291 12.6 1.66628 12.6H4.59961M4.59961 12.6H8.59961M4.59961 12.6L4.59961 1.66667C4.59961 1.2933 4.59961 1.10662 4.67227 0.964013C4.73619 0.838571 4.83817 0.736584 4.96362 0.672669C5.10622 0.600006 5.29291 0.600006 5.66628 0.600006L7.53294 0.600006C7.90631 0.600006 8.093 0.600006 8.2356 0.672668C8.36104 0.736584 8.46303 0.838571 8.52695 0.964012C8.59961 1.10662 8.59961 1.2933 8.59961 1.66667V12.6M8.59961 5.93334H11.5329C11.9063 5.93334 12.093 5.93334 12.2356 6.006C12.361 6.06992 12.463 6.1719 12.5269 6.29735C12.5996 6.43995 12.5996 6.62664 12.5996 7.00001V11.5333C12.5996 11.9067 12.5996 12.0934 12.5269 12.236C12.463 12.3614 12.361 12.4634 12.2356 12.5273C12.093 12.6 11.9063 12.6 11.5329 12.6H8.59961" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        )}
+        label="Analytics"
+        onSelect={onItemSelect}
+      />
+      <SidebarItem
+        icon={(
+          <svg width="18" height="20" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.31114 0.600037L0.97383 8.08153C0.725641 8.37453 0.601546 8.52103 0.59965 8.64476C0.598001 8.75232 0.64672 8.85465 0.731767 8.92226C0.829597 9.00004 1.02344 9.00004 1.41112 9.00004H6.59961L5.88808 14.6L12.2254 7.11854C12.4736 6.82554 12.5977 6.67904 12.5996 6.55531C12.6012 6.44775 12.5525 6.34542 12.4675 6.27781C12.3696 6.20004 12.1758 6.20004 11.7881 6.20004H6.59961L7.31114 0.600037Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        )}
+        label="Leads"
+        onSelect={onItemSelect}
+      />
+    </SidebarSection>
+
+    <SidebarSection title="ACCOUNT" style={{ marginTop: '32px' }}>
+      <SidebarItem
+        icon={(
+          <svg width="18" height="14" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.599609 2.52858L8.59961 2.52858M8.59961 2.52858C8.59961 3.5937 9.49504 4.45715 10.5996 4.45715C11.7042 4.45715 12.5996 3.5937 12.5996 2.52858C12.5996 1.46346 11.7042 0.600006 10.5996 0.600006C9.49504 0.600006 8.59961 1.46346 8.59961 2.52858ZM4.59961 7.67143L12.5996 7.67144M4.59961 7.67143C4.59961 8.73656 3.70418 9.60001 2.59961 9.60001C1.49504 9.60001 0.599609 8.73656 0.599609 7.67143C0.599609 6.60631 1.49504 5.74286 2.59961 5.74286C3.70418 5.74286 4.59961 6.60631 4.59961 7.67143Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        )}
+        label="Customization"
+        onSelect={onItemSelect}
+      />
+      <SidebarItem
+        icon={(
+          <svg width="18" height="13" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.5996 3.45715H0.599609M0.59961 2.42858L0.599609 6.77143C0.599609 7.41149 0.599609 7.73152 0.730402 7.97599C0.84545 8.19104 1.02903 8.36587 1.25482 8.47544C1.51151 8.60001 1.84755 8.60001 2.51961 8.60001L10.6796 8.60001C11.3517 8.60001 11.6877 8.60001 11.9444 8.47544C12.1702 8.36587 12.3538 8.19104 12.4688 7.976C12.5996 7.73152 12.5996 7.4115 12.5996 6.77144V2.42858C12.5996 1.78852 12.5996 1.46849 12.4688 1.22402C12.3538 1.00898 12.1702 0.83414 11.9444 0.724571C11.6877 0.600007 11.3517 0.600007 10.6796 0.600007L2.51961 0.600006C1.84755 0.600006 1.51152 0.600006 1.25482 0.72457C1.02903 0.83414 0.84545 1.00897 0.730402 1.22402C0.59961 1.46849 0.59961 1.78852 0.59961 2.42858Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        )}
+        label="Plan and Billing"
+        onSelect={onItemSelect}
+      />
+      <SidebarItem
+        icon={(
+          <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.93294 12.6L1.93294 8.59998M1.93294 8.59998C2.66932 8.59998 3.26628 8.00302 3.26628 7.26664C3.26628 6.53026 2.66932 5.93331 1.93294 5.93331C1.19656 5.93331 0.599609 6.53026 0.599609 7.26664C0.599609 8.00302 1.19656 8.59998 1.93294 8.59998ZM1.93294 3.26664V0.599976M6.59961 12.6V8.59998M6.59961 3.26664V0.599976M6.59961 3.26664C5.86323 3.26664 5.26628 3.8636 5.26628 4.59998C5.26628 5.33636 5.86323 5.93331 6.59961 5.93331C7.33599 5.93331 7.93294 5.33636 7.93294 4.59998C7.93294 3.8636 7.33599 3.26664 6.59961 3.26664ZM11.2663 12.6V9.93331M11.2663 9.93331C12.0027 9.93331 12.5996 9.33636 12.5996 8.59998C12.5996 7.8636 12.0027 7.26664 11.2663 7.26664C10.5299 7.26664 9.93294 7.8636 9.93294 8.59998C9.93294 9.33636 10.5299 9.93331 11.2663 9.93331ZM11.2663 4.59998V0.599976" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        )}
+        label="Settings"
+        onSelect={onItemSelect}
+      />
+    </SidebarSection>
+  </>
+);
+
+const StatCard = ({ label, value, trend, positive, subtitle }) => (
+  <div className="dashboard-stat-card" style={{ background: '#F3F2EA', borderRadius: '20px', padding: '28px', flex: 1, boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
+    <div style={{ fontSize: '13px', color: '#6B7280', fontWeight: 700, marginBottom: '10px' }}>{label}</div>
+    <div style={{ fontSize: '36px', fontWeight: 400, color: '#111827', marginBottom: '14px', letterSpacing: '0' }}>{value}</div>
+    {trend ? (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 800, color: positive ? '#10B981' : '#EF4444' }}>
+        <span style={{ fontSize: '16px' }}>{positive ? '↑' : '↓'}</span> {trend}
+      </div>
+    ) : (
+      <div style={{ fontSize: '14px', color: '#6B7280', fontWeight: 600 }}>{subtitle}</div>
+    )}
+  </div>
+);
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  useEffect(() => {
+    if (!mobileNavOpen) return undefined;
+    const onKey = (e) => { if (e.key === 'Escape') setMobileNavOpen(false); };
+    document.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [mobileNavOpen]);
 
   const stats = [
     { label: 'Chat sessions (this month)', value: '312', trend: '18% vs last month', positive: true },
@@ -45,6 +219,45 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-root" style={{ display: 'flex', minHeight: '100vh', background: '#F9F9F9', fontFamily: 'Archivo, sans-serif' }}>
+      {mobileNavOpen && (
+        <>
+          <button
+            type="button"
+            className="dashboard-mobile-backdrop"
+            aria-label="Close menu"
+            onClick={() => setMobileNavOpen(false)}
+          />
+          <div
+            id="dashboard-mobile-nav"
+            className="dashboard-mobile-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Dashboard navigation"
+          >
+            <div className="dashboard-mobile-drawer-head">
+              <button type="button" className="dashboard-mobile-drawer-logo" onClick={() => { navigate('/'); setMobileNavOpen(false); }} aria-label="Fidato home">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.77489 2.32141L0.846342 7.84706C0.295475 8.57854 -0.00080443 9.45938 1.96134e-05 10.3632V18.5501C-0.00276819 19.4511 0.2917 20.3295 0.840889 21.0587C1.39008 21.7879 2.16556 22.33 3.05531 22.6067L6.9659 23.8031C7.56669 23.9876 8.20208 24.0434 8.82757 23.9664C9.45305 23.8894 10.0535 23.6815 10.5869 23.3574L20.4868 19.0563L4.77489 2.32141Z" fill="#F26419" />
+                  <path d="M9.40387 21.3865C6.42042 21.3865 3.89941 19.026 3.89941 16.2351V5.15137C3.9006 3.78587 4.46382 2.47663 5.46547 1.51088C6.46712 0.54512 7.82539 0.00171857 9.24224 0H18.655C20.0721 0.0017175 21.4306 0.54497 22.4326 1.51066C23.4346 2.47636 23.9983 3.78567 24.0001 5.15137V14.2231C23.9983 15.5886 23.4345 16.8976 22.4325 17.8629C21.4304 18.8283 20.0719 19.3711 18.655 19.3722H9.40387V21.3865Z" fill="#F26419" />
+                  <path d="M9.24266 2.32141C8.46466 2.32313 7.71906 2.62188 7.16914 3.15228C6.61921 3.68267 6.30978 4.40151 6.30859 5.15132V16.2351C6.30859 17.7127 7.70043 19.013 9.31001 19.0606V17.0507H18.6555C19.4333 17.0496 20.1789 16.7513 20.7289 16.2212C21.2788 15.6912 21.5883 14.9726 21.5895 14.223V5.15132C21.5889 4.40134 21.2797 3.68216 20.7296 3.15164C20.1796 2.62112 19.4337 2.32256 18.6555 2.32141H9.24266Z" fill="white" />
+                  <path d="M12.4186 5.93665H10.3398V10.3784H12.4186V5.93665Z" fill="black" />
+                  <path d="M18.0876 5.93665H16.0088V10.3784H18.0876V5.93665Z" fill="black" />
+                </svg>
+                <span className="dashboard-mobile-drawer-title">Menu</span>
+              </button>
+              <button type="button" className="dashboard-mobile-drawer-close" onClick={() => setMobileNavOpen(false)} aria-label="Close navigation">
+                <FiX size={22} />
+              </button>
+            </div>
+            <div className="dashboard-mobile-drawer-scroll">
+              <DashboardSidebarNav onItemSelect={() => setMobileNavOpen(false)} />
+            </div>
+            <div className="dashboard-mobile-drawer-footer">
+              <DashboardUpgradeBlock />
+            </div>
+          </div>
+        </>
+      )}
       {/* Sidebar */}
       <aside className="dashboard-sidebar" style={{ 
         width: '240px', 
@@ -83,129 +296,44 @@ const Dashboard = () => {
 
         {/* Sidebar Sections (Scrollable) */}
         <div style={{ flex: 1, padding: '0 12px', overflowY: 'auto', scrollbarWidth: 'none' }}>
-          <SidebarSection title="MAIN">
-            <SidebarItem icon={<FiGrid />} label="Overview" active />
-            <SidebarItem 
-              icon={
-                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4.26628 6.77562C4.26628 6.77562 5.14128 7.75072 6.59961 7.75072C8.05794 7.75072 8.93294 6.77562 8.93294 6.77562M8.43294 3.5253H8.43961M4.76628 3.5253H4.77294M3.26628 10.351V11.8692C3.26628 12.2156 3.26628 12.3888 3.3391 12.4777C3.40242 12.5551 3.49846 12.6001 3.59997 12.6C3.71669 12.5999 3.85539 12.4917 4.13278 12.2753L5.72308 11.0347C6.04795 10.7813 6.21039 10.6546 6.39127 10.5645C6.55174 10.4846 6.72256 10.4261 6.89909 10.3908C7.09806 10.351 7.30607 10.351 7.72211 10.351H9.39961C10.5197 10.351 11.0798 10.351 11.5076 10.1384C11.8839 9.95145 12.1899 9.65311 12.3816 9.28616C12.5996 8.86899 12.5996 8.32288 12.5996 7.23067V3.72032C12.5996 2.62811 12.5996 2.082 12.3816 1.66483C12.1899 1.29788 11.8839 0.999536 11.5076 0.812565C11.0798 0.600006 10.5197 0.600006 9.39961 0.600006H3.79961C2.6795 0.600006 2.11945 0.600006 1.69163 0.812565C1.3153 0.999536 1.00934 1.29788 0.817596 1.66483C0.599609 2.082 0.599609 2.62811 0.599609 3.72032V7.75072C0.599609 8.35526 0.599609 8.65754 0.667758 8.90554C0.852692 9.57853 1.39179 10.1042 2.08197 10.2845C2.3363 10.351 2.6463 10.351 3.26628 10.351ZM8.76628 3.5253C8.76628 3.70481 8.61704 3.85033 8.43294 3.85033C8.24885 3.85033 8.09961 3.70481 8.09961 3.5253C8.09961 3.34579 8.24885 3.20027 8.43294 3.20027C8.61704 3.20027 8.76628 3.34579 8.76628 3.5253ZM5.09961 3.5253C5.09961 3.70481 4.95037 3.85033 4.76628 3.85033C4.58218 3.85033 4.43294 3.70481 4.43294 3.5253C4.43294 3.34579 4.58218 3.20027 4.76628 3.20027C4.95037 3.20027 5.09961 3.34579 5.09961 3.5253Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              } 
-              label="My Chatboat" 
-            />
-            <SidebarItem 
-              icon={
-                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3.26628 4.17536H6.59961M3.26628 6.45059H8.59961M5.05544 10.351H9.39961C10.5197 10.351 11.0798 10.351 11.5076 10.1384C11.8839 9.95145 12.1899 9.65311 12.3816 9.28616C12.5996 8.86899 12.5996 8.32288 12.5996 7.23067V3.72032C12.5996 2.62811 12.5996 2.082 12.3816 1.66483C12.1899 1.29788 11.8839 0.999536 11.5076 0.812565C11.0798 0.600006 10.5197 0.600006 9.39961 0.600006H3.79961C2.6795 0.600006 2.11945 0.600006 1.69163 0.812565C1.3153 0.999536 1.00934 1.29788 0.817596 1.66483C0.599609 2.082 0.599609 2.62811 0.599609 3.72032V11.8692C0.599609 12.2156 0.599609 12.3888 0.672428 12.4777C0.735758 12.5551 0.831789 12.6001 0.933303 12.6C1.05003 12.5999 1.18872 12.4917 1.46611 12.2753L3.05642 11.0347C3.38129 10.7813 3.54372 10.6546 3.7246 10.5645C3.88508 10.4846 4.05589 10.4261 4.23242 10.3908C4.43139 10.351 4.63941 10.351 5.05544 10.351Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              } 
-              label="Conversations" 
-            />
-            <SidebarItem 
-              icon={
-                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10.0489 8.85892C9.86563 9.06615 9.6733 9.27079 9.47218 9.4719C6.56364 12.3804 2.91971 13.4522 1.33323 11.8657C0.245583 10.7781 0.407334 8.72338 1.5538 6.60161M3.12542 4.36796C3.31615 4.15109 3.5168 3.93701 3.72704 3.72677C6.63558 0.818226 10.2795 -0.253519 11.866 1.33296C12.9544 2.42136 12.7917 4.47812 11.643 6.60145M9.47218 3.72676C12.3807 6.6353 13.4525 10.2792 11.866 11.8657C10.2795 13.4522 6.63558 12.3804 3.72704 9.4719C0.8185 6.56336 -0.253244 2.91943 1.33323 1.33296C2.91971 -0.253519 6.56364 0.818225 9.47218 3.72676ZM7.26259 6.58519C7.26259 6.95913 6.95945 7.26226 6.58552 7.26226C6.21158 7.26226 5.90844 6.95913 5.90844 6.58519C5.90844 6.21126 6.21158 5.90812 6.58552 5.90812C6.95945 5.90812 7.26259 6.21126 7.26259 6.58519Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              } 
-              label="Knowledge Base" 
-            />
-          </SidebarSection>
-
-          <SidebarSection title="INSIGHTS" style={{ marginTop: '32px' }}>
-            <SidebarItem 
-              icon={
-                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4.59961 3.26667H1.66628C1.29291 3.26667 1.10622 3.26667 0.963616 3.33934C0.838174 3.40325 0.736187 3.50524 0.672272 3.63068C0.599609 3.77329 0.599609 3.95997 0.599609 4.33334V11.5333C0.599609 11.9067 0.599609 12.0934 0.672272 12.236C0.736187 12.3614 0.838174 12.4634 0.963616 12.5273C1.10622 12.6 1.29291 12.6 1.66628 12.6H4.59961M4.59961 12.6H8.59961M4.59961 12.6L4.59961 1.66667C4.59961 1.2933 4.59961 1.10662 4.67227 0.964013C4.73619 0.838571 4.83817 0.736584 4.96362 0.672669C5.10622 0.600006 5.29291 0.600006 5.66628 0.600006L7.53294 0.600006C7.90631 0.600006 8.093 0.600006 8.2356 0.672668C8.36104 0.736584 8.46303 0.838571 8.52695 0.964012C8.59961 1.10662 8.59961 1.2933 8.59961 1.66667V12.6M8.59961 5.93334H11.5329C11.9063 5.93334 12.093 5.93334 12.2356 6.006C12.361 6.06992 12.463 6.1719 12.5269 6.29735C12.5996 6.43995 12.5996 6.62664 12.5996 7.00001V11.5333C12.5996 11.9067 12.5996 12.0934 12.5269 12.236C12.463 12.3614 12.361 12.4634 12.2356 12.5273C12.093 12.6 11.9063 12.6 11.5329 12.6H8.59961" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              } 
-              label="Analytics" 
-            />
-            <SidebarItem 
-              icon={
-                <svg width="18" height="20" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.31114 0.600037L0.97383 8.08153C0.725641 8.37453 0.601546 8.52103 0.59965 8.64476C0.598001 8.75232 0.64672 8.85465 0.731767 8.92226C0.829597 9.00004 1.02344 9.00004 1.41112 9.00004H6.59961L5.88808 14.6L12.2254 7.11854C12.4736 6.82554 12.5977 6.67904 12.5996 6.55531C12.6012 6.44775 12.5525 6.34542 12.4675 6.27781C12.3696 6.20004 12.1758 6.20004 11.7881 6.20004H6.59961L7.31114 0.600037Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              } 
-              label="Leads" 
-            />
-          </SidebarSection>
-
-          <SidebarSection title="ACCOUNT" style={{ marginTop: '32px' }}>
-            <SidebarItem 
-              icon={
-                <svg width="18" height="14" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0.599609 2.52858L8.59961 2.52858M8.59961 2.52858C8.59961 3.5937 9.49504 4.45715 10.5996 4.45715C11.7042 4.45715 12.5996 3.5937 12.5996 2.52858C12.5996 1.46346 11.7042 0.600006 10.5996 0.600006C9.49504 0.600006 8.59961 1.46346 8.59961 2.52858ZM4.59961 7.67143L12.5996 7.67144M4.59961 7.67143C4.59961 8.73656 3.70418 9.60001 2.59961 9.60001C1.49504 9.60001 0.599609 8.73656 0.599609 7.67143C0.599609 6.60631 1.49504 5.74286 2.59961 5.74286C3.70418 5.74286 4.59961 6.60631 4.59961 7.67143Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              } 
-              label="Customization" 
-            />
-            <SidebarItem 
-              icon={
-                <svg width="18" height="13" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.5996 3.45715H0.599609M0.59961 2.42858L0.599609 6.77143C0.599609 7.41149 0.599609 7.73152 0.730402 7.97599C0.84545 8.19104 1.02903 8.36587 1.25482 8.47544C1.51151 8.60001 1.84755 8.60001 2.51961 8.60001L10.6796 8.60001C11.3517 8.60001 11.6877 8.60001 11.9444 8.47544C12.1702 8.36587 12.3538 8.19104 12.4688 7.976C12.5996 7.73152 12.5996 7.4115 12.5996 6.77144V2.42858C12.5996 1.78852 12.5996 1.46849 12.4688 1.22402C12.3538 1.00898 12.1702 0.83414 11.9444 0.724571C11.6877 0.600007 11.3517 0.600007 10.6796 0.600007L2.51961 0.600006C1.84755 0.600006 1.51152 0.600006 1.25482 0.72457C1.02903 0.83414 0.84545 1.00897 0.730402 1.22402C0.59961 1.46849 0.59961 1.78852 0.59961 2.42858Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              } 
-              label="Plan and Billing" 
-            />
-            <SidebarItem 
-              icon={
-                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1.93294 12.6L1.93294 8.59998M1.93294 8.59998C2.66932 8.59998 3.26628 8.00302 3.26628 7.26664C3.26628 6.53026 2.66932 5.93331 1.93294 5.93331C1.19656 5.93331 0.599609 6.53026 0.599609 7.26664C0.599609 8.00302 1.19656 8.59998 1.93294 8.59998ZM1.93294 3.26664V0.599976M6.59961 12.6V8.59998M6.59961 3.26664V0.599976M6.59961 3.26664C5.86323 3.26664 5.26628 3.8636 5.26628 4.59998C5.26628 5.33636 5.86323 5.93331 6.59961 5.93331C7.33599 5.93331 7.93294 5.33636 7.93294 4.59998C7.93294 3.8636 7.33599 3.26664 6.59961 3.26664ZM11.2663 12.6V9.93331M11.2663 9.93331C12.0027 9.93331 12.5996 9.33636 12.5996 8.59998C12.5996 7.8636 12.0027 7.26664 11.2663 7.26664C10.5299 7.26664 9.93294 7.8636 9.93294 8.59998C9.93294 9.33636 10.5299 9.93331 11.2663 9.93331ZM11.2663 4.59998V0.599976" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              } 
-              label="Settings" 
-            />
-          </SidebarSection>
+          <DashboardSidebarNav />
         </div>
 
         {/* Upgrade Card (Fixed at bottom) */}
         <div className="dashboard-upgrade-card" style={{ padding: '24px 16px 0 16px', flexShrink: 0 }}>
-          <div style={{ background: 'white', borderRadius: '16px', padding: '20px', border: '1px solid #E5E7EB', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-            <div style={{ fontSize: '14px', fontWeight: 700, color: '#111827' }}>Growth Plan</div>
-            <div style={{ fontSize: '12px', color: '#FF6B3D', marginTop: '6px', fontWeight: 600 }}>312 / 500 sessions used</div>
-            <button style={{ 
-              width: '100%', 
-              height: '35px',
-              marginTop: '16px', 
-              background: '#FF6337', 
-              color: 'white', 
-              border: 'none', 
-              borderRadius: '111px', 
-              fontSize: '14px', 
-              fontWeight: 700, 
-              cursor: 'pointer', 
-              transition: 'all 0.2s ease',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 2px 4px rgba(255, 99, 55, 0.2)'
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = '#FF4D1A'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = '#FF6337'; e.currentTarget.style.transform = 'translateY(0)'; }}
-            >
-              Upgrade to Pro
-            </button>
-          </div>
+          <DashboardUpgradeBlock />
         </div>
       </aside>
 
       {/* Main Content */}
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column', overflowX: 'hidden' }}>
         {/* Top Bar */}
-        <header style={{ height: '80px', background: 'white', borderBottom: '1px solid #E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px', position: 'sticky', top: 0, zIndex: 10 }}>
-          <h2 style={{ fontSize: '19px', fontWeight: 700, color: '#111827' }}>Welcome Rohan Chandra</h2>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <button style={{ background: 'white', border: '1px solid #E5E7EB', borderRadius: '10px', padding: '10px 20px', fontSize: '14px', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', transition: 'all 0.2s ease' }}>
-              <FiPlus /> New Chatbot
-            </button>
-            <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#FF6B3D', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '15px' }}>
-              RC
-            </div>
-          </div>
+        <header className="dashboard-header">
+          <h2 className="dashboard-header-title">Welcome Rohan Chandra</h2>
+          <button type="button" className="dashboard-header-new-btn dashboard-header-new-inline">
+            <FiPlus size={18} strokeWidth={2.5} /> New Chatbot
+          </button>
+          <button
+            type="button"
+            className="dashboard-header-avatar"
+            aria-expanded={mobileNavOpen}
+            aria-controls="dashboard-mobile-nav"
+            aria-label="Open navigation menu"
+            onClick={() => {
+              if (typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches) {
+                setMobileNavOpen(true);
+              }
+            }}
+          >
+            RC
+          </button>
+          <button type="button" className="dashboard-header-new-btn dashboard-header-new-block">
+            <FiPlus size={18} strokeWidth={2.5} /> New Chatbot
+          </button>
         </header>
 
         {/* Dashboard Content */}
-        <div style={{ padding: '40px', overflowY: 'auto' }}>
+        <div className="dashboard-content" style={{ overflowY: 'auto', flex: 1 }}>
           {/* Stats Grid */}
           <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px', marginBottom: '40px' }}>
             {stats.map((stat, i) => (
@@ -216,7 +344,7 @@ const Dashboard = () => {
           {/* Middle Row */}
           <div className="middle-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px', marginBottom: '40px' }}>
             {/* My Chatbots */}
-            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #E5E7EB', padding: '28px', boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
+            <div className="dashboard-card" style={{ background: 'white', borderRadius: '20px', border: '1px solid #E5E7EB', padding: '28px', boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                 <h3 style={{ fontSize: '17px', fontWeight: 700, color: '#111827' }}>My chatbots</h3>
                 <span style={{ fontSize: '13px', fontWeight: 700, color: '#FF6B3D', cursor: 'pointer' }}>View all</span>
@@ -239,7 +367,7 @@ const Dashboard = () => {
             </div>
 
             {/* Recent Conversations */}
-            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #E5E7EB', padding: '28px', boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
+            <div className="dashboard-card" style={{ background: 'white', borderRadius: '20px', border: '1px solid #E5E7EB', padding: '28px', boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                 <h3 style={{ fontSize: '17px', fontWeight: 700, color: '#111827' }}>Recent conversations</h3>
                 <span style={{ fontSize: '13px', fontWeight: 700, color: '#FF6B3D', cursor: 'pointer' }}>View all</span>
@@ -276,7 +404,7 @@ const Dashboard = () => {
           </div>
 
           {/* Bottom Row - Top Questions */}
-          <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #E5E7EB', padding: '28px', boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
+          <div className="dashboard-card" style={{ background: 'white', borderRadius: '20px', border: '1px solid #E5E7EB', padding: '28px', boxShadow: '0 1px 3px rgba(0,0,0,0.02)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '36px' }}>
               <h3 style={{ fontSize: '17px', fontWeight: 700, color: '#111827' }}>Top Questions asked this month</h3>
               <span style={{ fontSize: '13px', fontWeight: 700, color: '#FF6B3D', cursor: 'pointer' }}>Full analytics</span>
@@ -305,9 +433,200 @@ const Dashboard = () => {
         .dashboard-root, .dashboard-root * {
           font-family: 'Archivo', sans-serif !important;
         }
+
+        .dashboard-header {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          height: 80px;
+          background: white;
+          border-bottom: 1px solid #E5E7EB;
+          padding: 0 40px;
+          position: sticky;
+          top: 0;
+          z-index: 10;
+          flex-wrap: nowrap;
+        }
+        .dashboard-header-title {
+          margin: 0;
+          font-size: 19px;
+          font-weight: 700;
+          color: #111827;
+          flex: 1;
+          min-width: 0;
+          line-height: 1.25;
+        }
+        .dashboard-header-new-btn {
+          background: white;
+          border: 1px solid #E5E7EB;
+          border-radius: 10px;
+          padding: 10px 20px;
+          font-size: 14px;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          cursor: pointer;
+          transition: background 0.2s ease, border-color 0.2s ease;
+          font-family: inherit;
+          color: #111827;
+          white-space: nowrap;
+        }
+        .dashboard-header-new-btn:hover {
+          background: #F9FAFB;
+          border-color: #D1D5DB;
+        }
+        .dashboard-header-new-block {
+          display: none !important;
+        }
+        .dashboard-header-avatar {
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          background: #FF6B3D;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 15px;
+          flex-shrink: 0;
+          border: none;
+          padding: 0;
+          font-family: inherit;
+          cursor: default;
+          transition: filter 0.15s ease, transform 0.15s ease;
+        }
+        @media (max-width: 768px) {
+          .dashboard-header-avatar {
+            cursor: pointer;
+          }
+          .dashboard-header-avatar:hover {
+            filter: brightness(1.06);
+          }
+          .dashboard-header-avatar:active {
+            transform: scale(0.97);
+          }
+        }
+
+        .dashboard-mobile-backdrop {
+          position: fixed;
+          inset: 0;
+          z-index: 200;
+          border: none;
+          padding: 0;
+          margin: 0;
+          background: rgba(15, 23, 42, 0.45);
+          cursor: pointer;
+        }
+        .dashboard-mobile-drawer {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 100vh;
+          height: 100dvh;
+          width: min(320px, 88vw);
+          z-index: 201;
+          background: #F5F4F0;
+          border-right: 1px solid #E5E7EB;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 8px 0 32px rgba(0, 0, 0, 0.12);
+          animation: dashboardDrawerIn 0.22s ease-out;
+        }
+        @keyframes dashboardDrawerIn {
+          from { transform: translateX(-100%); opacity: 0.96; }
+          to { transform: translateX(0); opacity: 1; }
+        }
+        .dashboard-mobile-drawer-head {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px 16px 12px;
+          border-bottom: 1px solid #E5E7EB;
+          flex-shrink: 0;
+          background: #F5F4F0;
+        }
+        .dashboard-mobile-drawer-logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          padding: 4px 0;
+          color: #111827;
+        }
+        .dashboard-mobile-drawer-title {
+          font-size: 17px;
+          font-weight: 800;
+          letter-spacing: -0.02em;
+        }
+        .dashboard-mobile-drawer-close {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          border: 1px solid #E5E7EB;
+          border-radius: 12px;
+          background: white;
+          color: #374151;
+          cursor: pointer;
+          padding: 0;
+        }
+        .dashboard-mobile-drawer-scroll {
+          flex: 1;
+          min-height: 0;
+          overflow-y: auto;
+          padding: 12px 0 20px;
+          -webkit-overflow-scrolling: touch;
+        }
+        .dashboard-mobile-drawer-scroll .sidebar-section-title,
+        .dashboard-mobile-drawer-scroll .sidebar-label {
+          display: block !important;
+        }
+        .dashboard-mobile-drawer-scroll .sidebar-item {
+          justify-content: flex-start !important;
+          padding: 12px 14px !important;
+        }
+        .dashboard-mobile-drawer-footer {
+          padding: 16px;
+          border-top: 1px solid #E5E7EB;
+          flex-shrink: 0;
+          background: #F5F4F0;
+        }
+
+        .dashboard-content {
+          padding: 40px;
+          box-sizing: border-box;
+        }
         @media (max-width: 1200px) {
           .dashboard-root main {
             padding: 24px !important;
+          }
+        }
+        @media (max-width: 1024px) {
+          .dashboard-content {
+            padding: 32px 18px 36px;
+          }
+          .stats-grid,
+          .middle-grid {
+            width: 100%;
+            max-width: 100%;
+          }
+          .dashboard-card,
+          .dashboard-stat-card {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+          }
+        }
+        @media (max-width: 768px) {
+          .dashboard-content {
+            padding: 24px 12px 32px;
           }
         }
         @media (max-width: 1100px) {
@@ -339,15 +658,35 @@ const Dashboard = () => {
           .dashboard-root main {
             padding: 16px !important;
           }
-          header {
-            padding: 0 20px !important;
-            height: 70px !important;
+          .dashboard-header {
+            flex-wrap: wrap;
+            height: auto !important;
+            min-height: 72px;
+            padding: 12px 16px !important;
+            gap: 10px 12px;
+            align-items: center;
           }
-          h2 {
+          .dashboard-header-title {
+            flex: 1 1 0;
+            min-width: 0;
             font-size: 16px !important;
+            line-height: 1.3;
+          }
+          .dashboard-header-avatar {
+            margin-left: auto;
+          }
+          .dashboard-header-new-inline {
+            display: none !important;
+          }
+          .dashboard-header-new-block {
+            display: flex !important;
+            flex: 1 0 100%;
+            width: 100%;
+            order: 10;
+            margin-top: 2px;
           }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 992px) {
           .stats-grid {
             grid-template-columns: 1fr !important;
           }
@@ -370,50 +709,5 @@ const Dashboard = () => {
     </div>
   );
 };
-
-const SidebarSection = ({ title, children, style }) => (
-  <div style={{ padding: '0 12px', ...style }}>
-    <div className="sidebar-section-title" style={{ fontSize: '11px', fontWeight: 900, color: '#9CA3AF', padding: '0 12px', marginBottom: '10px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{title}</div>
-    {children}
-  </div>
-);
-
-const SidebarItem = ({ icon, label, active }) => (
-  <div style={{ 
-    display: 'flex', 
-    alignItems: 'center', 
-    gap: '12px', 
-    padding: '12px 14px', 
-    borderRadius: '12px', 
-    cursor: 'pointer',
-    background: active ? 'white' : 'transparent',
-    color: active ? '#FF6B3D' : '#4B5563',
-    boxShadow: active ? '0 4px 6px -1px rgba(0,0,0,0.05)' : 'none',
-    marginBottom: '4px',
-    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-    justifyContent: 'flex-start'
-  }}
-  className="sidebar-item"
-  onMouseEnter={(e) => { if (!active) { e.currentTarget.style.background = 'rgba(255,255,255,0.5)'; e.currentTarget.style.color = '#111827'; } }}
-  onMouseLeave={(e) => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#4B5563'; } }}
-  >
-    <span style={{ fontSize: '20px', display: 'flex', alignItems: 'center', flexShrink: 0 }}>{icon}</span>
-    <span className="sidebar-label" style={{ fontSize: '14.5px', fontWeight: active ? 800 : 700, whiteSpace: 'nowrap' }}>{label}</span>
-  </div>
-);
-
-const StatCard = ({ label, value, trend, positive, subtitle }) => (
-  <div style={{ background: '#F3F2EA', borderRadius: '20px', padding: '28px', flex: 1, boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-    <div style={{ fontSize: '13px', color: '#6B7280', fontWeight: 700, marginBottom: '10px' }}>{label}</div>
-    <div style={{ fontSize: '36px', fontWeight: 400, color: '#111827', marginBottom: '14px', letterSpacing: '0' }}>{value}</div>
-    {trend ? (
-      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 800, color: positive ? '#10B981' : '#EF4444' }}>
-        <span style={{ fontSize: '16px' }}>{positive ? '↑' : '↓'}</span> {trend}
-      </div>
-    ) : (
-      <div style={{ fontSize: '14px', color: '#6B7280', fontWeight: 600 }}>{subtitle}</div>
-    )}
-  </div>
-);
 
 export default Dashboard;

@@ -9,8 +9,8 @@ import FAQPage from './pages/FAQPage'
 import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
-import TestWebsite from './pages/TestWebsite'
 import Dashboard from './pages/Dashboard'
+import TestWebsite from './pages/TestWebsite'
 import PageTransition from './components/PageTransition'
 
 function AppContent() {
