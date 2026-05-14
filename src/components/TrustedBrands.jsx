@@ -39,8 +39,8 @@ const TrustedBrands = () => {
     <section className="tb-section" style={{ position: 'relative' }}>
       <div className="tb-container">
         {/* Background Gradient SVG */}
-        <motion.div 
-          className="tb-bg-gradient" 
+        <motion.div
+          className="tb-bg-gradient"
           style={{ position: 'absolute', top: '-20%', left: 0, width: '100%', height: '140%', zIndex: 0, pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', borderRadius: '36px' }}
           animate={{
             x: [0, 30, -30, 0],
@@ -54,19 +54,19 @@ const TrustedBrands = () => {
         >
           <svg width="100%" height="100%" viewBox="0 0 1440 1578" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style={{ transform: 'scale(1.2)' }}>
             <g filter="url(#filter0_f_133_862)">
-              <path d="M534.152 383.611C304.696 483.299 201.583 745.443 303.842 969.128C406.102 1192.81 675.011 1293.33 904.468 1193.64C1133.92 1093.96 1237.04 831.813 1134.78 608.128C1032.52 384.443 763.609 283.924 534.152 383.611Z" fill="url(#paint0_linear_133_862)" fillOpacity="0.6"/>
+              <path d="M534.152 383.611C304.696 483.299 201.583 745.443 303.842 969.128C406.102 1192.81 675.011 1293.33 904.468 1193.64C1133.92 1093.96 1237.04 831.813 1134.78 608.128C1032.52 384.443 763.609 283.924 534.152 383.611Z" fill="url(#paint0_linear_133_862)" fillOpacity="0.6" />
             </g>
             <defs>
               <filter id="filter0_f_133_862" x="-80.7621" y="9.15527e-05" width="1600.14" height="1577.26" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                <feGaussianBlur stdDeviation="172.55" result="effect1_foregroundBlur_133_862"/>
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation="172.55" result="effect1_foregroundBlur_133_862" />
               </filter>
               <linearGradient id="paint0_linear_133_862" x1="303.842" y1="969.128" x2="847.173" y2="354.064" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#D7F0FF"/>
-                <stop offset="0.333333" stopColor="#D9CFFF"/>
-                <stop offset="0.666667" stopColor="#FFD1EA"/>
-                <stop offset="1" stopColor="#FFE3D2"/>
+                <stop stopColor="#D7F0FF" />
+                <stop offset="0.333333" stopColor="#D9CFFF" />
+                <stop offset="0.666667" stopColor="#FFD1EA" />
+                <stop offset="1" stopColor="#FFE3D2" />
               </linearGradient>
             </defs>
           </svg>
@@ -120,9 +120,9 @@ const TrustedBrands = () => {
                     key={testimonial.id}
                     className="tb-card"
                     initial={{ opacity: 0, y: -50, scale: 0.9 }}
-                    animate={{ 
+                    animate={{
                       opacity: relativeIndex === 0 ? 1 : relativeIndex === 1 ? 0.7 : 0.4,
-                      y: relativeIndex * 40, 
+                      y: relativeIndex * 40,
                       scale: 1 - relativeIndex * 0.04,
                       zIndex: testimonials.length - relativeIndex,
                       filter: relativeIndex === 0 ? 'blur(0px)' : `blur(${relativeIndex * 2}px)`
@@ -136,7 +136,7 @@ const TrustedBrands = () => {
                           <span key={i} className="tb-star">★</span>
                         ))}
                       </div>
-                      
+
                       <p className="tb-quote">
                         "{testimonial.text}"
                       </p>
@@ -154,13 +154,14 @@ const TrustedBrands = () => {
           <button className="tb-next-review-btn" onClick={(e) => { e.stopPropagation(); handleNext(); }}>
             Click to see next review
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '6px' }}>
-              <path d="M6 9l6 6 6-6"/>
+              <path d="M6 9l6 6 6-6" />
             </svg>
           </button>
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .tb-section {
           position: relative;
           padding: 60px 24px;

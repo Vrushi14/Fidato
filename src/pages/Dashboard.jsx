@@ -85,20 +85,76 @@ const Dashboard = () => {
         <div style={{ flex: 1, padding: '0 12px', overflowY: 'auto', scrollbarWidth: 'none' }}>
           <SidebarSection title="MAIN">
             <SidebarItem icon={<FiGrid />} label="Overview" active />
-            <SidebarItem icon={<FiLayout />} label="My Chatbots" />
-            <SidebarItem icon={<FiMessageSquare />} label="Conversations" />
-            <SidebarItem icon={<FiDatabase />} label="Knowledge Base" />
+            <SidebarItem 
+              icon={
+                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.26628 6.77562C4.26628 6.77562 5.14128 7.75072 6.59961 7.75072C8.05794 7.75072 8.93294 6.77562 8.93294 6.77562M8.43294 3.5253H8.43961M4.76628 3.5253H4.77294M3.26628 10.351V11.8692C3.26628 12.2156 3.26628 12.3888 3.3391 12.4777C3.40242 12.5551 3.49846 12.6001 3.59997 12.6C3.71669 12.5999 3.85539 12.4917 4.13278 12.2753L5.72308 11.0347C6.04795 10.7813 6.21039 10.6546 6.39127 10.5645C6.55174 10.4846 6.72256 10.4261 6.89909 10.3908C7.09806 10.351 7.30607 10.351 7.72211 10.351H9.39961C10.5197 10.351 11.0798 10.351 11.5076 10.1384C11.8839 9.95145 12.1899 9.65311 12.3816 9.28616C12.5996 8.86899 12.5996 8.32288 12.5996 7.23067V3.72032C12.5996 2.62811 12.5996 2.082 12.3816 1.66483C12.1899 1.29788 11.8839 0.999536 11.5076 0.812565C11.0798 0.600006 10.5197 0.600006 9.39961 0.600006H3.79961C2.6795 0.600006 2.11945 0.600006 1.69163 0.812565C1.3153 0.999536 1.00934 1.29788 0.817596 1.66483C0.599609 2.082 0.599609 2.62811 0.599609 3.72032V7.75072C0.599609 8.35526 0.599609 8.65754 0.667758 8.90554C0.852692 9.57853 1.39179 10.1042 2.08197 10.2845C2.3363 10.351 2.6463 10.351 3.26628 10.351ZM8.76628 3.5253C8.76628 3.70481 8.61704 3.85033 8.43294 3.85033C8.24885 3.85033 8.09961 3.70481 8.09961 3.5253C8.09961 3.34579 8.24885 3.20027 8.43294 3.20027C8.61704 3.20027 8.76628 3.34579 8.76628 3.5253ZM5.09961 3.5253C5.09961 3.70481 4.95037 3.85033 4.76628 3.85033C4.58218 3.85033 4.43294 3.70481 4.43294 3.5253C4.43294 3.34579 4.58218 3.20027 4.76628 3.20027C4.95037 3.20027 5.09961 3.34579 5.09961 3.5253Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              } 
+              label="My Chatboat" 
+            />
+            <SidebarItem 
+              icon={
+                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.26628 4.17536H6.59961M3.26628 6.45059H8.59961M5.05544 10.351H9.39961C10.5197 10.351 11.0798 10.351 11.5076 10.1384C11.8839 9.95145 12.1899 9.65311 12.3816 9.28616C12.5996 8.86899 12.5996 8.32288 12.5996 7.23067V3.72032C12.5996 2.62811 12.5996 2.082 12.3816 1.66483C12.1899 1.29788 11.8839 0.999536 11.5076 0.812565C11.0798 0.600006 10.5197 0.600006 9.39961 0.600006H3.79961C2.6795 0.600006 2.11945 0.600006 1.69163 0.812565C1.3153 0.999536 1.00934 1.29788 0.817596 1.66483C0.599609 2.082 0.599609 2.62811 0.599609 3.72032V11.8692C0.599609 12.2156 0.599609 12.3888 0.672428 12.4777C0.735758 12.5551 0.831789 12.6001 0.933303 12.6C1.05003 12.5999 1.18872 12.4917 1.46611 12.2753L3.05642 11.0347C3.38129 10.7813 3.54372 10.6546 3.7246 10.5645C3.88508 10.4846 4.05589 10.4261 4.23242 10.3908C4.43139 10.351 4.63941 10.351 5.05544 10.351Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              } 
+              label="Conversations" 
+            />
+            <SidebarItem 
+              icon={
+                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.0489 8.85892C9.86563 9.06615 9.6733 9.27079 9.47218 9.4719C6.56364 12.3804 2.91971 13.4522 1.33323 11.8657C0.245583 10.7781 0.407334 8.72338 1.5538 6.60161M3.12542 4.36796C3.31615 4.15109 3.5168 3.93701 3.72704 3.72677C6.63558 0.818226 10.2795 -0.253519 11.866 1.33296C12.9544 2.42136 12.7917 4.47812 11.643 6.60145M9.47218 3.72676C12.3807 6.6353 13.4525 10.2792 11.866 11.8657C10.2795 13.4522 6.63558 12.3804 3.72704 9.4719C0.8185 6.56336 -0.253244 2.91943 1.33323 1.33296C2.91971 -0.253519 6.56364 0.818225 9.47218 3.72676ZM7.26259 6.58519C7.26259 6.95913 6.95945 7.26226 6.58552 7.26226C6.21158 7.26226 5.90844 6.95913 5.90844 6.58519C5.90844 6.21126 6.21158 5.90812 6.58552 5.90812C6.95945 5.90812 7.26259 6.21126 7.26259 6.58519Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              } 
+              label="Knowledge Base" 
+            />
           </SidebarSection>
 
           <SidebarSection title="INSIGHTS" style={{ marginTop: '32px' }}>
-            <SidebarItem icon={<FiBarChart2 />} label="Analytics" />
-            <SidebarItem icon={<FiUsers />} label="Leads" />
+            <SidebarItem 
+              icon={
+                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.59961 3.26667H1.66628C1.29291 3.26667 1.10622 3.26667 0.963616 3.33934C0.838174 3.40325 0.736187 3.50524 0.672272 3.63068C0.599609 3.77329 0.599609 3.95997 0.599609 4.33334V11.5333C0.599609 11.9067 0.599609 12.0934 0.672272 12.236C0.736187 12.3614 0.838174 12.4634 0.963616 12.5273C1.10622 12.6 1.29291 12.6 1.66628 12.6H4.59961M4.59961 12.6H8.59961M4.59961 12.6L4.59961 1.66667C4.59961 1.2933 4.59961 1.10662 4.67227 0.964013C4.73619 0.838571 4.83817 0.736584 4.96362 0.672669C5.10622 0.600006 5.29291 0.600006 5.66628 0.600006L7.53294 0.600006C7.90631 0.600006 8.093 0.600006 8.2356 0.672668C8.36104 0.736584 8.46303 0.838571 8.52695 0.964012C8.59961 1.10662 8.59961 1.2933 8.59961 1.66667V12.6M8.59961 5.93334H11.5329C11.9063 5.93334 12.093 5.93334 12.2356 6.006C12.361 6.06992 12.463 6.1719 12.5269 6.29735C12.5996 6.43995 12.5996 6.62664 12.5996 7.00001V11.5333C12.5996 11.9067 12.5996 12.0934 12.5269 12.236C12.463 12.3614 12.361 12.4634 12.2356 12.5273C12.093 12.6 11.9063 12.6 11.5329 12.6H8.59961" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              } 
+              label="Analytics" 
+            />
+            <SidebarItem 
+              icon={
+                <svg width="18" height="20" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.31114 0.600037L0.97383 8.08153C0.725641 8.37453 0.601546 8.52103 0.59965 8.64476C0.598001 8.75232 0.64672 8.85465 0.731767 8.92226C0.829597 9.00004 1.02344 9.00004 1.41112 9.00004H6.59961L5.88808 14.6L12.2254 7.11854C12.4736 6.82554 12.5977 6.67904 12.5996 6.55531C12.6012 6.44775 12.5525 6.34542 12.4675 6.27781C12.3696 6.20004 12.1758 6.20004 11.7881 6.20004H6.59961L7.31114 0.600037Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              } 
+              label="Leads" 
+            />
           </SidebarSection>
 
           <SidebarSection title="ACCOUNT" style={{ marginTop: '32px' }}>
-            <SidebarItem icon={<FiLayout />} label="Customization" />
-            <SidebarItem icon={<FiCreditCard />} label="Plan & Billing" />
-            <SidebarItem icon={<FiSettings />} label="Settings" />
+            <SidebarItem 
+              icon={
+                <svg width="18" height="14" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.599609 2.52858L8.59961 2.52858M8.59961 2.52858C8.59961 3.5937 9.49504 4.45715 10.5996 4.45715C11.7042 4.45715 12.5996 3.5937 12.5996 2.52858C12.5996 1.46346 11.7042 0.600006 10.5996 0.600006C9.49504 0.600006 8.59961 1.46346 8.59961 2.52858ZM4.59961 7.67143L12.5996 7.67144M4.59961 7.67143C4.59961 8.73656 3.70418 9.60001 2.59961 9.60001C1.49504 9.60001 0.599609 8.73656 0.599609 7.67143C0.599609 6.60631 1.49504 5.74286 2.59961 5.74286C3.70418 5.74286 4.59961 6.60631 4.59961 7.67143Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              } 
+              label="Customization" 
+            />
+            <SidebarItem 
+              icon={
+                <svg width="18" height="13" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5996 3.45715H0.599609M0.59961 2.42858L0.599609 6.77143C0.599609 7.41149 0.599609 7.73152 0.730402 7.97599C0.84545 8.19104 1.02903 8.36587 1.25482 8.47544C1.51151 8.60001 1.84755 8.60001 2.51961 8.60001L10.6796 8.60001C11.3517 8.60001 11.6877 8.60001 11.9444 8.47544C12.1702 8.36587 12.3538 8.19104 12.4688 7.976C12.5996 7.73152 12.5996 7.4115 12.5996 6.77144V2.42858C12.5996 1.78852 12.5996 1.46849 12.4688 1.22402C12.3538 1.00898 12.1702 0.83414 11.9444 0.724571C11.6877 0.600007 11.3517 0.600007 10.6796 0.600007L2.51961 0.600006C1.84755 0.600006 1.51152 0.600006 1.25482 0.72457C1.02903 0.83414 0.84545 1.00897 0.730402 1.22402C0.59961 1.46849 0.59961 1.78852 0.59961 2.42858Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              } 
+              label="Plan and Billing" 
+            />
+            <SidebarItem 
+              icon={
+                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.93294 12.6L1.93294 8.59998M1.93294 8.59998C2.66932 8.59998 3.26628 8.00302 3.26628 7.26664C3.26628 6.53026 2.66932 5.93331 1.93294 5.93331C1.19656 5.93331 0.599609 6.53026 0.599609 7.26664C0.599609 8.00302 1.19656 8.59998 1.93294 8.59998ZM1.93294 3.26664V0.599976M6.59961 12.6V8.59998M6.59961 3.26664V0.599976M6.59961 3.26664C5.86323 3.26664 5.26628 3.8636 5.26628 4.59998C5.26628 5.33636 5.86323 5.93331 6.59961 5.93331C7.33599 5.93331 7.93294 5.33636 7.93294 4.59998C7.93294 3.8636 7.33599 3.26664 6.59961 3.26664ZM11.2663 12.6V9.93331M11.2663 9.93331C12.0027 9.93331 12.5996 9.33636 12.5996 8.59998C12.5996 7.8636 12.0027 7.26664 11.2663 7.26664C10.5299 7.26664 9.93294 7.8636 9.93294 8.59998C9.93294 9.33636 10.5299 9.93331 11.2663 9.93331ZM11.2663 4.59998V0.599976" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              } 
+              label="Settings" 
+            />
           </SidebarSection>
         </div>
 
@@ -107,7 +163,26 @@ const Dashboard = () => {
           <div style={{ background: 'white', borderRadius: '16px', padding: '20px', border: '1px solid #E5E7EB', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
             <div style={{ fontSize: '14px', fontWeight: 700, color: '#111827' }}>Growth Plan</div>
             <div style={{ fontSize: '12px', color: '#FF6B3D', marginTop: '6px', fontWeight: 600 }}>312 / 500 sessions used</div>
-            <button style={{ width: '100%', marginTop: '16px', background: '#FF6B3D', color: 'white', border: 'none', borderRadius: '10px', padding: '10px', fontSize: '13px', fontWeight: 700, cursor: 'pointer', transition: 'all 0.2s ease' }}>
+            <button style={{ 
+              width: '100%', 
+              height: '35px',
+              marginTop: '16px', 
+              background: '#FF6337', 
+              color: 'white', 
+              border: 'none', 
+              borderRadius: '111px', 
+              fontSize: '14px', 
+              fontWeight: 700, 
+              cursor: 'pointer', 
+              transition: 'all 0.2s ease',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 2px 4px rgba(255, 99, 55, 0.2)'
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = '#FF4D1A'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#FF6337'; e.currentTarget.style.transform = 'translateY(0)'; }}
+            >
               Upgrade to Pro
             </button>
           </div>
@@ -227,6 +302,9 @@ const Dashboard = () => {
       </main>
 
       <style>{`
+        .dashboard-root, .dashboard-root * {
+          font-family: 'Archivo', sans-serif !important;
+        }
         @media (max-width: 1200px) {
           .dashboard-root main {
             padding: 24px !important;
@@ -327,7 +405,7 @@ const SidebarItem = ({ icon, label, active }) => (
 const StatCard = ({ label, value, trend, positive, subtitle }) => (
   <div style={{ background: '#F3F2EA', borderRadius: '20px', padding: '28px', flex: 1, boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
     <div style={{ fontSize: '13px', color: '#6B7280', fontWeight: 700, marginBottom: '10px' }}>{label}</div>
-    <div style={{ fontSize: '36px', fontWeight: 900, color: '#111827', marginBottom: '14px', letterSpacing: '-0.02em' }}>{value}</div>
+    <div style={{ fontSize: '36px', fontWeight: 400, color: '#111827', marginBottom: '14px', letterSpacing: '0' }}>{value}</div>
     {trend ? (
       <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 800, color: positive ? '#10B981' : '#EF4444' }}>
         <span style={{ fontSize: '16px' }}>{positive ? '↑' : '↓'}</span> {trend}
